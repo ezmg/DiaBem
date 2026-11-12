@@ -104,4 +104,28 @@ class RecipeSearchTest {
         val have = setOf("chicken", "tomato", "onion")
         assertEquals(ids(MealType.LUNCH, have), ids(MealType.LUNCH, have))
     }
+
+    @Test
+    fun searchAllStartsWithTheShortListAndThenShowsEveryRecipeOfTheMeal() {
+        val query = SearchQuery(MealType.LUNCH, setOf("chicken", "rice", "tomato"), hypertension)
+        val short = search.search(query).map { it.recipe.id }
+        val all = search.searchAll(query).map { it.recipe.id }
+        assertEquals(short, all.take(short.size))
+        assertEquals(setOf("chicken-rice", "fish-tomato", "big-rice", "salty-cheese"), all.toSet())
+        assertEquals(all.size, all.toSet().size)
+        // the recipe that is red for this person is still there, but flagged
+        assertTrue(search.searchAll(query).single { it.recipe.id == "salty-cheese" }.health.relevantRed)
+    }
+
+    @Test
+    fun moreCarbsPreferencePutsHigherCarbRecipesFirstButRedOnesStayLast() {
+        val have = setOf("chicken", "rice", "tomato", "fish", "onion", "beans")
+        val normal = search.searchAll(SearchQuery(MealType.LUNCH, have, diabetes))
+        val more = search.searchAll(SearchQuery(MealType.LUNCH, have, diabetes, carbPreference = CarbPreference.MORE_CARBS))
+        val fine = more.filterNot { it.health.relevantRed }.map { it.recipe.perServing[com.velkyss.diabem.core.model.Nutrient.CARBOHYDRATE_G]!! }
+        assertEquals(fine.sortedDescending(), fine)
+        // big-rice is above the red limit for diabetes: never promoted
+        assertTrue(more.indexOfFirst { it.recipe.id == "big-rice" } > more.indexOfFirst { it.recipe.id == "chicken-rice" })
+        assertEquals(normal.map { it.recipe.id }.toSet(), more.map { it.recipe.id }.toSet())
+    }
 }
