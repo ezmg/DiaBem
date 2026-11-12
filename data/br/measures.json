@@ -56,6 +56,15 @@
   ],
   "measures": [
     {
+      "food": "arroz-branco-cozido",
+      "unit": "colher_sopa",
+      "official": {
+        "food": "6300101",
+        "measure": "16",
+        "preparation": "99"
+      }
+    },
+    {
       "food": "farinha-de-milho",
       "unit": "colher_sopa",
       "official": {

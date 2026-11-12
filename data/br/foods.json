@@ -296,6 +296,12 @@
       "name": "sal",
       "pantryItem": "sal",
       "tableId": "517"
+    },
+    {
+      "id": "arroz-branco-cozido",
+      "name": "arroz branco cozido",
+      "pantryItem": "arroz",
+      "tableId": "3"
     }
   ]
 }
