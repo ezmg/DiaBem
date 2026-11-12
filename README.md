@@ -20,6 +20,12 @@ y la app le propone varias recetas adecuadas a su perfil, con un semáforo senci
 > ⚠️ **Aviso**: las recetas son orientativas. No sustituyen al médico ni al nutricionista.
 > La app **nunca** calcula ni sugiere dosis de insulina ni de medicamentos.
 
+## Capturas
+
+| Aviso | Inicio | Ingredientes | Resultados | Receta |
+|---|---|---|---|---|
+| ![](docs/screenshots/01-aviso.png) | ![](docs/screenshots/02-inicio.png) | ![](docs/screenshots/03-ingredientes.png) | ![](docs/screenshots/04-resultados.png) | ![](docs/screenshots/05-receta.png) |
+
 ## Principios
 
 - **Coste cero**: sin servidores ni servicios de pago. Todo funciona dentro del teléfono.
