@@ -43,6 +43,13 @@ jobs:
           path: composeApp/build/outputs/apk/debug/*.apk
           if-no-files-found: error
 
+      - name: Upload nutrition report
+        uses: actions/upload-artifact@v5
+        with:
+          name: nutrition-report
+          path: packbuilder/build/reports/packs/
+          if-no-files-found: error
+
       - name: Upload test reports
         if: always()
         uses: actions/upload-artifact@v5

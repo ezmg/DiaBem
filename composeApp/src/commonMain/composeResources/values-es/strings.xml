@@ -4,4 +4,8 @@
     <string name="hello_title">¡Hola! Bienvenido a DiaBien</string>
     <string name="hello_body">Recetas sencillas para personas con diabetes tipo 2 o tensión alta. Muy pronto aquí.</string>
     <string name="medical_notice">Las recetas son solo orientativas. No sustituyen a tu médico ni a tu nutricionista.</string>
+    <plurals name="recipes_available">
+        <item quantity="one">%1$d receta disponible</item>
+        <item quantity="other">%1$d recetas disponibles</item>
+    </plurals>
 </resources>

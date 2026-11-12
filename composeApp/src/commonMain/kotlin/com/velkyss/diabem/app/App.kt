@@ -8,6 +8,14 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import com.velkyss.diabem.app.data.PackLoader
+import com.velkyss.diabem.app.resources.recipes_available
+import org.jetbrains.compose.resources.pluralStringResource
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -19,6 +27,8 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun App() {
+    var recipeCount by remember { mutableStateOf<Int?>(null) }
+    LaunchedEffect(Unit) { recipeCount = runCatching { PackLoader.load().recipes.size }.getOrNull() }
     MaterialTheme {
         Surface(modifier = Modifier.fillMaxSize()) {
             Column(
@@ -27,6 +37,9 @@ fun App() {
             ) {
                 Text(stringResource(Res.string.hello_title), fontSize = 32.sp, lineHeight = 40.sp)
                 Text(stringResource(Res.string.hello_body), fontSize = 22.sp, lineHeight = 30.sp)
+                recipeCount?.let {
+                    Text(pluralStringResource(Res.plurals.recipes_available, it, it), fontSize = 22.sp, lineHeight = 30.sp)
+                }
                 Text(stringResource(Res.string.medical_notice), fontSize = 20.sp, lineHeight = 28.sp)
             }
         }

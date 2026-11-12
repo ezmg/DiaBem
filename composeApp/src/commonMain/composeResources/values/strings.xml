@@ -5,4 +5,8 @@
     <string name="hello_title">Olá! Bem-vindo ao DiaBem</string>
     <string name="hello_body">Receitas simples para quem tem diabetes tipo 2 ou pressão alta. Em breve aqui.</string>
     <string name="medical_notice">As receitas são apenas orientações. Elas não substituem seu médico ou nutricionista.</string>
+    <plurals name="recipes_available">
+        <item quantity="one">%1$d receita disponível</item>
+        <item quantity="other">%1$d receitas disponíveis</item>
+    </plurals>
 </resources>

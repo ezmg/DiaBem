@@ -4,4 +4,8 @@
     <string name="hello_title">Hello! Welcome to DiaWell</string>
     <string name="hello_body">Simple recipes for people with type 2 diabetes or high blood pressure. Coming soon.</string>
     <string name="medical_notice">Recipes are for guidance only. They do not replace your doctor or dietitian.</string>
+    <plurals name="recipes_available">
+        <item quantity="one">%1$d recipe available</item>
+        <item quantity="other">%1$d recipes available</item>
+    </plurals>
 </resources>

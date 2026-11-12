@@ -53,10 +53,23 @@ kotlin {
     }
 }
 
+evaluationDependsOn(":packbuilder")
+val countryPacks = project(":packbuilder").tasks.named("buildCountryPacks")
+
 compose.resources {
     publicResClass = false
     packageOfResClass = "com.velkyss.diabem.app.resources"
     generateResClass = always
+    // Country packs are generated at build time from data/ (validated, with nutrients computed).
+    // They go to the platform source sets because customDirectory replaces the default folder.
+    val packsDir = countryPacks.map { task ->
+        layout.projectDirectory.dir(task.outputs.files.files.first { it.name == "packs" }.absolutePath)
+    }
+    customDirectory(sourceSetName = "androidMain", directoryProvider = packsDir)
+    customDirectory(sourceSetName = "wasmJsMain", directoryProvider = packsDir)
+    if (iosEnabled) {
+        customDirectory(sourceSetName = "iosMain", directoryProvider = packsDir)
+    }
 }
 
 android {
