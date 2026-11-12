@@ -79,6 +79,14 @@
     {
       "from": "arroz",
       "to": "arroz-integral"
+    },
+    {
+      "from": "pao-integral",
+      "to": "pao-frances"
+    },
+    {
+      "from": "pao-frances",
+      "to": "pao-integral"
     }
   ]
 }

@@ -1,0 +1,40 @@
+{
+  "id": "pao-frances-com-queijo-minas",
+  "name": "Pão francês com queijo minas e tomate",
+  "mealTypes": [
+    "breakfast"
+  ],
+  "servings": 1,
+  "prepMinutes": 5,
+  "ingredients": [
+    {
+      "food": "pao-frances",
+      "quantity": 1,
+      "unit": "unidade"
+    },
+    {
+      "food": "queijo-minas",
+      "quantity": 1,
+      "unit": "fatia"
+    },
+    {
+      "food": "tomate",
+      "quantity": 0.5,
+      "unit": "unidade",
+      "note": "em rodelas"
+    },
+    {
+      "food": "alface",
+      "quantity": 2,
+      "unit": "folha"
+    }
+  ],
+  "steps": [
+    "Abra o pão ao meio.",
+    "Recheie com o queijo, o tomate e a alface."
+  ],
+  "reviewedByNutritionist": false,
+  "tips": [
+    "O queijo minas frescal tem pouco sal. Evite presunto e mortadela, que têm muito sal."
+  ]
+}

@@ -430,6 +430,15 @@
       "grams": 1,
       "source": "definition",
       "reference": "1 ml de água = 1 g"
+    },
+    {
+      "food": "pao-frances",
+      "unit": "unidade",
+      "official": {
+        "food": "8000105",
+        "measure": "103",
+        "preparation": "99"
+      }
     }
   ]
 }

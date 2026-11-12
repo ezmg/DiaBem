@@ -63,6 +63,11 @@
       "category": "grains"
     },
     {
+      "id": "pao-frances",
+      "name": "Pão francês",
+      "category": "grains"
+    },
+    {
       "id": "pao-integral",
       "name": "Pão integral",
       "category": "grains"

@@ -302,6 +302,12 @@
       "name": "arroz branco cozido",
       "pantryItem": "arroz",
       "tableId": "3"
+    },
+    {
+      "id": "pao-frances",
+      "name": "pão francês",
+      "pantryItem": "pao-frances",
+      "tableId": "53"
     }
   ]
 }
