@@ -1,22 +1,92 @@
 {
   "substitutions": [
-    { "from": "azeite", "to": "oleo" },
-    { "from": "oleo", "to": "azeite" },
-    { "from": "ricota", "to": "queijo-minas" },
-    { "from": "queijo-minas", "to": "ricota" },
-    { "from": "abobrinha", "to": "chuchu" },
-    { "from": "chuchu", "to": "abobrinha" },
-    { "from": "espinafre", "to": "couve" },
-    { "from": "couve", "to": "espinafre" },
-    { "from": "feijao", "to": "feijao-de-corda" },
-    { "from": "feijao-de-corda", "to": "feijao" },
-    { "from": "lentilha", "to": "grao-de-bico" },
-    { "from": "batata", "to": "batata-doce" },
-    { "from": "mamao", "to": "melao" },
-    { "from": "melao", "to": "mamao" },
-    { "from": "frango", "to": "peixe" },
-    { "from": "peixe", "to": "frango" },
-    { "from": "pimentao", "to": "tomate" },
-    { "from": "cebolinha", "to": "cebola" }
+    {
+      "from": "azeite",
+      "to": "oleo"
+    },
+    {
+      "from": "oleo",
+      "to": "azeite"
+    },
+    {
+      "from": "ricota",
+      "to": "queijo-minas"
+    },
+    {
+      "from": "queijo-minas",
+      "to": "ricota"
+    },
+    {
+      "from": "abobrinha",
+      "to": "chuchu"
+    },
+    {
+      "from": "chuchu",
+      "to": "abobrinha"
+    },
+    {
+      "from": "espinafre",
+      "to": "couve"
+    },
+    {
+      "from": "couve",
+      "to": "espinafre"
+    },
+    {
+      "from": "feijao",
+      "to": "feijao-de-corda"
+    },
+    {
+      "from": "feijao-de-corda",
+      "to": "feijao"
+    },
+    {
+      "from": "lentilha",
+      "to": "grao-de-bico"
+    },
+    {
+      "from": "batata",
+      "to": "batata-doce"
+    },
+    {
+      "from": "mamao",
+      "to": "melao"
+    },
+    {
+      "from": "melao",
+      "to": "mamao"
+    },
+    {
+      "from": "frango",
+      "to": "peixe"
+    },
+    {
+      "from": "peixe",
+      "to": "frango"
+    },
+    {
+      "from": "pimentao",
+      "to": "tomate"
+    },
+    {
+      "from": "cebolinha",
+      "to": "cebola"
+    },
+    {
+      "from": "arroz-integral",
+      "to": "arroz"
+    },
+    {
+      "from": "arroz",
+      "to": "arroz-integral"
+    },
+    {
+      "from": "pao-integral",
+      "to": "pao-frances"
+    },
+    {
+      "from": "pao-frances",
+      "to": "pao-integral"
+    }
   ]
 }

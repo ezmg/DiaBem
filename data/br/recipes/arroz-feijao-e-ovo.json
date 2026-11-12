@@ -1,0 +1,58 @@
+{
+  "id": "arroz-feijao-e-ovo",
+  "name": "Arroz, feijão e ovo cozido",
+  "mealTypes": [
+    "lunch",
+    "dinner"
+  ],
+  "servings": 1,
+  "prepMinutes": 20,
+  "ingredients": [
+    {
+      "food": "arroz-branco-cozido",
+      "quantity": 3,
+      "unit": "colher_sopa"
+    },
+    {
+      "food": "feijao-carioca-cozido",
+      "quantity": 1,
+      "unit": "concha"
+    },
+    {
+      "food": "ovo",
+      "quantity": 1,
+      "unit": "unidade"
+    },
+    {
+      "food": "tomate",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "em rodelas"
+    },
+    {
+      "food": "alface",
+      "quantity": 3,
+      "unit": "folha"
+    },
+    {
+      "food": "azeite",
+      "quantity": 1,
+      "unit": "colher_cha"
+    },
+    {
+      "food": "sal",
+      "quantity": 0.5,
+      "unit": "g"
+    }
+  ],
+  "steps": [
+    "Cozinhe o ovo em água fervente por 10 minutos. Descasque e corte ao meio.",
+    "Aqueça o arroz e o feijão já cozidos.",
+    "Monte a salada com a alface e o tomate. Tempere com o azeite e o sal.",
+    "Sirva 3 colheres de sopa de arroz, 1 concha de feijão, o ovo e a salada."
+  ],
+  "reviewedByNutritionist": false,
+  "tips": [
+    "Comece pela salada. O feijão e a salada ajudam a glicose a subir mais devagar."
+  ]
+}

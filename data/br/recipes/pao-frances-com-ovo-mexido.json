@@ -1,0 +1,42 @@
+{
+  "id": "pao-frances-com-ovo-mexido",
+  "name": "Pão francês com ovo mexido",
+  "mealTypes": [
+    "breakfast"
+  ],
+  "servings": 1,
+  "prepMinutes": 10,
+  "ingredients": [
+    {
+      "food": "pao-frances",
+      "quantity": 1,
+      "unit": "unidade"
+    },
+    {
+      "food": "ovo",
+      "quantity": 1,
+      "unit": "unidade"
+    },
+    {
+      "food": "oleo-de-soja",
+      "quantity": 1,
+      "unit": "colher_cha"
+    },
+    {
+      "food": "tomate",
+      "quantity": 0.5,
+      "unit": "unidade",
+      "note": "em rodelas"
+    }
+  ],
+  "steps": [
+    "Unte uma frigideira com o óleo e aqueça em fogo baixo.",
+    "Bata o ovo, coloque na frigideira e mexa até firmar.",
+    "Abra o pão e recheie com o ovo e o tomate."
+  ],
+  "reviewedByNutritionist": false,
+  "tips": [
+    "O pão já tem sal. Não precisa colocar sal no ovo.",
+    "Um pão francês é uma boa medida. Evite comer dois."
+  ]
+}

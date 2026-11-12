@@ -32,7 +32,7 @@
     <string name="see_recipes">Ver recetas</string>
     <string name="clear">Desmarcar todos</string>
     <string name="results_title">Recetas para ti</string>
-    <string name="no_results">No encontramos recetas con esos ingredientes. Vuelve y marca algunos más.</string>
+    <string name="no_results">Con esos ingredientes todavía no sale ninguna receta. Vuelve y marca más ingredientes, o toca «Ver más recetas» para ver otras ideas.</string>
     <string name="missing">Falta: %1$s</string>
     <string name="substitute">Puedes usar %2$s en lugar de %1$s</string>
     <string name="substitution_note">Los valores nutricionales son de la receta original.</string>
@@ -84,6 +84,8 @@
     <string name="no_more_recipes">No hay más recetas para esta comida.</string>
     <string name="more_carbs_toggle">Mostrar primero las recetas con más hidratos</string>
     <string name="more_carbs_help">Usa esta opción solo si tu médico o nutricionista te indicó tomar más hidratos en esta comida. Si tienes la glucosa baja ahora, sigue lo que te indicó tu médico.</string>
+    <string name="ideas_title">Otras ideas</string>
+    <string name="ideas_help">Para estas recetas faltan varios ingredientes.</string>
     <plurals name="recipes_available">
         <item quantity="one">%1$d receta disponible</item>
         <item quantity="other">%1$d recetas disponibles</item>

@@ -1,58 +1,279 @@
 {
   "categories": [
-    { "id": "grains", "name": "Grãos, pães e farinhas", "icon": "grain" },
-    { "id": "beans", "name": "Feijões e grãos", "icon": "beans" },
-    { "id": "vegetables", "name": "Verduras e legumes", "icon": "vegetable" },
-    { "id": "fruits", "name": "Frutas", "icon": "fruit" },
-    { "id": "proteins", "name": "Carnes, peixes e ovos", "icon": "protein" },
-    { "id": "dairy", "name": "Leite e derivados", "icon": "dairy" },
-    { "id": "basics", "name": "Básicos da cozinha", "icon": "basics" }
+    {
+      "id": "grains",
+      "name": "Grãos, pães e farinhas",
+      "icon": "grain"
+    },
+    {
+      "id": "beans",
+      "name": "Feijões e grãos",
+      "icon": "beans"
+    },
+    {
+      "id": "vegetables",
+      "name": "Verduras e legumes",
+      "icon": "vegetable"
+    },
+    {
+      "id": "fruits",
+      "name": "Frutas",
+      "icon": "fruit"
+    },
+    {
+      "id": "proteins",
+      "name": "Carnes, peixes e ovos",
+      "icon": "protein"
+    },
+    {
+      "id": "dairy",
+      "name": "Leite e derivados",
+      "icon": "dairy"
+    },
+    {
+      "id": "basics",
+      "name": "Básicos da cozinha",
+      "icon": "basics"
+    }
   ],
   "items": [
-    { "id": "arroz-integral", "name": "Arroz integral", "category": "grains" },
-    { "id": "aveia", "name": "Aveia em flocos", "category": "grains" },
-    { "id": "farinha-de-milho", "name": "Flocão de milho", "category": "grains" },
-    { "id": "tapioca", "name": "Goma de tapioca", "category": "grains" },
-    { "id": "pao-integral", "name": "Pão integral", "category": "grains" },
-    { "id": "feijao", "name": "Feijão carioca", "category": "beans" },
-    { "id": "feijao-de-corda", "name": "Feijão-de-corda", "category": "beans" },
-    { "id": "grao-de-bico", "name": "Grão-de-bico", "category": "beans" },
-    { "id": "lentilha", "name": "Lentilha", "category": "beans" },
-    { "id": "abobora", "name": "Abóbora", "category": "vegetables" },
-    { "id": "abobrinha", "name": "Abobrinha", "category": "vegetables" },
-    { "id": "alface", "name": "Alface", "category": "vegetables" },
-    { "id": "alho", "name": "Alho", "category": "vegetables" },
-    { "id": "batata", "name": "Batata", "category": "vegetables" },
-    { "id": "batata-doce", "name": "Batata-doce", "category": "vegetables" },
-    { "id": "cebola", "name": "Cebola", "category": "vegetables" },
-    { "id": "cebolinha", "name": "Cebolinha", "category": "vegetables" },
-    { "id": "cenoura", "name": "Cenoura", "category": "vegetables" },
-    { "id": "chuchu", "name": "Chuchu", "category": "vegetables" },
-    { "id": "couve", "name": "Couve", "category": "vegetables" },
-    { "id": "espinafre", "name": "Espinafre", "category": "vegetables" },
-    { "id": "pepino", "name": "Pepino", "category": "vegetables" },
-    { "id": "pimentao", "name": "Pimentão", "category": "vegetables" },
-    { "id": "quiabo", "name": "Quiabo", "category": "vegetables" },
-    { "id": "tomate", "name": "Tomate", "category": "vegetables" },
-    { "id": "vagem", "name": "Vagem", "category": "vegetables" },
-    { "id": "banana", "name": "Banana", "category": "fruits" },
-    { "id": "goiaba", "name": "Goiaba", "category": "fruits" },
-    { "id": "limao", "name": "Limão", "category": "fruits" },
-    { "id": "maca", "name": "Maçã", "category": "fruits" },
-    { "id": "mamao", "name": "Mamão", "category": "fruits" },
-    { "id": "melao", "name": "Melão", "category": "fruits" },
-    { "id": "morango", "name": "Morango", "category": "fruits" },
-    { "id": "carne-moida", "name": "Carne moída", "category": "proteins" },
-    { "id": "frango", "name": "Frango", "category": "proteins" },
-    { "id": "ovo", "name": "Ovos", "category": "proteins" },
-    { "id": "peixe", "name": "Peixe", "category": "proteins" },
-    { "id": "iogurte", "name": "Iogurte natural", "category": "dairy" },
-    { "id": "leite-em-po", "name": "Leite em pó desnatado", "category": "dairy" },
-    { "id": "queijo-minas", "name": "Queijo minas frescal", "category": "dairy" },
-    { "id": "ricota", "name": "Ricota", "category": "dairy" },
-    { "id": "agua", "name": "Água", "category": "basics", "staple": true },
-    { "id": "sal", "name": "Sal", "category": "basics", "staple": true },
-    { "id": "oleo", "name": "Óleo", "category": "basics", "staple": true },
-    { "id": "azeite", "name": "Azeite", "category": "basics" }
+    {
+      "id": "arroz",
+      "name": "Arroz branco",
+      "category": "grains"
+    },
+    {
+      "id": "arroz-integral",
+      "name": "Arroz integral",
+      "category": "grains"
+    },
+    {
+      "id": "aveia",
+      "name": "Aveia em flocos",
+      "category": "grains"
+    },
+    {
+      "id": "farinha-de-milho",
+      "name": "Flocão de milho",
+      "category": "grains"
+    },
+    {
+      "id": "tapioca",
+      "name": "Goma de tapioca",
+      "category": "grains"
+    },
+    {
+      "id": "pao-frances",
+      "name": "Pão francês",
+      "category": "grains"
+    },
+    {
+      "id": "pao-integral",
+      "name": "Pão integral",
+      "category": "grains"
+    },
+    {
+      "id": "feijao",
+      "name": "Feijão carioca",
+      "category": "beans"
+    },
+    {
+      "id": "feijao-de-corda",
+      "name": "Feijão-de-corda",
+      "category": "beans"
+    },
+    {
+      "id": "grao-de-bico",
+      "name": "Grão-de-bico",
+      "category": "beans"
+    },
+    {
+      "id": "lentilha",
+      "name": "Lentilha",
+      "category": "beans"
+    },
+    {
+      "id": "abobora",
+      "name": "Abóbora",
+      "category": "vegetables"
+    },
+    {
+      "id": "abobrinha",
+      "name": "Abobrinha",
+      "category": "vegetables"
+    },
+    {
+      "id": "alface",
+      "name": "Alface",
+      "category": "vegetables"
+    },
+    {
+      "id": "alho",
+      "name": "Alho",
+      "category": "vegetables"
+    },
+    {
+      "id": "batata",
+      "name": "Batata",
+      "category": "vegetables"
+    },
+    {
+      "id": "batata-doce",
+      "name": "Batata-doce",
+      "category": "vegetables"
+    },
+    {
+      "id": "cebola",
+      "name": "Cebola",
+      "category": "vegetables"
+    },
+    {
+      "id": "cebolinha",
+      "name": "Cebolinha",
+      "category": "vegetables"
+    },
+    {
+      "id": "cenoura",
+      "name": "Cenoura",
+      "category": "vegetables"
+    },
+    {
+      "id": "chuchu",
+      "name": "Chuchu",
+      "category": "vegetables"
+    },
+    {
+      "id": "couve",
+      "name": "Couve",
+      "category": "vegetables"
+    },
+    {
+      "id": "espinafre",
+      "name": "Espinafre",
+      "category": "vegetables"
+    },
+    {
+      "id": "pepino",
+      "name": "Pepino",
+      "category": "vegetables"
+    },
+    {
+      "id": "pimentao",
+      "name": "Pimentão",
+      "category": "vegetables"
+    },
+    {
+      "id": "quiabo",
+      "name": "Quiabo",
+      "category": "vegetables"
+    },
+    {
+      "id": "tomate",
+      "name": "Tomate",
+      "category": "vegetables"
+    },
+    {
+      "id": "vagem",
+      "name": "Vagem",
+      "category": "vegetables"
+    },
+    {
+      "id": "banana",
+      "name": "Banana",
+      "category": "fruits"
+    },
+    {
+      "id": "goiaba",
+      "name": "Goiaba",
+      "category": "fruits"
+    },
+    {
+      "id": "limao",
+      "name": "Limão",
+      "category": "fruits"
+    },
+    {
+      "id": "maca",
+      "name": "Maçã",
+      "category": "fruits"
+    },
+    {
+      "id": "mamao",
+      "name": "Mamão",
+      "category": "fruits"
+    },
+    {
+      "id": "melao",
+      "name": "Melão",
+      "category": "fruits"
+    },
+    {
+      "id": "morango",
+      "name": "Morango",
+      "category": "fruits"
+    },
+    {
+      "id": "carne-moida",
+      "name": "Carne moída",
+      "category": "proteins"
+    },
+    {
+      "id": "frango",
+      "name": "Frango",
+      "category": "proteins"
+    },
+    {
+      "id": "ovo",
+      "name": "Ovos",
+      "category": "proteins"
+    },
+    {
+      "id": "peixe",
+      "name": "Peixe",
+      "category": "proteins"
+    },
+    {
+      "id": "iogurte",
+      "name": "Iogurte natural",
+      "category": "dairy"
+    },
+    {
+      "id": "leite-em-po",
+      "name": "Leite em pó desnatado",
+      "category": "dairy"
+    },
+    {
+      "id": "queijo-minas",
+      "name": "Queijo minas frescal",
+      "category": "dairy"
+    },
+    {
+      "id": "ricota",
+      "name": "Ricota",
+      "category": "dairy"
+    },
+    {
+      "id": "agua",
+      "name": "Água",
+      "category": "basics",
+      "staple": true
+    },
+    {
+      "id": "sal",
+      "name": "Sal",
+      "category": "basics",
+      "staple": true
+    },
+    {
+      "id": "oleo",
+      "name": "Óleo",
+      "category": "basics",
+      "staple": true
+    },
+    {
+      "id": "azeite",
+      "name": "Azeite",
+      "category": "basics"
+    }
   ]
 }

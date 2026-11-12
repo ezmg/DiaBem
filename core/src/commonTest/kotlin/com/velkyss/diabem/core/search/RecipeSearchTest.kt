@@ -49,10 +49,22 @@ class RecipeSearchTest {
     }
 
     @Test
-    fun recipesWithoutAnyOwnedIngredientAreHidden() {
-        val result = ids(MealType.LUNCH, setOf("onion"))
-        assertFalse("chicken-rice" in result)
-        assertTrue("fish-tomato" in result)
+    fun recipesThePersonCannotReallyCookAreNotResults() {
+        // only onion at home: 1 of 3 for the fish recipe, nothing for the chicken one
+        assertEquals(emptyList(), ids(MealType.LUNCH, setOf("onion")))
+        // tomato + onion: 2 of 3 for the fish recipe -> a real result, with fish missing
+        val result = search.search(SearchQuery(MealType.LUNCH, setOf("tomato", "onion"), diabetes))
+        assertEquals("fish-tomato", result.first().recipe.id)
+        assertEquals(listOf("fish"), result.first().missing)
+        assertTrue(result.all { it.closeMatch })
+        assertTrue("chicken-rice" !in result.map { it.recipe.id })
+    }
+
+    @Test
+    fun farMatchesAreOnlyOfferedAsIdeasAfterTheResults() {
+        val all = search.searchAll(SearchQuery(MealType.LUNCH, setOf("onion"), both))
+        assertTrue(all.isNotEmpty())
+        assertTrue(all.none { it.closeMatch })
     }
 
     @Test

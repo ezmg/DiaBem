@@ -1,0 +1,60 @@
+{
+  "id": "arroz-com-lentilha",
+  "name": "Arroz com lentilha",
+  "mealTypes": [
+    "lunch",
+    "dinner"
+  ],
+  "servings": 4,
+  "prepMinutes": 35,
+  "ingredients": [
+    {
+      "food": "lentilha",
+      "quantity": 120,
+      "unit": "g",
+      "note": "seca"
+    },
+    {
+      "food": "arroz-branco-cozido",
+      "quantity": 12,
+      "unit": "colher_sopa"
+    },
+    {
+      "food": "cebola",
+      "quantity": 2,
+      "unit": "unidade",
+      "note": "em rodelas finas"
+    },
+    {
+      "food": "alho",
+      "quantity": 2,
+      "unit": "dente",
+      "note": "amassado"
+    },
+    {
+      "food": "azeite",
+      "quantity": 2,
+      "unit": "colher_sopa"
+    },
+    {
+      "food": "sal",
+      "quantity": 1.5,
+      "unit": "g"
+    },
+    {
+      "food": "agua",
+      "quantity": 600,
+      "unit": "ml"
+    }
+  ],
+  "steps": [
+    "Cozinhe a lentilha na água com o alho por 20 minutos, até ficar macia. Escorra.",
+    "Numa frigideira, doure bem a cebola no azeite, em fogo baixo.",
+    "Misture a lentilha, o arroz já cozido e o sal. Aqueça por 3 minutos.",
+    "Sirva com a cebola dourada por cima."
+  ],
+  "reviewedByNutritionist": false,
+  "tips": [
+    "A lentilha tem muita fibra e deixa o arroz branco mais equilibrado."
+  ]
+}
