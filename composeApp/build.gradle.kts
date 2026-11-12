@@ -43,6 +43,9 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(libs.kotlinx.serialization.json)
+            implementation(libs.compose.icons.extended)
+            implementation(libs.multiplatform.settings)
+            implementation(libs.multiplatform.settings.noarg)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
