@@ -1,9 +1,10 @@
 ---
 id: TASK-10
 title: Criterios de salud configurables con fuente oficial
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-11-12T14:01:00Z'
+updated_date: '2026-11-12T14:50:00Z'
 labels:
   - fase-1
 dependencies: []

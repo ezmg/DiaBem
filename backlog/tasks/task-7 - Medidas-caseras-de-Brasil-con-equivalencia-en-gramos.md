@@ -1,9 +1,10 @@
 ---
 id: TASK-7
 title: Medidas caseras de Brasil con equivalencia en gramos
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-11-12T14:01:00Z'
+updated_date: '2026-11-12T14:50:00Z'
 labels:
   - fase-1
 dependencies: []
