@@ -22,12 +22,12 @@ data class LightColors(val green: Color, val amber: Color, val red: Color, val o
 
 val LocalLightColors = staticCompositionLocalOf { normalLights }
 
-private val normalLights = LightColors(Color(0xFF1B5E20), Color(0xFF8A4B00), Color(0xFFB71C1C), Color.White)
-private val contrastLights = LightColors(Color(0xFF003300), Color(0xFF5C2E00), Color(0xFF7F0000), Color.White)
+internal val normalLights = LightColors(Color(0xFF1B5E20), Color(0xFF8A4B00), Color(0xFFB71C1C), Color.White)
+internal val contrastLights = LightColors(Color(0xFF003300), Color(0xFF5C2E00), Color(0xFF7F0000), Color.White)
 
 // All text/background pairs below have a contrast ratio of at least 7:1 (WCAG AAA) in high contrast,
 // and at least 4.5:1 (WCAG AA) in the normal scheme.
-private val normalScheme: ColorScheme = lightColorScheme(
+internal val normalScheme: ColorScheme = lightColorScheme(
     primary = Color(0xFF0B5D4B),
     onPrimary = Color.White,
     primaryContainer = Color(0xFFCDEBE2),
@@ -46,7 +46,7 @@ private val normalScheme: ColorScheme = lightColorScheme(
     error = Color(0xFFB3261E),
 )
 
-private val highContrastScheme: ColorScheme = lightColorScheme(
+internal val highContrastScheme: ColorScheme = lightColorScheme(
     primary = Color(0xFF00382D),
     onPrimary = Color.White,
     primaryContainer = Color(0xFFFFFFFF),
