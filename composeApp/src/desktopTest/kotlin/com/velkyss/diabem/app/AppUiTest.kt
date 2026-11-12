@@ -177,10 +177,11 @@ class AppUiTest {
         val controller = launch(newStore(withProfile = true))
         val screens = listOf(
             com.velkyss.diabem.app.ui.Screen.Home,
-            com.velkyss.diabem.app.ui.Screen.Ingredients(com.velkyss.diabem.core.model.MealType.LUNCH),
-            com.velkyss.diabem.app.ui.Screen.Results(com.velkyss.diabem.core.model.MealType.LUNCH),
+            com.velkyss.diabem.app.ui.Screen.Ingredients(com.velkyss.diabem.core.model.MealSlot.LUNCH),
+            com.velkyss.diabem.app.ui.Screen.Results(com.velkyss.diabem.core.model.MealSlot.LUNCH),
             com.velkyss.diabem.app.ui.Screen.Detail("caldo-verde-leve", null),
             com.velkyss.diabem.app.ui.Screen.Settings,
+            com.velkyss.diabem.app.ui.Screen.Plan,
         )
         for (screen in screens) {
             controller.go(screen)
@@ -201,7 +202,7 @@ class AppUiTest {
     fun moreRecipesButtonAndMoreCarbsOption() = runComposeUiTest {
         val controller = launch(newStore(withProfile = true))
         controller.toggleIngredient("ovo")
-        controller.go(com.velkyss.diabem.app.ui.Screen.Results(com.velkyss.diabem.core.model.MealType.BREAKFAST))
+        controller.go(com.velkyss.diabem.app.ui.Screen.Results(com.velkyss.diabem.core.model.MealSlot.BREAKFAST))
         val meal = com.velkyss.diabem.core.model.MealType.BREAKFAST
         val all = controller.results(meal)
         val short = controller.shortListSize(meal)
@@ -220,5 +221,39 @@ class AppUiTest {
         val top = controller.results(meal, moreCarbs = true).first()
         assertTrue(!top.health.relevantRed)
         onNodeWithText(top.recipe.recipe.name).assertExists()
+    }
+
+    @Test
+    fun nutritionistPlanIsTypedSavedAndShownAtTheMeal() = runComposeUiTest {
+        val store = newStore(withProfile = true)
+        val controller = launch(store)
+        val slot = com.velkyss.diabem.core.model.MealSlot.MORNING_SNACK
+        onNodeWithText("Meu plano da nutricionista").performScrollTo().performClick()
+        onNodeWithText("Copie do papel", substring = true).assertIsDisplayed()
+
+        onNode(hasSetTextAction() and hasText("Nova opção para Lanche da manhã")).performScrollTo().performTextInput("1 fruta + 1 iogurte natural")
+        // the "add" button right after the mid-morning field (2nd slot)
+        onAllNodesWithText("Adicionar opção")[1].performScrollTo().performClick()
+        assertEquals(listOf("1 fruta + 1 iogurte natural"), store.plan.optionsFor(slot))
+        onNodeWithText("1 fruta + 1 iogurte natural").assertExists()
+
+        // the person sees it first when choosing that meal
+        onNodeWithText("Voltar").performClick()
+        onNodeWithText("Lanche da manhã").performScrollTo().performClick()
+        onNodeWithText("O que a sua nutricionista indicou").assertIsDisplayed()
+        onNodeWithText("1 fruta + 1 iogurte natural").assertIsDisplayed()
+        onNodeWithText("Quer outras ideias?").assertExists()
+
+        // other meals without plan stay as before
+        onNodeWithText("Voltar").performClick()
+        onNodeWithText("Jantar").performScrollTo().performClick()
+        onAllNodesWithText("O que a sua nutricionista indicou").assertCountEquals(0)
+        onNodeWithText("O que você tem em casa?").assertExists()
+
+        // and it can be deleted
+        controller.back()
+        controller.go(com.velkyss.diabem.app.ui.Screen.Plan)
+        onNodeWithContentDescription("Apagar: 1 fruta + 1 iogurte natural").performScrollTo().performClick()
+        assertTrue(store.plan.isEmpty)
     }
 }

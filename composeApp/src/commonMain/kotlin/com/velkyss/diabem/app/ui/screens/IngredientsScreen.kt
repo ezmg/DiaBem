@@ -46,7 +46,10 @@ import com.velkyss.diabem.app.ui.AppController
 import com.velkyss.diabem.app.ui.components.BigButton
 import com.velkyss.diabem.app.ui.components.ScreenScaffold
 import com.velkyss.diabem.app.ui.theme.MinTouch
-import com.velkyss.diabem.core.model.MealType
+import com.velkyss.diabem.core.model.MealSlot
+import com.velkyss.diabem.app.resources.ingredients_title_with_plan
+import com.velkyss.diabem.app.resources.plan_box_hint
+import com.velkyss.diabem.app.resources.plan_box_title
 import org.jetbrains.compose.resources.pluralStringResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -69,7 +72,7 @@ internal fun normalize(text: String): String = buildString {
 }
 
 @Composable
-fun IngredientsScreen(controller: AppController, meal: MealType, onBack: () -> Unit, onSeeRecipes: () -> Unit) {
+fun IngredientsScreen(controller: AppController, meal: MealSlot, onBack: () -> Unit, onSeeRecipes: () -> Unit) {
     var query by remember { mutableStateOf("") }
     val pack = controller.pack
     val visible = pack.pantry.filterNot { it.staple }
@@ -101,8 +104,30 @@ fun IngredientsScreen(controller: AppController, meal: MealType, onBack: () -> U
         },
     ) { pad ->
         LazyColumn(contentPadding = pad, verticalArrangement = Arrangement.spacedBy(4.dp)) {
+            val planOptions = controller.plan.optionsFor(meal)
+            if (planOptions.isNotEmpty() && query.isBlank()) {
+                item(key = "plan") {
+                    Surface(
+                        shape = RoundedCornerShape(16.dp),
+                        color = MaterialTheme.colorScheme.primaryContainer,
+                        contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                        border = androidx.compose.foundation.BorderStroke(3.dp, MaterialTheme.colorScheme.primary),
+                        modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp),
+                    ) {
+                        Column(Modifier.padding(14.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                            Text(stringResource(Res.string.plan_box_title), style = MaterialTheme.typography.titleLarge, modifier = Modifier.semantics { heading() })
+                            planOptions.forEach { option ->
+                                Surface(shape = RoundedCornerShape(12.dp), color = MaterialTheme.colorScheme.surface, contentColor = MaterialTheme.colorScheme.onSurface, modifier = Modifier.fillMaxWidth()) {
+                                    Text(option, style = MaterialTheme.typography.bodyLarge, modifier = Modifier.padding(12.dp))
+                                }
+                            }
+                            Text(stringResource(Res.string.plan_box_hint), style = MaterialTheme.typography.bodyMedium)
+                        }
+                    }
+                }
+            }
             item {
-                Text(stringResource(Res.string.ingredients_title), style = MaterialTheme.typography.headlineSmall, modifier = Modifier.semantics { heading() })
+                Text(stringResource(if (planOptions.isEmpty()) Res.string.ingredients_title else Res.string.ingredients_title_with_plan), style = MaterialTheme.typography.headlineSmall, modifier = Modifier.semantics { heading() })
                 Spacer(Modifier.size(8.dp))
                 Text(stringResource(Res.string.ingredients_help), style = MaterialTheme.typography.bodyMedium)
                 Spacer(Modifier.size(12.dp))

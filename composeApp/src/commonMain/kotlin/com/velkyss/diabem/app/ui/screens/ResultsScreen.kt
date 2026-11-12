@@ -67,22 +67,24 @@ import com.velkyss.diabem.app.ui.components.ReviewBadge
 import com.velkyss.diabem.app.ui.components.ScreenScaffold
 import com.velkyss.diabem.app.ui.components.TrafficLightBadge
 import com.velkyss.diabem.app.ui.theme.LocalLightColors
+import com.velkyss.diabem.core.model.MealSlot
 import com.velkyss.diabem.core.model.MealType
 import com.velkyss.diabem.core.search.RecipeMatch
 import org.jetbrains.compose.resources.pluralStringResource
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun ResultsScreen(controller: AppController, meal: MealType, onBack: () -> Unit, onOpen: (String) -> Unit) {
-    var moreCarbs by rememberSaveable(meal) { mutableStateOf(false) }
-    var extra by rememberSaveable(meal) { mutableIntStateOf(0) }
+fun ResultsScreen(controller: AppController, slot: MealSlot, onBack: () -> Unit, onOpen: (String) -> Unit) {
+    val meal = slot.mealType
+    var moreCarbs by rememberSaveable(slot) { mutableStateOf(false) }
+    var extra by rememberSaveable(slot) { mutableIntStateOf(0) }
     val all = remember(meal, controller.selected, controller.profile, moreCarbs) { controller.results(meal, moreCarbs) }
     val shortSize = remember(meal, controller.selected, controller.profile, moreCarbs) { controller.shortListSize(meal, moreCarbs) }
     val results = all.take(shortSize + extra)
     ScreenScaffold(title = stringResource(Res.string.results_title), onBack = onBack) { pad ->
         LazyColumn(contentPadding = pad, verticalArrangement = Arrangement.spacedBy(16.dp)) {
             item {
-                Text(stringResource(meal.label), style = MaterialTheme.typography.headlineSmall, modifier = Modifier.semantics { heading() })
+                Text(stringResource(slot.label), style = MaterialTheme.typography.headlineSmall, modifier = Modifier.semantics { heading() })
             }
             item {
                 Column {

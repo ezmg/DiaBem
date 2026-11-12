@@ -6,7 +6,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import com.velkyss.diabem.app.data.DisplayPrefs
 import com.velkyss.diabem.app.data.UserStore
+import com.velkyss.diabem.core.model.MealSlot
 import com.velkyss.diabem.core.model.MealType
+import com.velkyss.diabem.core.profile.NutritionistPlan
 import com.velkyss.diabem.core.pack.CountryPack
 import com.velkyss.diabem.core.profile.HealthProfile
 import com.velkyss.diabem.core.search.CarbPreference
@@ -18,11 +20,12 @@ sealed interface Screen {
     data object Notice : Screen
     data class Profile(val firstTime: Boolean) : Screen
     data object Home : Screen
-    data class Ingredients(val meal: MealType) : Screen
-    data class Results(val meal: MealType) : Screen
+    data class Ingredients(val slot: MealSlot) : Screen
+    data class Results(val slot: MealSlot) : Screen
     data class Detail(val recipeId: String, val meal: MealType?) : Screen
     data object Favorites : Screen
     data object Settings : Screen
+    data object Plan : Screen
 }
 
 /** Holds the app state and the simple back stack. No business logic lives here: see core. */
@@ -34,6 +37,8 @@ class AppController(val pack: CountryPack, private val store: UserStore) {
     var favorites by mutableStateOf(store.favorites)
         private set
     var display by mutableStateOf(store.displayPrefs)
+        private set
+    var plan by mutableStateOf(store.plan)
         private set
 
     /** Ingredients ticked by the person in this session. */
@@ -100,6 +105,15 @@ class AppController(val pack: CountryPack, private val store: UserStore) {
         store.favorites = favorites
     }
 
+    fun addPlanOption(slot: MealSlot, text: String) = savePlan(plan.add(slot, text))
+
+    fun removePlanOption(slot: MealSlot, index: Int) = savePlan(plan.remove(slot, index))
+
+    private fun savePlan(newPlan: NutritionistPlan) {
+        plan = newPlan
+        store.plan = newPlan
+    }
+
     fun updateDisplay(prefs: DisplayPrefs) {
         display = prefs
         store.displayPrefs = prefs
@@ -110,6 +124,7 @@ class AppController(val pack: CountryPack, private val store: UserStore) {
         store.clearAll()
         profile = null
         favorites = emptySet()
+        plan = NutritionistPlan()
         display = DisplayPrefs()
         selected = emptySet()
         resetTo(Screen.Notice)

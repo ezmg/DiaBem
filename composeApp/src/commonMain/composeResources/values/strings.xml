@@ -23,7 +23,7 @@
     <string name="home_title">O que você vai preparar?</string>
     <string name="meal_breakfast">Café da manhã</string>
     <string name="meal_lunch">Almoço</string>
-    <string name="meal_snack">Lanche</string>
+    <string name="meal_snack">Lanche da tarde</string>
     <string name="meal_dinner">Jantar</string>
     <string name="favorites">Minhas favoritas</string>
     <string name="settings">Ajustes</string>
@@ -87,6 +87,18 @@
     <string name="more_carbs_help">Use esta opção só se o seu médico ou nutricionista orientou comer mais carboidratos nesta refeição. Se a glicose estiver baixa agora, siga o que o seu médico mandou.</string>
     <string name="ideas_title">Outras ideias</string>
     <string name="ideas_help">Para estas receitas faltam vários ingredientes.</string>
+    <string name="meal_morning_snack">Lanche da manhã</string>
+    <string name="plan_button">Meu plano da nutricionista</string>
+    <string name="plan_title">Meu plano</string>
+    <string name="plan_help">Escreva aqui o que a nutricionista indicou para cada refeição. Copie do papel, com as mesmas palavras.</string>
+    <string name="plan_empty_slot">Nenhuma opção ainda.</string>
+    <string name="plan_field_label">Nova opção para %1$s</string>
+    <string name="plan_field_hint">Exemplo: 1 fruta + 1 iogurte natural</string>
+    <string name="plan_add">Adicionar opção</string>
+    <string name="plan_remove">Apagar: %1$s</string>
+    <string name="plan_box_title">O que a sua nutricionista indicou</string>
+    <string name="plan_box_hint">Do seu plano. Para mudar, volte e toque em “Meu plano da nutricionista”.</string>
+    <string name="ingredients_title_with_plan">Quer outras ideias?</string>
     <plurals name="recipes_available">
         <item quantity="one">%1$d receita disponível</item>
         <item quantity="other">%1$d receitas disponíveis</item>
