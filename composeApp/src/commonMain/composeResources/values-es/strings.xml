@@ -80,6 +80,10 @@
     <string name="selected_none">Ningún ingrediente marcado</string>
     <string name="selected_ingredient">Ingrediente marcado</string>
     <string name="not_selected_ingredient">Ingrediente no marcado</string>
+    <string name="more_recipes">Ver más recetas</string>
+    <string name="no_more_recipes">No hay más recetas para esta comida.</string>
+    <string name="more_carbs_toggle">Mostrar primero las recetas con más hidratos</string>
+    <string name="more_carbs_help">Usa esta opción solo si tu médico o nutricionista te indicó tomar más hidratos en esta comida. Si tienes la glucosa baja ahora, sigue lo que te indicó tu médico.</string>
     <plurals name="recipes_available">
         <item quantity="one">%1$d receta disponible</item>
         <item quantity="other">%1$d recetas disponibles</item>

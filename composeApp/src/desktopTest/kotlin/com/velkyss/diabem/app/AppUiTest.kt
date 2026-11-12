@@ -5,7 +5,9 @@ import androidx.compose.ui.semantics.getOrNull
 import androidx.compose.ui.test.ComposeUiTest
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.SemanticsMatcher
+import androidx.compose.ui.test.assertCountEquals
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.performScrollToNode
 import androidx.compose.ui.test.assertIsNotEnabled
 import androidx.compose.ui.test.assertIsOn
 import androidx.compose.ui.test.assertIsSelected
@@ -24,6 +26,7 @@ import com.russhwolf.settings.MapSettings
 import com.velkyss.diabem.app.data.PackLoader
 import com.velkyss.diabem.app.data.UserStore
 import com.velkyss.diabem.app.ui.AppController
+import com.velkyss.diabem.app.ui.WithAppLanguage
 import com.velkyss.diabem.app.ui.theme.DiaBemTheme
 import com.velkyss.diabem.core.profile.Condition
 import com.velkyss.diabem.core.profile.CustomLimits
@@ -41,8 +44,9 @@ import kotlin.test.assertTrue
 class AppUiTest {
     private val pack = runBlocking { PackLoader.load() }
 
+    /** The device is in Spanish on purpose: the app must still be all in the pack's language. */
     @BeforeTest
-    fun usePortuguese() = Locale.setDefault(Locale.forLanguageTag("pt-BR"))
+    fun deviceInSpanish() = Locale.setDefault(Locale.forLanguageTag("es-ES"))
 
     private fun newStore(withProfile: Boolean, limits: CustomLimits = CustomLimits()) = UserStore(MapSettings()).apply {
         if (withProfile) {
@@ -55,7 +59,7 @@ class AppUiTest {
         val controller = AppController(pack, store)
         setContent {
             DiaBemTheme(highContrast = controller.display.highContrast, textScale = controller.display.textScale) {
-                AppContent(controller)
+                WithAppLanguage(controller.pack.locale) { AppContent(controller) }
             }
         }
         return controller
@@ -191,5 +195,30 @@ class AppUiTest {
                 assertNotNull((text?.takeIf { it.isNotBlank() } ?: description?.takeIf { it.isNotBlank() } ?: editable), "unnamed clickable element on $screen")
             }
         }
+    }
+
+    @Test
+    fun moreRecipesButtonAndMoreCarbsOption() = runComposeUiTest {
+        val controller = launch(newStore(withProfile = true))
+        controller.toggleIngredient("ovo")
+        controller.go(com.velkyss.diabem.app.ui.Screen.Results(com.velkyss.diabem.core.model.MealType.BREAKFAST))
+        val meal = com.velkyss.diabem.core.model.MealType.BREAKFAST
+        val all = controller.results(meal)
+        val short = controller.shortListSize(meal)
+        assertTrue(all.size > short, "the test needs more breakfast recipes than the short list")
+        val firstHidden = all[short].recipe.recipe.name
+        onAllNodesWithText(firstHidden).assertCountEquals(0)
+        onNode(androidx.compose.ui.test.hasScrollAction()).performScrollToNode(hasText("Ver mais receitas"))
+        onNodeWithText("Ver mais receitas").performClick()
+        onNode(androidx.compose.ui.test.hasScrollAction()).performScrollToNode(hasText(firstHidden))
+        onNodeWithText(firstHidden).assertExists()
+
+        // "more carbohydrates first": the first card becomes the highest-carb recipe that is not red
+        onNode(androidx.compose.ui.test.hasScrollAction()).performScrollToNode(hasText("Mostrar primeiro", substring = true))
+        onNodeWithText("Mostrar primeiro as receitas com mais carboidratos").performClick()
+        onNodeWithText("só se o seu médico ou nutricionista orientou", substring = true).assertExists()
+        val top = controller.results(meal, moreCarbs = true).first()
+        assertTrue(!top.health.relevantRed)
+        onNodeWithText(top.recipe.recipe.name).assertExists()
     }
 }

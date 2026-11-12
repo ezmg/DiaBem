@@ -6,6 +6,17 @@
     <meta name="theme-color" content="#ffffff">
     <title>DiaBem</title>
     <link type="text/css" rel="stylesheet" href="styles.css">
+    <script type="application/javascript">
+        // The app shows all its texts in the language of the country pack (see AppLocale.kt).
+        (function () {
+            var original = Object.getOwnPropertyDescriptor(Navigator.prototype, "languages");
+            Object.defineProperty(Navigator.prototype, "languages", Object.assign({}, original, {
+                get: function () {
+                    return window.__customLocale ? [window.__customLocale] : original.get.apply(this);
+                }
+            }));
+        })();
+    </script>
     <script type="application/javascript" src="diabem.js"></script>
 </head>
 <body>
