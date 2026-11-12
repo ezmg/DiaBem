@@ -12,6 +12,8 @@ data class PackFile(
     val id: String,
     val locale: String,
     val sources: List<DataSource>,
+    /** Pantry items counted by the "maximum spoons of rice per meal" limit. */
+    val ricePantryItems: Set<String> = emptySet(),
 )
 
 /** data/<country>/pantry.json */

@@ -38,6 +38,8 @@ data class CountryPack(
     val substitutions: List<Substitution>,
     val healthCriteria: HealthCriteria,
     val recipes: List<CompiledRecipe>,
+    /** Pantry items counted by the "maximum spoons of rice per meal" limit. */
+    val ricePantryItems: Set<String> = emptySet(),
 ) {
     companion object {
         const val FORMAT_VERSION = 1

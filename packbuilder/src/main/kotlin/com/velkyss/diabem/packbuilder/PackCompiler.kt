@@ -78,6 +78,8 @@ class PackCompiler(private val countryDir: File) {
 
         val sources = PackSources(pantry.categories, pantry.items, foods, measuresFile.units, measures, substitutions, recipes)
         errors += PackValidator.validateSources(sources)
+        pack.ricePantryItems.filter { id -> pantry.items.none { it.id == id } }
+            .forEach { errors += "pack.json: unknown rice pantry item '$it'" }
         criteria.allSources().filter { it !in sourceIds }.forEach { errors += "health-criteria.json: source '$it' is not declared in pack.json" }
         if (errors.isNotEmpty()) throw PackBuildException(errors)
 
@@ -102,6 +104,7 @@ class PackCompiler(private val countryDir: File) {
             substitutions = substitutions.filter { it.from in usedPantry && it.to in usedPantry },
             healthCriteria = criteria,
             recipes = compiled,
+            ricePantryItems = pack.ricePantryItems,
         )
     }
 }

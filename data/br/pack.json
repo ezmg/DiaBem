@@ -1,6 +1,7 @@
 {
   "id": "br",
   "locale": "pt-BR",
+  "ricePantryItems": ["arroz-integral"],
   "sources": [
     {
       "id": "taco4",
