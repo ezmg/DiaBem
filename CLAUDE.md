@@ -23,6 +23,8 @@ decidir qué cocinar con los ingredientes que tienen.
 - Interfaz: **portugués de Brasil** primero (`values/`), luego `values-es/` y `values-en/`.
 - Documentación para el responsable y resúmenes: **español de España**, sencillo, sin anglicismos
   innecesarios.
+- La interfaz se muestra SIEMPRE en el idioma del paquete de país (`pack.json` → `locale`), no en el
+  del dispositivo: recetas e interfaz deben ir en el mismo idioma (`ui/AppLocale.kt`).
 - El nombre de la app va SIEMPRE en recursos de texto traducidos (`app_name`), nunca en el código.
 
 ## Estructura
@@ -43,6 +45,7 @@ iOS está declarado pero desactivado: `diabem.ios.enabled=false` en `gradle.prop
 ```bash
 ./gradlew check                                  # todas las pruebas
 ./gradlew :core:jvmTest                          # pruebas rápidas de la lógica
+./gradlew :composeApp:desktopTest                # pruebas de interfaz (sin dispositivo)
 ./gradlew :composeApp:assembleDebug              # APK de depuración
 ./gradlew :composeApp:wasmJsBrowserDistribution  # web en composeApp/build/dist/wasmJs/productionExecutable
 ```

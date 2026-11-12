@@ -18,6 +18,7 @@ import com.velkyss.diabem.app.data.UserStore
 import com.velkyss.diabem.app.ui.AppController
 import com.velkyss.diabem.app.ui.PlatformBackHandler
 import com.velkyss.diabem.app.ui.Screen
+import com.velkyss.diabem.app.ui.WithAppLanguage
 import com.velkyss.diabem.app.ui.screens.DetailScreen
 import com.velkyss.diabem.app.ui.screens.FavoritesScreen
 import com.velkyss.diabem.app.ui.screens.HomeScreen
@@ -40,7 +41,7 @@ fun App(store: UserStore = remember { UserStore() }) {
             if (c == null) {
                 Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) { CircularProgressIndicator() }
             } else {
-                AppContent(c)
+                WithAppLanguage(c.pack.locale) { AppContent(c) }
             }
         }
     }

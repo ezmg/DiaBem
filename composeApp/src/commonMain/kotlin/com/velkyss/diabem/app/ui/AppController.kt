@@ -9,6 +9,7 @@ import com.velkyss.diabem.app.data.UserStore
 import com.velkyss.diabem.core.model.MealType
 import com.velkyss.diabem.core.pack.CountryPack
 import com.velkyss.diabem.core.profile.HealthProfile
+import com.velkyss.diabem.core.search.CarbPreference
 import com.velkyss.diabem.core.search.RecipeMatch
 import com.velkyss.diabem.core.search.RecipeSearch
 import com.velkyss.diabem.core.search.SearchQuery
@@ -72,9 +73,18 @@ class AppController(val pack: CountryPack, private val store: UserStore) {
 
     fun clearIngredients() { selected = emptySet() }
 
-    fun results(meal: MealType): List<RecipeMatch> {
+    /** Short list first; [RecipeSearch.searchAll] continues it for "show more recipes". */
+    fun results(meal: MealType, moreCarbs: Boolean = false): List<RecipeMatch> {
         val p = profile ?: return emptyList()
-        return search.search(SearchQuery(meal, selected, p))
+        val preference = if (moreCarbs) CarbPreference.MORE_CARBS else CarbPreference.DEFAULT
+        return search.searchAll(SearchQuery(meal, selected, p, carbPreference = preference))
+    }
+
+    /** How many recipes the first, short list has. */
+    fun shortListSize(meal: MealType, moreCarbs: Boolean = false): Int {
+        val p = profile ?: return 0
+        val preference = if (moreCarbs) CarbPreference.MORE_CARBS else CarbPreference.DEFAULT
+        return search.search(SearchQuery(meal, selected, p, carbPreference = preference)).size
     }
 
     fun match(recipeId: String, meal: MealType?): RecipeMatch? {

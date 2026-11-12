@@ -80,6 +80,10 @@
     <string name="selected_none">No ingredients ticked</string>
     <string name="selected_ingredient">Ingredient ticked</string>
     <string name="not_selected_ingredient">Ingredient not ticked</string>
+    <string name="more_recipes">Show more recipes</string>
+    <string name="no_more_recipes">There are no more recipes for this meal.</string>
+    <string name="more_carbs_toggle">Show recipes with more carbohydrates first</string>
+    <string name="more_carbs_help">Use this only if your doctor or dietitian told you to eat more carbohydrates at this meal. If your glucose is low right now, follow your doctor’s instructions.</string>
     <plurals name="recipes_available">
         <item quantity="one">%1$d recipe available</item>
         <item quantity="other">%1$d recipes available</item>

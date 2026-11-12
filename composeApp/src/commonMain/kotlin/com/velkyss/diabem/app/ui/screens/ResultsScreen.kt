@@ -25,7 +25,22 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.selection.toggleable
+import androidx.compose.material.icons.outlined.Add
+import androidx.compose.material3.Switch
+import com.velkyss.diabem.app.resources.more_carbs_help
+import com.velkyss.diabem.app.resources.more_carbs_toggle
+import com.velkyss.diabem.app.resources.more_recipes
+import com.velkyss.diabem.app.resources.no_more_recipes
+import com.velkyss.diabem.app.ui.components.BigOutlinedButton
+import com.velkyss.diabem.app.ui.theme.MinTouch
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.Role
@@ -58,11 +73,31 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun ResultsScreen(controller: AppController, meal: MealType, onBack: () -> Unit, onOpen: (String) -> Unit) {
-    val results = remember(meal, controller.selected, controller.profile) { controller.results(meal) }
+    var moreCarbs by rememberSaveable(meal) { mutableStateOf(false) }
+    var extra by rememberSaveable(meal) { mutableIntStateOf(0) }
+    val all = remember(meal, controller.selected, controller.profile, moreCarbs) { controller.results(meal, moreCarbs) }
+    val shortSize = remember(meal, controller.selected, controller.profile, moreCarbs) { controller.shortListSize(meal, moreCarbs) }
+    val results = all.take(shortSize + extra)
     ScreenScaffold(title = stringResource(Res.string.results_title), onBack = onBack) { pad ->
         LazyColumn(contentPadding = pad, verticalArrangement = Arrangement.spacedBy(16.dp)) {
             item {
                 Text(stringResource(meal.label), style = MaterialTheme.typography.headlineSmall, modifier = Modifier.semantics { heading() })
+            }
+            item {
+                Column {
+                    Row(
+                        Modifier.fillMaxWidth().heightIn(min = MinTouch)
+                            .toggleable(value = moreCarbs, role = Role.Switch, onValueChange = { moreCarbs = it; extra = 0 }),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Text(stringResource(Res.string.more_carbs_toggle), style = MaterialTheme.typography.titleMedium, modifier = Modifier.weight(1f))
+                        Spacer(Modifier.width(12.dp))
+                        Switch(checked = moreCarbs, onCheckedChange = null)
+                    }
+                    if (moreCarbs) {
+                        Text(stringResource(Res.string.more_carbs_help), style = MaterialTheme.typography.bodyMedium)
+                    }
+                }
             }
             if (results.isEmpty()) {
                 item { Text(stringResource(Res.string.no_results), style = MaterialTheme.typography.bodyLarge) }
@@ -70,10 +105,17 @@ fun ResultsScreen(controller: AppController, meal: MealType, onBack: () -> Unit,
             items(results, key = { it.recipe.id }) { match ->
                 RecipeCard(controller, match, meal) { onOpen(match.recipe.id) }
             }
+            if (results.size < all.size) {
+                item { BigOutlinedButton(stringResource(Res.string.more_recipes), { extra += MORE_STEP }, icon = Icons.Outlined.Add) }
+            } else if (extra > 0) {
+                item { Text(stringResource(Res.string.no_more_recipes), style = MaterialTheme.typography.bodyMedium) }
+            }
             item { NoticeBox(stringResource(Res.string.medical_notice)) }
         }
     }
 }
+
+private const val MORE_STEP = 5
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable

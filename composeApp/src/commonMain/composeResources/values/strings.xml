@@ -81,6 +81,10 @@
     <string name="selected_none">Nenhum ingrediente marcado</string>
     <string name="selected_ingredient">Ingrediente marcado</string>
     <string name="not_selected_ingredient">Ingrediente não marcado</string>
+    <string name="more_recipes">Ver mais receitas</string>
+    <string name="no_more_recipes">Não há mais receitas para esta refeição.</string>
+    <string name="more_carbs_toggle">Mostrar primeiro as receitas com mais carboidratos</string>
+    <string name="more_carbs_help">Use esta opção só se o seu médico ou nutricionista orientou comer mais carboidratos nesta refeição. Se a glicose estiver baixa agora, siga o que o seu médico mandou.</string>
     <plurals name="recipes_available">
         <item quantity="one">%1$d receita disponível</item>
         <item quantity="other">%1$d receitas disponíveis</item>

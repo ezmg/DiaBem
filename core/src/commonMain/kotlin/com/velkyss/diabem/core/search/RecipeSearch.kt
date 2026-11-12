@@ -5,9 +5,22 @@ import com.velkyss.diabem.core.health.HealthEvaluator
 import com.velkyss.diabem.core.health.TrafficLight
 import com.velkyss.diabem.core.model.CompiledRecipe
 import com.velkyss.diabem.core.model.MealType
+import com.velkyss.diabem.core.model.Nutrient
 import com.velkyss.diabem.core.model.Substitution
 import com.velkyss.diabem.core.pack.CountryPack
 import com.velkyss.diabem.core.profile.HealthProfile
+
+/** How the person wants the results ordered. */
+enum class CarbPreference {
+    /** Default order: best ingredient match first. */
+    DEFAULT,
+
+    /**
+     * Recipes with more carbohydrates first (for example, when the person's nutritionist asked
+     * for more carbohydrates at some meal). Recipes above the red limit still go last.
+     */
+    MORE_CARBS,
+}
 
 data class SearchQuery(
     val meal: MealType,
@@ -15,6 +28,7 @@ data class SearchQuery(
     val available: Set<String>,
     val profile: HealthProfile,
     val maxResults: Int = DEFAULT_MAX_RESULTS,
+    val carbPreference: CarbPreference = CarbPreference.DEFAULT,
 ) {
     companion object {
         const val DEFAULT_MAX_RESULTS = 5
@@ -82,19 +96,41 @@ class RecipeSearch(private val pack: CountryPack) {
         )
     }
 
+    /** The first, short list: 3 to [SearchQuery.maxResults] recipes. */
     fun search(query: SearchQuery): List<RecipeMatch> {
-        val candidates = pack.recipes
-            .filter { query.meal in it.recipe.mealTypes }
-            .map { match(it, query) }
-            .filter { m -> query.available.isEmpty() || m.have.any { it in query.available } }
-            .filter { m -> query.available.isEmpty() || m.missing.size <= maxMissing(m) }
-            .sortedWith(order(query))
-        val fine = candidates.filterNot { it.health.relevantRed || it.exceedsRiceLimit }
-        val flagged = candidates.filter { it.health.relevantRed || it.exceedsRiceLimit }
+        val candidates = matching(query)
+        val fine = candidates.filterNot { it.flagged }
+        val flagged = candidates.filter { it.flagged }
         val minResults = minOf(MIN_RESULTS, query.maxResults)
         val result = if (fine.size >= minResults) fine else fine + flagged.take(minResults - fine.size)
         return result.take(query.maxResults)
     }
+
+    /**
+     * Every recipe for the meal, for "show more recipes": first the short list of [search],
+     * then the other recipes that match the ingredients, then the rest of the meal's recipes.
+     * Flagged recipes keep their flag so the UI can warn about them.
+     */
+    fun searchAll(query: SearchQuery): List<RecipeMatch> {
+        val first = search(query)
+        val everything = pack.recipes
+            .filter { query.meal in it.recipe.mealTypes }
+            .map { match(it, query) }
+            .sortedWith(order(query))
+        val matchingIds = matching(query).map { it.recipe.id }.toSet()
+        val shown = first.map { it.recipe.id }.toSet()
+        val rest = everything.filterNot { it.recipe.id in shown }
+        return first + rest.filter { it.recipe.id in matchingIds } + rest.filterNot { it.recipe.id in matchingIds }
+    }
+
+    private fun matching(query: SearchQuery): List<RecipeMatch> = pack.recipes
+        .filter { query.meal in it.recipe.mealTypes }
+        .map { match(it, query) }
+        .filter { m -> query.available.isEmpty() || m.have.any { it in query.available } }
+        .filter { m -> query.available.isEmpty() || m.missing.size <= maxMissing(m) }
+        .sortedWith(order(query))
+
+    private val RecipeMatch.flagged: Boolean get() = health.relevantRed || exceedsRiceLimit
 
     private fun maxMissing(m: RecipeMatch): Int {
         val needed = m.have.size + m.missing.size + m.substitutions.size
@@ -102,7 +138,10 @@ class RecipeSearch(private val pack: CountryPack) {
     }
 
     private fun order(q: SearchQuery): Comparator<RecipeMatch> =
-        compareBy<RecipeMatch> { it.health.relevantRed || it.exceedsRiceLimit }
+        compareBy<RecipeMatch> { it.flagged }
+            .thenByDescending {
+                if (q.carbPreference == CarbPreference.MORE_CARBS) it.recipe.perServing[Nutrient.CARBOHYDRATE_G] ?: 0.0 else 0.0
+            }
             .thenBy { it.missing.size }
             .thenByDescending { it.coverage }
             .thenBy { if (q.profile.hasDiabetes) it.health.carbs.ordinal else 0 }

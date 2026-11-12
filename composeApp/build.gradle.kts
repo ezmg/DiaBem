@@ -16,6 +16,11 @@ kotlin {
         compilerOptions { jvmTarget.set(JvmTarget.JVM_17) }
     }
 
+    // Desktop JVM target: used only to run the UI tests quickly and without a device.
+    jvm("desktop") {
+        compilerOptions { jvmTarget.set(JvmTarget.JVM_17) }
+    }
+
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
         outputModuleName.set("diabem")
@@ -53,6 +58,15 @@ kotlin {
         androidMain.dependencies {
             implementation(libs.androidx.activity.compose)
         }
+        val desktopMain by getting
+        val desktopTest by getting {
+            dependencies {
+                implementation(compose.desktop.currentOs)
+                @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
+                implementation(compose.uiTest)
+                implementation(libs.multiplatform.settings.test)
+            }
+        }
     }
 }
 
@@ -70,6 +84,7 @@ compose.resources {
     }
     customDirectory(sourceSetName = "androidMain", directoryProvider = packsDir)
     customDirectory(sourceSetName = "wasmJsMain", directoryProvider = packsDir)
+    customDirectory(sourceSetName = "desktopMain", directoryProvider = packsDir)
     if (iosEnabled) {
         customDirectory(sourceSetName = "iosMain", directoryProvider = packsDir)
     }
