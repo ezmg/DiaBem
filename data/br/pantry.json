@@ -58,6 +58,11 @@
       "category": "grains"
     },
     {
+      "id": "farinha-de-mandioca",
+      "name": "Farinha de mandioca",
+      "category": "grains"
+    },
+    {
       "id": "tapioca",
       "name": "Goma de tapioca",
       "category": "grains"
@@ -70,6 +75,16 @@
     {
       "id": "pao-integral",
       "name": "Pão integral",
+      "category": "grains"
+    },
+    {
+      "id": "macarrao",
+      "name": "Macarrão",
+      "category": "grains"
+    },
+    {
+      "id": "biscoito-salgado",
+      "name": "Biscoito de água e sal (cream cracker)",
       "category": "grains"
     },
     {
@@ -138,6 +153,11 @@
       "category": "vegetables"
     },
     {
+      "id": "mandioca",
+      "name": "Mandioca (aipim, macaxeira)",
+      "category": "vegetables"
+    },
+    {
       "id": "chuchu",
       "name": "Chuchu",
       "category": "vegetables"
@@ -145,6 +165,11 @@
     {
       "id": "couve",
       "name": "Couve",
+      "category": "vegetables"
+    },
+    {
+      "id": "repolho",
+      "name": "Repolho",
       "category": "vegetables"
     },
     {
@@ -188,6 +213,11 @@
       "category": "fruits"
     },
     {
+      "id": "laranja",
+      "name": "Laranja",
+      "category": "fruits"
+    },
+    {
       "id": "limao",
       "name": "Limão",
       "category": "fruits"
@@ -218,6 +248,16 @@
       "category": "proteins"
     },
     {
+      "id": "carne-bovina",
+      "name": "Carne bovina (bife ou em pedaços)",
+      "category": "proteins"
+    },
+    {
+      "id": "carne-de-porco",
+      "name": "Carne de porco",
+      "category": "proteins"
+    },
+    {
       "id": "frango",
       "name": "Frango",
       "category": "proteins"
@@ -235,6 +275,11 @@
     {
       "id": "iogurte",
       "name": "Iogurte natural",
+      "category": "dairy"
+    },
+    {
+      "id": "leite",
+      "name": "Leite",
       "category": "dairy"
     },
     {
@@ -273,6 +318,16 @@
     {
       "id": "azeite",
       "name": "Azeite",
+      "category": "basics"
+    },
+    {
+      "id": "cafe",
+      "name": "Café",
+      "category": "basics"
+    },
+    {
+      "id": "margarina",
+      "name": "Margarina",
       "category": "basics"
     }
   ]

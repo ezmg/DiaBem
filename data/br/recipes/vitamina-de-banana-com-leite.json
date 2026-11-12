@@ -1,0 +1,34 @@
+{
+  "id": "vitamina-de-banana-com-leite",
+  "name": "Vitamina de banana com leite e aveia",
+  "mealTypes": [
+    "breakfast"
+  ],
+  "servings": 1,
+  "prepMinutes": 5,
+  "ingredients": [
+    {
+      "food": "banana-prata",
+      "quantity": 1,
+      "unit": "unidade"
+    },
+    {
+      "food": "leite",
+      "quantity": 1,
+      "unit": "copo_americano"
+    },
+    {
+      "food": "aveia",
+      "quantity": 1,
+      "unit": "colher_sopa"
+    }
+  ],
+  "steps": [
+    "Bata tudo no liquidificador por 1 minuto.",
+    "Sirva logo. Não precisa de açúcar."
+  ],
+  "reviewedByNutritionist": false,
+  "tips": [
+    "A banana já adoça a vitamina."
+  ]
+}

@@ -87,6 +87,26 @@
     {
       "from": "pao-frances",
       "to": "pao-integral"
+    },
+    {
+      "from": "mandioca",
+      "to": "batata"
+    },
+    {
+      "from": "batata",
+      "to": "mandioca"
+    },
+    {
+      "from": "repolho",
+      "to": "couve"
+    },
+    {
+      "from": "carne-de-porco",
+      "to": "frango"
+    },
+    {
+      "from": "carne-bovina",
+      "to": "carne-moida"
     }
   ]
 }

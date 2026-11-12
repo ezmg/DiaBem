@@ -308,6 +308,94 @@
       "name": "pão francês",
       "pantryItem": "pao-frances",
       "tableId": "53"
+    },
+    {
+      "id": "cafe",
+      "name": "café coado sem açúcar",
+      "pantryItem": "cafe",
+      "tableId": "471"
+    },
+    {
+      "id": "leite",
+      "name": "leite integral",
+      "pantryItem": "leite",
+      "tableId": "458",
+      "supplements": {
+        "ENERGY_KCAL": {
+          "value": 61,
+          "source": "usda-fdc-sr",
+          "reference": "FDC 172217 Milk, whole, 3.25% milkfat, without added vitamin A and vitamin D"
+        },
+        "CARBOHYDRATE_G": {
+          "value": 4.78,
+          "source": "usda-fdc-sr",
+          "reference": "FDC 172217 Milk, whole, 3.25% milkfat, without added vitamin A and vitamin D"
+        },
+        "PROTEIN_G": {
+          "value": 3.15,
+          "source": "usda-fdc-sr",
+          "reference": "FDC 172217 Milk, whole, 3.25% milkfat, without added vitamin A and vitamin D"
+        },
+        "LIPIDS_G": {
+          "value": 3.27,
+          "source": "usda-fdc-sr",
+          "reference": "FDC 172217 Milk, whole, 3.25% milkfat, without added vitamin A and vitamin D"
+        }
+      }
+    },
+    {
+      "id": "macarrao",
+      "name": "macarrão cru",
+      "pantryItem": "macarrao",
+      "tableId": "40"
+    },
+    {
+      "id": "farinha-de-mandioca",
+      "name": "farinha de mandioca",
+      "pantryItem": "farinha-de-mandioca",
+      "tableId": "122"
+    },
+    {
+      "id": "biscoito-cream-cracker",
+      "name": "biscoito cream cracker",
+      "pantryItem": "biscoito-salgado",
+      "tableId": "13"
+    },
+    {
+      "id": "mandioca-cozida",
+      "name": "mandioca cozida",
+      "pantryItem": "mandioca",
+      "tableId": "129"
+    },
+    {
+      "id": "repolho",
+      "name": "repolho",
+      "pantryItem": "repolho",
+      "tableId": "149"
+    },
+    {
+      "id": "laranja",
+      "name": "laranja",
+      "pantryItem": "laranja",
+      "tableId": "214"
+    },
+    {
+      "id": "carne-bovina",
+      "name": "carne bovina magra (patinho)",
+      "pantryItem": "carne-bovina",
+      "tableId": "376"
+    },
+    {
+      "id": "lombo-de-porco",
+      "name": "lombo de porco",
+      "pantryItem": "carne-de-porco",
+      "tableId": "433"
+    },
+    {
+      "id": "margarina",
+      "name": "margarina com sal",
+      "pantryItem": "margarina",
+      "tableId": "265"
     }
   ]
 }

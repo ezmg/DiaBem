@@ -1,0 +1,68 @@
+{
+  "id": "macarrao-com-carne-moida",
+  "name": "Macarrão com molho de tomate e carne moída",
+  "mealTypes": [
+    "lunch",
+    "dinner"
+  ],
+  "servings": 4,
+  "prepMinutes": 35,
+  "ingredients": [
+    {
+      "food": "macarrao",
+      "quantity": 200,
+      "unit": "g"
+    },
+    {
+      "food": "carne-moida",
+      "quantity": 300,
+      "unit": "g"
+    },
+    {
+      "food": "tomate",
+      "quantity": 4,
+      "unit": "unidade",
+      "note": "bem maduro, picado"
+    },
+    {
+      "food": "cebola",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "picada"
+    },
+    {
+      "food": "alho",
+      "quantity": 2,
+      "unit": "dente",
+      "note": "amassado"
+    },
+    {
+      "food": "oleo-de-soja",
+      "quantity": 1,
+      "unit": "colher_sopa"
+    },
+    {
+      "food": "sal",
+      "quantity": 2,
+      "unit": "g"
+    },
+    {
+      "food": "cebolinha",
+      "quantity": 2,
+      "unit": "colher_sopa",
+      "note": "picada",
+      "optional": true
+    }
+  ],
+  "steps": [
+    "Refogue a cebola e o alho no óleo. Junte a carne moída e mexa até ficar soltinha.",
+    "Coloque o tomate e o sal. Tampe e cozinhe em fogo baixo por 15 minutos, até virar molho.",
+    "Cozinhe o macarrão em água fervente sem sal, pelo tempo da embalagem. Escorra.",
+    "Misture o macarrão com o molho e divida em 4 porções."
+  ],
+  "reviewedByNutritionist": false,
+  "tips": [
+    "O molho de tomate caseiro tem muito menos sal que o molho pronto.",
+    "Sirva com uma salada para o prato ficar mais equilibrado."
+  ]
+}

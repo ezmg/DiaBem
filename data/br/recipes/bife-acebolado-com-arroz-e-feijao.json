@@ -1,0 +1,72 @@
+{
+  "id": "bife-acebolado-com-arroz-e-feijao",
+  "name": "Bife acebolado com arroz, feijão e salada",
+  "mealTypes": [
+    "lunch",
+    "dinner"
+  ],
+  "servings": 2,
+  "prepMinutes": 30,
+  "ingredients": [
+    {
+      "food": "carne-bovina",
+      "quantity": 200,
+      "unit": "g",
+      "note": "em 2 bifes finos"
+    },
+    {
+      "food": "cebola",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "em rodelas"
+    },
+    {
+      "food": "alho",
+      "quantity": 1,
+      "unit": "dente",
+      "note": "amassado"
+    },
+    {
+      "food": "oleo-de-soja",
+      "quantity": 1,
+      "unit": "colher_cha"
+    },
+    {
+      "food": "sal",
+      "quantity": 1,
+      "unit": "g"
+    },
+    {
+      "food": "arroz-branco-cozido",
+      "quantity": 6,
+      "unit": "colher_sopa"
+    },
+    {
+      "food": "feijao-carioca-cozido",
+      "quantity": 2,
+      "unit": "concha"
+    },
+    {
+      "food": "alface",
+      "quantity": 6,
+      "unit": "folha"
+    },
+    {
+      "food": "tomate",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "em rodelas"
+    }
+  ],
+  "steps": [
+    "Tempere os bifes com o alho e o sal.",
+    "Aqueça a frigideira com o óleo e grelhe os bifes, 3 minutos de cada lado. Reserve.",
+    "Na mesma frigideira, doure a cebola e coloque sobre os bifes.",
+    "Sirva cada prato com 3 colheres de sopa de arroz, 1 concha de feijão, o bife e a salada."
+  ],
+  "reviewedByNutritionist": false,
+  "tips": [
+    "Tire a gordura da carne antes de grelhar.",
+    "Comece a refeição pela salada."
+  ]
+}

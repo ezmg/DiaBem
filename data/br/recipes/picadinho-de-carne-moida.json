@@ -1,0 +1,68 @@
+{
+  "id": "picadinho-de-carne-moida",
+  "name": "Picadinho de carne moída com batata e cenoura",
+  "mealTypes": [
+    "lunch",
+    "dinner"
+  ],
+  "servings": 3,
+  "prepMinutes": 30,
+  "ingredients": [
+    {
+      "food": "carne-moida",
+      "quantity": 300,
+      "unit": "g"
+    },
+    {
+      "food": "batata",
+      "quantity": 2,
+      "unit": "unidade",
+      "note": "em cubos pequenos"
+    },
+    {
+      "food": "cenoura",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "em cubos pequenos"
+    },
+    {
+      "food": "cebola",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "picada"
+    },
+    {
+      "food": "alho",
+      "quantity": 2,
+      "unit": "dente",
+      "note": "amassado"
+    },
+    {
+      "food": "tomate",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "picado"
+    },
+    {
+      "food": "oleo-de-soja",
+      "quantity": 1,
+      "unit": "colher_sopa"
+    },
+    {
+      "food": "sal",
+      "quantity": 1.5,
+      "unit": "g"
+    },
+    {
+      "food": "agua",
+      "quantity": 150,
+      "unit": "ml"
+    }
+  ],
+  "steps": [
+    "Refogue a cebola e o alho no óleo. Junte a carne moída e mexa até ficar soltinha.",
+    "Coloque o tomate, a batata, a cenoura, o sal e a água.",
+    "Tampe e cozinhe por 15 minutos, até a batata ficar macia."
+  ],
+  "reviewedByNutritionist": false
+}

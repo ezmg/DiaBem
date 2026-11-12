@@ -52,6 +52,16 @@
       "singular": "ml",
       "plural": "ml",
       "maxQuantity": 3000
+    },
+    {
+      "id": "xicara_cafe",
+      "singular": "xícara de café",
+      "plural": "xícaras de café"
+    },
+    {
+      "id": "pedaco",
+      "singular": "pedaço",
+      "plural": "pedaços"
     }
   ],
   "measures": [
@@ -437,6 +447,69 @@
       "official": {
         "food": "8000105",
         "measure": "103",
+        "preparation": "99"
+      }
+    },
+    {
+      "food": "cafe",
+      "unit": "xicara_cafe",
+      "official": {
+        "food": "8501302",
+        "measure": "105",
+        "preparation": "99"
+      }
+    },
+    {
+      "food": "leite",
+      "unit": "copo_americano",
+      "official": {
+        "food": "7900101",
+        "measure": "18",
+        "preparation": "99"
+      }
+    },
+    {
+      "food": "farinha-de-mandioca",
+      "unit": "colher_sopa",
+      "official": {
+        "food": "6501401",
+        "measure": "16",
+        "preparation": "99"
+      }
+    },
+    {
+      "food": "biscoito-cream-cracker",
+      "unit": "unidade",
+      "official": {
+        "food": "8002201",
+        "measure": "103",
+        "preparation": "99"
+      }
+    },
+    {
+      "food": "mandioca-cozida",
+      "unit": "pedaco",
+      "official": {
+        "food": "6400601",
+        "measure": "81",
+        "preparation": "2"
+      }
+    },
+    {
+      "food": "laranja",
+      "unit": "unidade",
+      "official": {
+        "food": "6801801",
+        "measure": "103",
+        "preparation": "99"
+      }
+    },
+    {
+      "food": "margarina",
+      "unit": "colher_cha",
+      "official": {
+        "food": "7901602",
+        "measure": "14",
         "preparation": "99"
       }
     }

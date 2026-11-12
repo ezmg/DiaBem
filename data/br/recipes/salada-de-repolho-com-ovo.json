@@ -1,0 +1,57 @@
+{
+  "id": "salada-de-repolho-com-ovo",
+  "name": "Salada de repolho, cenoura e ovo",
+  "mealTypes": [
+    "lunch",
+    "dinner"
+  ],
+  "servings": 2,
+  "prepMinutes": 20,
+  "ingredients": [
+    {
+      "food": "repolho",
+      "quantity": 200,
+      "unit": "g",
+      "note": "cortado bem fino"
+    },
+    {
+      "food": "cenoura",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "ralada"
+    },
+    {
+      "food": "ovo",
+      "quantity": 2,
+      "unit": "unidade"
+    },
+    {
+      "food": "tomate",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "em cubos"
+    },
+    {
+      "food": "azeite",
+      "quantity": 1,
+      "unit": "colher_sopa"
+    },
+    {
+      "food": "limao",
+      "quantity": 0.5,
+      "unit": "unidade",
+      "note": "só o suco"
+    },
+    {
+      "food": "sal",
+      "quantity": 1,
+      "unit": "g"
+    }
+  ],
+  "steps": [
+    "Cozinhe os ovos em água fervente por 10 minutos. Descasque e corte em quatro.",
+    "Misture o repolho, a cenoura e o tomate.",
+    "Tempere com o azeite, o suco de limão e o sal. Coloque os ovos por cima."
+  ],
+  "reviewedByNutritionist": false
+}

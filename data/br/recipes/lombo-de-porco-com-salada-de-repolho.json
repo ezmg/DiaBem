@@ -1,0 +1,67 @@
+{
+  "id": "lombo-de-porco-com-salada-de-repolho",
+  "name": "Lombo de porco grelhado com salada de repolho",
+  "mealTypes": [
+    "lunch",
+    "dinner"
+  ],
+  "servings": 2,
+  "prepMinutes": 30,
+  "ingredients": [
+    {
+      "food": "lombo-de-porco",
+      "quantity": 200,
+      "unit": "g",
+      "note": "em fatias finas"
+    },
+    {
+      "food": "limao",
+      "quantity": 0.5,
+      "unit": "unidade",
+      "note": "só o suco"
+    },
+    {
+      "food": "alho",
+      "quantity": 2,
+      "unit": "dente",
+      "note": "amassado"
+    },
+    {
+      "food": "sal",
+      "quantity": 1,
+      "unit": "g"
+    },
+    {
+      "food": "oleo-de-soja",
+      "quantity": 1,
+      "unit": "colher_cha"
+    },
+    {
+      "food": "repolho",
+      "quantity": 150,
+      "unit": "g",
+      "note": "cortado bem fino"
+    },
+    {
+      "food": "cenoura",
+      "quantity": 0.5,
+      "unit": "unidade",
+      "note": "ralada"
+    },
+    {
+      "food": "azeite",
+      "quantity": 1,
+      "unit": "colher_sopa"
+    }
+  ],
+  "steps": [
+    "Tempere a carne com o suco de limão, o alho e metade do sal. Deixe 15 minutos.",
+    "Grelhe na frigideira com o óleo, 4 minutos de cada lado, até ficar bem passada.",
+    "Misture o repolho com a cenoura. Tempere com o azeite e o resto do sal.",
+    "Sirva a carne com a salada."
+  ],
+  "reviewedByNutritionist": false,
+  "tips": [
+    "Tire a gordura que dá para ver antes de grelhar."
+  ]
+}

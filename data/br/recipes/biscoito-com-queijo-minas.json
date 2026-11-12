@@ -1,0 +1,34 @@
+{
+  "id": "biscoito-com-queijo-minas",
+  "name": "Biscoito de água e sal com queijo minas",
+  "mealTypes": [
+    "snack"
+  ],
+  "servings": 1,
+  "prepMinutes": 5,
+  "ingredients": [
+    {
+      "food": "biscoito-cream-cracker",
+      "quantity": 4,
+      "unit": "unidade"
+    },
+    {
+      "food": "queijo-minas",
+      "quantity": 1,
+      "unit": "fatia"
+    },
+    {
+      "food": "tomate",
+      "quantity": 0.5,
+      "unit": "unidade",
+      "note": "em rodelas"
+    }
+  ],
+  "steps": [
+    "Coloque um pedaço de queijo e uma rodela de tomate sobre cada biscoito."
+  ],
+  "reviewedByNutritionist": false,
+  "tips": [
+    "Quatro biscoitos são uma boa medida. O biscoito já tem sal."
+  ]
+}
