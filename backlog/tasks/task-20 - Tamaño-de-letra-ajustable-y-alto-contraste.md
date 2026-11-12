@@ -1,9 +1,10 @@
 ---
 id: TASK-20
 title: Tamaño de letra ajustable y alto contraste
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-11-12T14:01:00Z'
+updated_date: '2026-11-12T15:06:00Z'
 labels:
   - fase-4
 dependencies: []
