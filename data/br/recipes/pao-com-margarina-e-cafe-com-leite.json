@@ -1,0 +1,41 @@
+{
+  "id": "pao-com-margarina-e-cafe-com-leite",
+  "name": "Pão francês com café com leite",
+  "mealTypes": [
+    "breakfast"
+  ],
+  "servings": 1,
+  "prepMinutes": 5,
+  "ingredients": [
+    {
+      "food": "pao-frances",
+      "quantity": 1,
+      "unit": "unidade"
+    },
+    {
+      "food": "margarina",
+      "quantity": 0.5,
+      "unit": "colher_cha",
+      "note": "passe bem pouco",
+      "optional": true
+    },
+    {
+      "food": "cafe",
+      "quantity": 1,
+      "unit": "xicara_cafe"
+    },
+    {
+      "food": "leite",
+      "quantity": 1,
+      "unit": "copo_americano"
+    }
+  ],
+  "steps": [
+    "Passe o café e misture com o leite quente, sem açúcar.",
+    "Abra o pão e passe só um pouco de margarina."
+  ],
+  "reviewedByNutritionist": false,
+  "tips": [
+    "Um pão é uma boa medida. O pão e a margarina já têm sal."
+  ]
+}

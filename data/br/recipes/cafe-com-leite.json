@@ -1,0 +1,30 @@
+{
+  "id": "cafe-com-leite",
+  "name": "Café com leite sem açúcar",
+  "mealTypes": [
+    "breakfast",
+    "snack"
+  ],
+  "servings": 1,
+  "prepMinutes": 5,
+  "ingredients": [
+    {
+      "food": "cafe",
+      "quantity": 1,
+      "unit": "xicara_cafe"
+    },
+    {
+      "food": "leite",
+      "quantity": 1,
+      "unit": "copo_americano"
+    }
+  ],
+  "steps": [
+    "Passe o café.",
+    "Aqueça o leite e misture com o café. Não coloque açúcar."
+  ],
+  "reviewedByNutritionist": false,
+  "tips": [
+    "Se achar amargo, vá diminuindo o açúcar aos poucos ou pergunte ao seu nutricionista sobre adoçante."
+  ]
+}

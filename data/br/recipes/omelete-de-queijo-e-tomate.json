@@ -1,0 +1,45 @@
+{
+  "id": "omelete-de-queijo-e-tomate",
+  "name": "Omelete de queijo minas e tomate",
+  "mealTypes": [
+    "breakfast",
+    "dinner"
+  ],
+  "servings": 1,
+  "prepMinutes": 10,
+  "ingredients": [
+    {
+      "food": "ovo",
+      "quantity": 2,
+      "unit": "unidade"
+    },
+    {
+      "food": "queijo-minas",
+      "quantity": 1,
+      "unit": "fatia",
+      "note": "em cubos"
+    },
+    {
+      "food": "tomate",
+      "quantity": 0.5,
+      "unit": "unidade",
+      "note": "picado"
+    },
+    {
+      "food": "oleo-de-soja",
+      "quantity": 1,
+      "unit": "colher_cha"
+    },
+    {
+      "food": "sal",
+      "quantity": 0.2,
+      "unit": "g"
+    }
+  ],
+  "steps": [
+    "Bata os ovos com o sal. Misture o queijo e o tomate.",
+    "Aqueça o óleo numa frigideira antiaderente em fogo baixo.",
+    "Despeje a mistura, tampe e cozinhe por 4 minutos. Vire e doure o outro lado."
+  ],
+  "reviewedByNutritionist": false
+}

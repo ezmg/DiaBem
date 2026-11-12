@@ -1,0 +1,30 @@
+{
+  "id": "laranja-com-queijo-minas",
+  "name": "Laranja com queijo minas",
+  "mealTypes": [
+    "snack"
+  ],
+  "servings": 1,
+  "prepMinutes": 5,
+  "ingredients": [
+    {
+      "food": "laranja",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "descascada, em gomos"
+    },
+    {
+      "food": "queijo-minas",
+      "quantity": 1,
+      "unit": "fatia"
+    }
+  ],
+  "steps": [
+    "Descasque a laranja e separe em gomos.",
+    "Coma com a fatia de queijo."
+  ],
+  "reviewedByNutritionist": false,
+  "tips": [
+    "Prefira a fruta inteira ao suco: a fruta tem fibras e a glicose sobe mais devagar."
+  ]
+}

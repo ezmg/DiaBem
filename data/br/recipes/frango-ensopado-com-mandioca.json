@@ -1,0 +1,73 @@
+{
+  "id": "frango-ensopado-com-mandioca",
+  "name": "Frango ensopado com mandioca",
+  "mealTypes": [
+    "lunch",
+    "dinner"
+  ],
+  "servings": 3,
+  "prepMinutes": 40,
+  "ingredients": [
+    {
+      "food": "peito-de-frango",
+      "quantity": 300,
+      "unit": "g",
+      "note": "em cubos"
+    },
+    {
+      "food": "mandioca-cozida",
+      "quantity": 3,
+      "unit": "pedaco"
+    },
+    {
+      "food": "tomate",
+      "quantity": 2,
+      "unit": "unidade",
+      "note": "picado"
+    },
+    {
+      "food": "cebola",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "picada"
+    },
+    {
+      "food": "alho",
+      "quantity": 2,
+      "unit": "dente",
+      "note": "amassado"
+    },
+    {
+      "food": "oleo-de-soja",
+      "quantity": 1,
+      "unit": "colher_sopa"
+    },
+    {
+      "food": "sal",
+      "quantity": 1.5,
+      "unit": "g"
+    },
+    {
+      "food": "agua",
+      "quantity": 300,
+      "unit": "ml"
+    },
+    {
+      "food": "cebolinha",
+      "quantity": 2,
+      "unit": "colher_sopa",
+      "note": "picada",
+      "optional": true
+    }
+  ],
+  "steps": [
+    "Cozinhe a mandioca em água até ficar macia. Corte em pedaços.",
+    "Refogue a cebola e o alho no óleo. Junte o frango e doure.",
+    "Coloque o tomate, o sal e a água. Cozinhe por 15 minutos.",
+    "Junte a mandioca cozida, cozinhe mais 5 minutos e finalize com a cebolinha."
+  ],
+  "reviewedByNutritionist": false,
+  "tips": [
+    "A mandioca entra no lugar do arroz. Não precisa servir os dois."
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "id": "ovo-mexido-com-farinha",
+  "name": "Ovo mexido com farinha de mandioca",
+  "mealTypes": [
+    "breakfast",
+    "dinner"
+  ],
+  "servings": 1,
+  "prepMinutes": 10,
+  "ingredients": [
+    {
+      "food": "ovo",
+      "quantity": 2,
+      "unit": "unidade"
+    },
+    {
+      "food": "farinha-de-mandioca",
+      "quantity": 2,
+      "unit": "colher_sopa"
+    },
+    {
+      "food": "cebola",
+      "quantity": 1,
+      "unit": "colher_sopa",
+      "note": "picada"
+    },
+    {
+      "food": "tomate",
+      "quantity": 0.5,
+      "unit": "unidade",
+      "note": "picado"
+    },
+    {
+      "food": "oleo-de-soja",
+      "quantity": 1,
+      "unit": "colher_cha"
+    },
+    {
+      "food": "sal",
+      "quantity": 0.3,
+      "unit": "g"
+    }
+  ],
+  "steps": [
+    "Refogue a cebola e o tomate no óleo.",
+    "Junte os ovos batidos com o sal e mexa até firmar.",
+    "Desligue o fogo e misture a farinha."
+  ],
+  "reviewedByNutritionist": false,
+  "tips": [
+    "A farinha de mandioca tem bastante carboidrato. Duas colheres de sopa são suficientes."
+  ]
+}

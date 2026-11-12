@@ -61,6 +61,17 @@ reutilización, **no se usa**.
   - Aceite de oliva (FDC 171413): sodio 2 mg, potasio 1 mg por 100 g.
   - Aceite de soja (FDC 171411): sodio 0 mg, potasio 0 mg por 100 g.
 
+  - Leche entera líquida (FDC 172217): energía 61 kcal, hidratos 4,78 g, proteínas 3,15 g y grasas
+    3,27 g por 100 g. TACO solo tiene analizados el sodio y el potasio de la leche líquida; esos
+    dos valores sí son de TACO.
+
+### IBGE — POF 2017-2018: Análise do consumo alimentar pessoal no Brasil
+
+- **Dónde**: https://biblioteca.ibge.gov.br/visualizacao/livros/liv101742.pdf
+- **Uso en DiaBem**: solo como referencia para decidir qué ingredientes debe ofrecer la app (los
+  más consumidos). No se copian datos dentro de la app. Ver [docs/ingredients.md](docs/ingredients.md).
+- **Condiciones**: publicación estadística oficial; se cita la fuente.
+
 ### Agua
 
 - Por definición, el agua potable no aporta energía ni hidratos; 1 ml = 1 g.

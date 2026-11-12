@@ -1,0 +1,77 @@
+{
+  "id": "carne-de-panela-com-legumes",
+  "name": "Carne de panela com batata e cenoura",
+  "mealTypes": [
+    "lunch",
+    "dinner"
+  ],
+  "servings": 4,
+  "prepMinutes": 50,
+  "ingredients": [
+    {
+      "food": "carne-bovina",
+      "quantity": 400,
+      "unit": "g",
+      "note": "em cubos"
+    },
+    {
+      "food": "batata",
+      "quantity": 2,
+      "unit": "unidade",
+      "note": "em pedaços"
+    },
+    {
+      "food": "cenoura",
+      "quantity": 2,
+      "unit": "unidade",
+      "note": "em rodelas"
+    },
+    {
+      "food": "cebola",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "picada"
+    },
+    {
+      "food": "tomate",
+      "quantity": 2,
+      "unit": "unidade",
+      "note": "picado"
+    },
+    {
+      "food": "alho",
+      "quantity": 2,
+      "unit": "dente",
+      "note": "amassado"
+    },
+    {
+      "food": "oleo-de-soja",
+      "quantity": 1,
+      "unit": "colher_sopa"
+    },
+    {
+      "food": "sal",
+      "quantity": 2,
+      "unit": "g"
+    },
+    {
+      "food": "agua",
+      "quantity": 400,
+      "unit": "ml"
+    },
+    {
+      "food": "cebolinha",
+      "quantity": 2,
+      "unit": "colher_sopa",
+      "note": "picada",
+      "optional": true
+    }
+  ],
+  "steps": [
+    "Na panela de pressão, refogue a cebola e o alho no óleo. Junte a carne e doure.",
+    "Coloque o tomate, o sal e a água. Feche e cozinhe por 20 minutos depois que pegar pressão.",
+    "Abra a panela com cuidado, junte a batata e a cenoura e cozinhe sem pressão por 15 minutos.",
+    "Finalize com a cebolinha."
+  ],
+  "reviewedByNutritionist": false
+}

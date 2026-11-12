@@ -1,0 +1,32 @@
+{
+  "id": "mandioca-cozida-com-ovo",
+  "name": "Mandioca cozida com ovo",
+  "mealTypes": [
+    "breakfast"
+  ],
+  "servings": 1,
+  "prepMinutes": 25,
+  "ingredients": [
+    {
+      "food": "mandioca-cozida",
+      "quantity": 1,
+      "unit": "pedaco"
+    },
+    {
+      "food": "ovo",
+      "quantity": 1,
+      "unit": "unidade"
+    },
+    {
+      "food": "sal",
+      "quantity": 0.2,
+      "unit": "g"
+    }
+  ],
+  "steps": [
+    "Cozinhe a mandioca em água até ficar macia. Use um pedaço médio.",
+    "Cozinhe o ovo em água fervente por 10 minutos, ou faça mexido em frigideira antiaderente.",
+    "Sirva a mandioca com o ovo e uma pitada de sal."
+  ],
+  "reviewedByNutritionist": false
+}

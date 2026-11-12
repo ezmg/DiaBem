@@ -3,9 +3,10 @@ id: TASK-32
 title: >-
   Revisar la lista de ingredientes con los alimentos más consumidos en Brasil
   (IBGE POF)
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-11-12T20:01:00Z'
+updated_date: '2026-11-12T21:05:00Z'
 labels:
   - mejoras
 dependencies: []
