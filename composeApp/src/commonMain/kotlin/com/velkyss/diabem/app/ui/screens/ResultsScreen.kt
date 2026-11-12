@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
@@ -35,6 +34,8 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.material.icons.outlined.Add
 import androidx.compose.material3.Switch
+import com.velkyss.diabem.app.resources.ideas_help
+import com.velkyss.diabem.app.resources.ideas_title
 import com.velkyss.diabem.app.resources.more_carbs_help
 import com.velkyss.diabem.app.resources.more_carbs_toggle
 import com.velkyss.diabem.app.resources.more_recipes
@@ -99,11 +100,20 @@ fun ResultsScreen(controller: AppController, meal: MealType, onBack: () -> Unit,
                     }
                 }
             }
-            if (results.isEmpty()) {
+            if (shortSize == 0) {
                 item { Text(stringResource(Res.string.no_results), style = MaterialTheme.typography.bodyLarge) }
             }
-            items(results, key = { it.recipe.id }) { match ->
-                RecipeCard(controller, match, meal) { onOpen(match.recipe.id) }
+            val firstIdea = results.indexOfFirst { !it.closeMatch }
+            results.forEachIndexed { index, match ->
+                if (index == firstIdea) {
+                    item(key = "ideas") {
+                        Column {
+                            Text(stringResource(Res.string.ideas_title), style = MaterialTheme.typography.titleLarge, modifier = Modifier.semantics { heading() })
+                            Text(stringResource(Res.string.ideas_help), style = MaterialTheme.typography.bodyMedium)
+                        }
+                    }
+                }
+                item(key = match.recipe.id) { RecipeCard(controller, match, meal) { onOpen(match.recipe.id) } }
             }
             if (results.size < all.size) {
                 item { BigOutlinedButton(stringResource(Res.string.more_recipes), { extra += MORE_STEP }, icon = Icons.Outlined.Add) }

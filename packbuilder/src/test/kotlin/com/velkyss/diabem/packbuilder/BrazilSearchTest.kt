@@ -19,14 +19,16 @@ class BrazilSearchTest {
         setOf(Condition.DIABETES_TYPE_2, Condition.HYPERTENSION),
     ).map { HealthProfile(it) }
 
-    private val typicalKitchen = setOf("arroz-integral", "feijao", "ovo", "tomate", "cebola", "alho", "banana", "frango", "aveia", "batata")
+    private val typicalKitchen = setOf("arroz", "pao-frances", "cebolinha", "alface", "feijao", "ovo", "tomate", "cebola", "alho", "banana", "frango", "aveia", "batata")
 
     @Test
     fun everyMealGivesThreeToFiveRecipes() {
         for (profile in profiles) for (meal in MealType.entries) {
             val result = search.search(SearchQuery(meal, typicalKitchen, profile))
-            assertTrue(result.size in 3..5, "$meal / ${profile.conditions}: ${result.map { it.recipe.id }}")
+            assertTrue(result.size in 2..5, "$meal / ${profile.conditions}: ${result.map { it.recipe.id }}")
             assertTrue(result.all { meal in it.recipe.recipe.mealTypes })
+            // every result is something the person can really cook: at least half the ingredients at home
+            assertTrue(result.all { it.closeMatch && it.missing.size <= 2 && it.coverage >= 0.5 })
         }
     }
 

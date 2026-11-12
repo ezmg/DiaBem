@@ -50,10 +50,17 @@ data class RecipeMatch(
     val riceSpoonsPerServing: Double?,
     /** True when [riceSpoonsPerServing] is above the person's own limit. */
     val exceedsRiceLimit: Boolean,
+    /**
+     * True when the person can really cook this with what they have: at least half of the
+     * needed items at home and at most [RecipeSearch.MAX_MISSING] to buy. Other recipes are
+     * only "ideas" and are never shown in the first list.
+     */
+    val closeMatch: Boolean,
 )
 
 /**
- * Finds recipes for a meal using what the person has at home.
+ * Finds recipes for a meal using what the person has at home. Only recipes the person can
+ * really cook (see [RecipeMatch.closeMatch]) are results; the rest are offered apart as ideas.
  *
  * Order: recipes that are fine for the profile first, then fewer missing items, then better
  * coverage, then the healthier light for the person's condition. Recipes with a red light for
@@ -93,6 +100,8 @@ class RecipeSearch(private val pack: CountryPack) {
             health = evaluator.assess(recipe, query.meal, query.profile),
             riceSpoonsPerServing = rice,
             exceedsRiceLimit = rice != null && limit != null && rice > limit,
+            closeMatch = query.available.isEmpty() ||
+                (have.any { it in query.available } && missing.size <= MAX_MISSING && coverage >= MIN_COVERAGE),
         )
     }
 
@@ -126,16 +135,10 @@ class RecipeSearch(private val pack: CountryPack) {
     private fun matching(query: SearchQuery): List<RecipeMatch> = pack.recipes
         .filter { query.meal in it.recipe.mealTypes }
         .map { match(it, query) }
-        .filter { m -> query.available.isEmpty() || m.have.any { it in query.available } }
-        .filter { m -> query.available.isEmpty() || m.missing.size <= maxMissing(m) }
+        .filter { it.closeMatch }
         .sortedWith(order(query))
 
     private val RecipeMatch.flagged: Boolean get() = health.relevantRed || exceedsRiceLimit
-
-    private fun maxMissing(m: RecipeMatch): Int {
-        val needed = m.have.size + m.missing.size + m.substitutions.size
-        return maxOf(MAX_MISSING_FLOOR, needed / 2)
-    }
 
     private fun order(q: SearchQuery): Comparator<RecipeMatch> =
         compareBy<RecipeMatch> { it.flagged }
@@ -157,7 +160,8 @@ class RecipeSearch(private val pack: CountryPack) {
 
     companion object {
         const val MIN_RESULTS = 3
-        const val MAX_MISSING_FLOOR = 2
+        const val MAX_MISSING = 2
+        const val MIN_COVERAGE = 0.5
         const val RICE_SPOON_UNIT = "colher_sopa"
     }
 }
