@@ -43,6 +43,7 @@ iOS está declarado pero desactivado: `diabem.ios.enabled=false` en `gradle.prop
 ```bash
 ./gradlew check                                  # todas las pruebas
 ./gradlew :core:jvmTest                          # pruebas rápidas de la lógica
+./gradlew :composeApp:desktopTest                # pruebas de interfaz (sin dispositivo)
 ./gradlew :composeApp:assembleDebug              # APK de depuración
 ./gradlew :composeApp:wasmJsBrowserDistribution  # web en composeApp/build/dist/wasmJs/productionExecutable
 ```

@@ -1,9 +1,10 @@
 ---
 id: TASK-23
 title: Pruebas de interfaz de pantallas principales
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-11-12T14:01:00Z'
+updated_date: '2026-11-12T17:49:00Z'
 labels:
   - fase-4
 dependencies: []
