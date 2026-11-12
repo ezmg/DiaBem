@@ -1,0 +1,38 @@
+{
+  "id": "vitamina-de-mamao-com-aveia",
+  "name": "Vitamina de mamão com aveia",
+  "mealTypes": [
+    "breakfast",
+    "snack"
+  ],
+  "servings": 2,
+  "prepMinutes": 5,
+  "ingredients": [
+    {
+      "food": "mamao-papaia",
+      "quantity": 4,
+      "unit": "colher_sopa"
+    },
+    {
+      "food": "leite-em-po-desnatado",
+      "quantity": 4,
+      "unit": "colher_sopa"
+    },
+    {
+      "food": "aveia",
+      "quantity": 2,
+      "unit": "colher_sopa"
+    },
+    {
+      "food": "agua",
+      "quantity": 300,
+      "unit": "ml",
+      "note": "gelada"
+    }
+  ],
+  "steps": [
+    "Coloque todos os ingredientes no liquidificador.",
+    "Bata por 1 minuto e sirva logo. Não precisa de açúcar."
+  ],
+  "reviewedByNutritionist": false
+}

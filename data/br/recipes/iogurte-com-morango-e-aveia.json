@@ -1,0 +1,36 @@
+{
+  "id": "iogurte-com-morango-e-aveia",
+  "name": "Iogurte natural com morango e aveia",
+  "mealTypes": [
+    "breakfast",
+    "snack"
+  ],
+  "servings": 1,
+  "prepMinutes": 5,
+  "ingredients": [
+    {
+      "food": "iogurte-natural",
+      "quantity": 1,
+      "unit": "copo_americano"
+    },
+    {
+      "food": "morango",
+      "quantity": 5,
+      "unit": "unidade",
+      "note": "picado"
+    },
+    {
+      "food": "aveia",
+      "quantity": 1,
+      "unit": "colher_sopa"
+    }
+  ],
+  "steps": [
+    "Lave bem os morangos e corte em pedaços.",
+    "Coloque o iogurte numa tigela, junte os morangos e polvilhe a aveia."
+  ],
+  "reviewedByNutritionist": false,
+  "tips": [
+    "Use iogurte natural sem açúcar."
+  ]
+}

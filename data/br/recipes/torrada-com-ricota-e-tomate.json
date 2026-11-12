@@ -1,0 +1,40 @@
+{
+  "id": "torrada-com-ricota-e-tomate",
+  "name": "Torrada integral com ricota e tomate",
+  "mealTypes": [
+    "snack",
+    "breakfast"
+  ],
+  "servings": 1,
+  "prepMinutes": 10,
+  "ingredients": [
+    {
+      "food": "pao-integral",
+      "quantity": 1,
+      "unit": "fatia"
+    },
+    {
+      "food": "ricota",
+      "quantity": 1,
+      "unit": "fatia",
+      "note": "amassada"
+    },
+    {
+      "food": "tomate",
+      "quantity": 0.5,
+      "unit": "unidade",
+      "note": "em cubos"
+    },
+    {
+      "food": "azeite",
+      "quantity": 1,
+      "unit": "colher_cha"
+    }
+  ],
+  "steps": [
+    "Toste o pão numa frigideira ou torradeira.",
+    "Amasse a ricota com o azeite.",
+    "Espalhe a ricota no pão e coloque o tomate por cima."
+  ],
+  "reviewedByNutritionist": false
+}

@@ -1,0 +1,56 @@
+{
+  "id": "feijao-caseiro",
+  "name": "Feijão caseiro com pouco sal",
+  "mealTypes": [
+    "lunch",
+    "dinner"
+  ],
+  "servings": 4,
+  "prepMinutes": 20,
+  "ingredients": [
+    {
+      "food": "feijao-carioca-cozido",
+      "quantity": 6,
+      "unit": "concha",
+      "note": "cozido só com água"
+    },
+    {
+      "food": "oleo-de-soja",
+      "quantity": 1,
+      "unit": "colher_sopa"
+    },
+    {
+      "food": "cebola",
+      "quantity": 2,
+      "unit": "colher_sopa",
+      "note": "picada"
+    },
+    {
+      "food": "alho",
+      "quantity": 3,
+      "unit": "dente",
+      "note": "amassado"
+    },
+    {
+      "food": "sal",
+      "quantity": 1.5,
+      "unit": "g"
+    },
+    {
+      "food": "cebolinha",
+      "quantity": 2,
+      "unit": "colher_sopa",
+      "note": "picada"
+    }
+  ],
+  "steps": [
+    "Cozinhe o feijão na panela de pressão só com água, sem sal.",
+    "Numa panela, aqueça o óleo e refogue a cebola e o alho até dourar.",
+    "Junte o feijão cozido com o caldo e o sal. Deixe ferver por 10 minutos.",
+    "Desligue e coloque a cebolinha por cima."
+  ],
+  "reviewedByNutritionist": false,
+  "tips": [
+    "Alho, cebola e cebolinha dão sabor sem precisar de muito sal."
+  ]
+}

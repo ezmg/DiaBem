@@ -1,0 +1,39 @@
+{
+  "id": "batata-doce-com-ovo",
+  "name": "Batata-doce com ovo cozido",
+  "mealTypes": [
+    "breakfast"
+  ],
+  "servings": 1,
+  "prepMinutes": 25,
+  "ingredients": [
+    {
+      "food": "batata-doce-cozida",
+      "quantity": 1,
+      "unit": "fatia"
+    },
+    {
+      "food": "ovo",
+      "quantity": 1,
+      "unit": "unidade"
+    },
+    {
+      "food": "sal",
+      "quantity": 0.2,
+      "unit": "g"
+    },
+    {
+      "food": "cebolinha",
+      "quantity": 1,
+      "unit": "colher_sopa",
+      "note": "picada",
+      "optional": true
+    }
+  ],
+  "steps": [
+    "Cozinhe a batata-doce com casca em água até ficar macia (cerca de 20 minutos). Use uma fatia.",
+    "Cozinhe o ovo em água fervente por 10 minutos.",
+    "Descasque o ovo, corte ao meio e sirva com a batata-doce, uma pitada de sal e a cebolinha."
+  ],
+  "reviewedByNutritionist": false
+}

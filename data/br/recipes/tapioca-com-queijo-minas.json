@@ -1,0 +1,39 @@
+{
+  "id": "tapioca-com-queijo-minas",
+  "name": "Tapioca com queijo minas e tomate",
+  "mealTypes": [
+    "breakfast",
+    "snack"
+  ],
+  "servings": 1,
+  "prepMinutes": 10,
+  "ingredients": [
+    {
+      "food": "goma-de-tapioca",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "quantidade para 1 tapioca"
+    },
+    {
+      "food": "queijo-minas",
+      "quantity": 1,
+      "unit": "fatia"
+    },
+    {
+      "food": "tomate",
+      "quantity": 0.5,
+      "unit": "unidade",
+      "note": "em rodelas"
+    }
+  ],
+  "steps": [
+    "Aqueça uma frigideira antiaderente em fogo médio, sem óleo.",
+    "Espalhe a goma na frigideira, formando um disco fino.",
+    "Quando a massa soltar do fundo, vire.",
+    "Coloque o queijo e o tomate, dobre ao meio e sirva."
+  ],
+  "reviewedByNutritionist": false,
+  "tips": [
+    "A tapioca tem bastante carboidrato. Prefira comer só uma."
+  ]
+}

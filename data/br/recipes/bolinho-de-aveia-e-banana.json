@@ -1,0 +1,35 @@
+{
+  "id": "bolinho-de-aveia-e-banana",
+  "name": "Bolinho de aveia e banana",
+  "mealTypes": [
+    "snack",
+    "breakfast"
+  ],
+  "servings": 4,
+  "prepMinutes": 30,
+  "ingredients": [
+    {
+      "food": "banana-prata",
+      "quantity": 2,
+      "unit": "unidade",
+      "note": "bem madura"
+    },
+    {
+      "food": "aveia",
+      "quantity": 6,
+      "unit": "colher_sopa"
+    },
+    {
+      "food": "ovo",
+      "quantity": 2,
+      "unit": "unidade"
+    }
+  ],
+  "steps": [
+    "Amasse as bananas com um garfo.",
+    "Misture os ovos e a aveia até formar uma massa.",
+    "Coloque colheradas da massa numa forma untada.",
+    "Asse em forno médio por 20 minutos. Rende 8 bolinhos (2 por porção)."
+  ],
+  "reviewedByNutritionist": false
+}

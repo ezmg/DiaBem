@@ -1,0 +1,48 @@
+{
+  "id": "palitos-de-legumes-com-ricota",
+  "name": "Palitos de legumes com pasta de ricota",
+  "mealTypes": [
+    "snack"
+  ],
+  "servings": 2,
+  "prepMinutes": 15,
+  "ingredients": [
+    {
+      "food": "cenoura",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "em palitos"
+    },
+    {
+      "food": "pepino",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "em palitos"
+    },
+    {
+      "food": "ricota",
+      "quantity": 2,
+      "unit": "fatia"
+    },
+    {
+      "food": "azeite",
+      "quantity": 1,
+      "unit": "colher_cha"
+    },
+    {
+      "food": "cebolinha",
+      "quantity": 1,
+      "unit": "colher_sopa",
+      "note": "picada"
+    }
+  ],
+  "steps": [
+    "Lave e corte a cenoura e o pepino em palitos.",
+    "Amasse a ricota com o azeite e a cebolinha até virar uma pasta.",
+    "Sirva os palitos com a pasta para molhar."
+  ],
+  "reviewedByNutritionist": false,
+  "tips": [
+    "A ricota já tem sal. Não precisa colocar mais."
+  ]
+}

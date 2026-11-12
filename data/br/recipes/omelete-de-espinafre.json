@@ -1,0 +1,52 @@
+{
+  "id": "omelete-de-espinafre",
+  "name": "Omelete de espinafre e tomate",
+  "mealTypes": [
+    "breakfast",
+    "dinner"
+  ],
+  "servings": 1,
+  "prepMinutes": 15,
+  "ingredients": [
+    {
+      "food": "ovo",
+      "quantity": 2,
+      "unit": "unidade"
+    },
+    {
+      "food": "espinafre",
+      "quantity": 2,
+      "unit": "colher_sopa",
+      "note": "picado"
+    },
+    {
+      "food": "tomate",
+      "quantity": 0.5,
+      "unit": "unidade",
+      "note": "picado"
+    },
+    {
+      "food": "cebola",
+      "quantity": 1,
+      "unit": "colher_sopa",
+      "note": "picada"
+    },
+    {
+      "food": "azeite",
+      "quantity": 1,
+      "unit": "colher_cha"
+    },
+    {
+      "food": "sal",
+      "quantity": 0.3,
+      "unit": "g"
+    }
+  ],
+  "steps": [
+    "Bata os ovos com o sal.",
+    "Misture o espinafre, o tomate e a cebola.",
+    "Aqueça o azeite numa frigideira antiaderente em fogo baixo.",
+    "Despeje a mistura, tampe e deixe cozinhar por 5 minutos. Vire e doure o outro lado."
+  ],
+  "reviewedByNutritionist": false
+}

@@ -1,0 +1,65 @@
+{
+  "id": "salada-de-grao-de-bico",
+  "name": "Salada de grão-de-bico",
+  "mealTypes": [
+    "lunch",
+    "dinner"
+  ],
+  "servings": 3,
+  "prepMinutes": 30,
+  "ingredients": [
+    {
+      "food": "grao-de-bico",
+      "quantity": 150,
+      "unit": "g",
+      "note": "seco"
+    },
+    {
+      "food": "tomate",
+      "quantity": 2,
+      "unit": "unidade",
+      "note": "em cubos"
+    },
+    {
+      "food": "pepino",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "em cubos"
+    },
+    {
+      "food": "cebola",
+      "quantity": 0.5,
+      "unit": "unidade",
+      "note": "picada"
+    },
+    {
+      "food": "cebolinha",
+      "quantity": 2,
+      "unit": "colher_sopa",
+      "note": "picada"
+    },
+    {
+      "food": "azeite",
+      "quantity": 2,
+      "unit": "colher_sopa"
+    },
+    {
+      "food": "limao",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "só o suco"
+    },
+    {
+      "food": "sal",
+      "quantity": 1,
+      "unit": "g"
+    }
+  ],
+  "steps": [
+    "Na véspera, deixe o grão-de-bico de molho em bastante água.",
+    "Escorra, cubra com água nova e cozinhe na panela de pressão por 20 minutos depois que pegar pressão. Escorra e deixe esfriar.",
+    "Misture o grão-de-bico com o tomate, o pepino, a cebola e a cebolinha.",
+    "Tempere com o azeite, o suco de limão e o sal."
+  ],
+  "reviewedByNutritionist": false
+}

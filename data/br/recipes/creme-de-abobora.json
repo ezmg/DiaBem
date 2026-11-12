@@ -1,0 +1,57 @@
+{
+  "id": "creme-de-abobora",
+  "name": "Creme de abóbora",
+  "mealTypes": [
+    "dinner"
+  ],
+  "servings": 3,
+  "prepMinutes": 35,
+  "ingredients": [
+    {
+      "food": "abobora",
+      "quantity": 600,
+      "unit": "g",
+      "note": "sem casca, em cubos"
+    },
+    {
+      "food": "cebola",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "picada"
+    },
+    {
+      "food": "alho",
+      "quantity": 2,
+      "unit": "dente",
+      "note": "amassado"
+    },
+    {
+      "food": "azeite",
+      "quantity": 1,
+      "unit": "colher_sopa"
+    },
+    {
+      "food": "sal",
+      "quantity": 1,
+      "unit": "g"
+    },
+    {
+      "food": "agua",
+      "quantity": 600,
+      "unit": "ml"
+    },
+    {
+      "food": "cebolinha",
+      "quantity": 2,
+      "unit": "colher_sopa",
+      "note": "picada"
+    }
+  ],
+  "steps": [
+    "Refogue a cebola e o alho no azeite.",
+    "Junte a abóbora, a água e o sal. Cozinhe por 20 minutos.",
+    "Espere amornar e bata no liquidificador até ficar cremoso.",
+    "Aqueça de novo e sirva com cebolinha."
+  ],
+  "reviewedByNutritionist": false
+}

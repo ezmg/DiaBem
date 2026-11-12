@@ -1,0 +1,70 @@
+{
+  "id": "peixe-assado-com-batata",
+  "name": "Peixe assado com batata e legumes",
+  "mealTypes": [
+    "lunch",
+    "dinner"
+  ],
+  "servings": 2,
+  "prepMinutes": 45,
+  "ingredients": [
+    {
+      "food": "file-de-peixe",
+      "quantity": 300,
+      "unit": "g"
+    },
+    {
+      "food": "batata",
+      "quantity": 2,
+      "unit": "unidade",
+      "note": "em rodelas"
+    },
+    {
+      "food": "tomate",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "em rodelas"
+    },
+    {
+      "food": "cebola",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "em rodelas"
+    },
+    {
+      "food": "pimentao",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "em tiras"
+    },
+    {
+      "food": "azeite",
+      "quantity": 2,
+      "unit": "colher_sopa"
+    },
+    {
+      "food": "limao",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "só o suco"
+    },
+    {
+      "food": "alho",
+      "quantity": 2,
+      "unit": "dente",
+      "note": "amassado"
+    },
+    {
+      "food": "sal",
+      "quantity": 1,
+      "unit": "g"
+    }
+  ],
+  "steps": [
+    "Tempere o peixe com o suco de limão, o alho e o sal. Deixe 15 minutos.",
+    "Forre uma assadeira com as rodelas de batata. Coloque o peixe por cima.",
+    "Cubra com o tomate, a cebola e o pimentão. Regue com o azeite.",
+    "Cubra com papel-alumínio e asse em forno médio por 25 minutos. Tire o papel e asse mais 10 minutos."
+  ],
+  "reviewedByNutritionist": false
+}

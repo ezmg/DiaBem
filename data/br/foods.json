@@ -1,0 +1,301 @@
+{
+  "table": "taco4",
+  "tableFile": "sources/taco4.csv",
+  "foods": [
+    {
+      "id": "agua",
+      "name": "água",
+      "pantryItem": "agua",
+      "nutrientFree": true,
+      "nutrientFreeSource": "definition"
+    },
+    {
+      "id": "farinha-de-milho",
+      "name": "flocão de milho",
+      "pantryItem": "farinha-de-milho",
+      "tableId": "33"
+    },
+    {
+      "id": "goma-de-tapioca",
+      "name": "goma de tapioca",
+      "pantryItem": "tapioca",
+      "tableId": "124"
+    },
+    {
+      "id": "aveia",
+      "name": "aveia em flocos",
+      "pantryItem": "aveia",
+      "tableId": "7"
+    },
+    {
+      "id": "leite-em-po-desnatado",
+      "name": "leite em pó desnatado",
+      "pantryItem": "leite-em-po",
+      "tableId": "456"
+    },
+    {
+      "id": "banana-prata",
+      "name": "banana-prata",
+      "pantryItem": "banana",
+      "tableId": "182"
+    },
+    {
+      "id": "pao-integral",
+      "name": "pão integral de forma",
+      "pantryItem": "pao-integral",
+      "tableId": "52"
+    },
+    {
+      "id": "ovo",
+      "name": "ovo",
+      "pantryItem": "ovo",
+      "tableId": "489"
+    },
+    {
+      "id": "tomate",
+      "name": "tomate",
+      "pantryItem": "tomate",
+      "tableId": "157"
+    },
+    {
+      "id": "cebola",
+      "name": "cebola",
+      "pantryItem": "cebola",
+      "tableId": "107"
+    },
+    {
+      "id": "alho",
+      "name": "alho",
+      "pantryItem": "alho",
+      "tableId": "82"
+    },
+    {
+      "id": "espinafre",
+      "name": "espinafre",
+      "pantryItem": "espinafre",
+      "tableId": "119"
+    },
+    {
+      "id": "azeite",
+      "name": "azeite de oliva",
+      "pantryItem": "azeite",
+      "tableId": "260",
+      "supplements": {
+        "SODIUM_MG": {
+          "value": 2,
+          "source": "usda-fdc-sr",
+          "reference": "FDC 171413 Oil, olive, salad or cooking"
+        },
+        "POTASSIUM_MG": {
+          "value": 1,
+          "source": "usda-fdc-sr",
+          "reference": "FDC 171413 Oil, olive, salad or cooking"
+        }
+      }
+    },
+    {
+      "id": "oleo-de-soja",
+      "name": "óleo de soja",
+      "pantryItem": "oleo",
+      "tableId": "272",
+      "supplements": {
+        "SODIUM_MG": {
+          "value": 0,
+          "source": "usda-fdc-sr",
+          "reference": "FDC 171411 Oil, soybean, salad or cooking"
+        },
+        "POTASSIUM_MG": {
+          "value": 0,
+          "source": "usda-fdc-sr",
+          "reference": "FDC 171411 Oil, soybean, salad or cooking"
+        }
+      }
+    },
+    {
+      "id": "mamao-papaia",
+      "name": "mamão papaia",
+      "pantryItem": "mamao",
+      "tableId": "226"
+    },
+    {
+      "id": "iogurte-natural",
+      "name": "iogurte natural",
+      "pantryItem": "iogurte",
+      "tableId": "448"
+    },
+    {
+      "id": "morango",
+      "name": "morango",
+      "pantryItem": "morango",
+      "tableId": "239"
+    },
+    {
+      "id": "batata-doce-cozida",
+      "name": "batata-doce cozida",
+      "pantryItem": "batata-doce",
+      "tableId": "88"
+    },
+    {
+      "id": "arroz-integral-cozido",
+      "name": "arroz integral cozido",
+      "pantryItem": "arroz-integral",
+      "tableId": "1"
+    },
+    {
+      "id": "feijao-carioca-cozido",
+      "name": "feijão carioca cozido",
+      "pantryItem": "feijao",
+      "tableId": "561"
+    },
+    {
+      "id": "feijao-fradinho-cozido",
+      "name": "feijão-de-corda cozido",
+      "pantryItem": "feijao-de-corda",
+      "tableId": "563"
+    },
+    {
+      "id": "peito-de-frango",
+      "name": "peito de frango sem pele",
+      "pantryItem": "frango",
+      "tableId": "409"
+    },
+    {
+      "id": "alface",
+      "name": "alface",
+      "pantryItem": "alface",
+      "tableId": "78"
+    },
+    {
+      "id": "limao",
+      "name": "limão",
+      "pantryItem": "limao",
+      "tableId": "220"
+    },
+    {
+      "id": "carne-moida",
+      "name": "carne moída (acém)",
+      "pantryItem": "carne-moida",
+      "tableId": "327"
+    },
+    {
+      "id": "chuchu",
+      "name": "chuchu",
+      "pantryItem": "chuchu",
+      "tableId": "113"
+    },
+    {
+      "id": "cebolinha",
+      "name": "cebolinha",
+      "pantryItem": "cebolinha",
+      "tableId": "108"
+    },
+    {
+      "id": "file-de-peixe",
+      "name": "filé de peixe (pescada)",
+      "pantryItem": "peixe",
+      "tableId": "307"
+    },
+    {
+      "id": "batata",
+      "name": "batata",
+      "pantryItem": "batata",
+      "tableId": "92"
+    },
+    {
+      "id": "pimentao",
+      "name": "pimentão verde",
+      "pantryItem": "pimentao",
+      "tableId": "144"
+    },
+    {
+      "id": "quiabo",
+      "name": "quiabo",
+      "pantryItem": "quiabo",
+      "tableId": "147"
+    },
+    {
+      "id": "grao-de-bico",
+      "name": "grão-de-bico seco",
+      "pantryItem": "grao-de-bico",
+      "tableId": "575"
+    },
+    {
+      "id": "pepino",
+      "name": "pepino",
+      "pantryItem": "pepino",
+      "tableId": "142"
+    },
+    {
+      "id": "lentilha",
+      "name": "lentilha seca",
+      "pantryItem": "lentilha",
+      "tableId": "578"
+    },
+    {
+      "id": "cenoura",
+      "name": "cenoura",
+      "pantryItem": "cenoura",
+      "tableId": "110"
+    },
+    {
+      "id": "abobrinha",
+      "name": "abobrinha",
+      "pantryItem": "abobrinha",
+      "tableId": "71"
+    },
+    {
+      "id": "abobora",
+      "name": "abóbora cabotiá",
+      "pantryItem": "abobora",
+      "tableId": "65"
+    },
+    {
+      "id": "vagem",
+      "name": "vagem",
+      "pantryItem": "vagem",
+      "tableId": "162"
+    },
+    {
+      "id": "queijo-minas",
+      "name": "queijo minas frescal",
+      "pantryItem": "queijo-minas",
+      "tableId": "461"
+    },
+    {
+      "id": "maca",
+      "name": "maçã",
+      "pantryItem": "maca",
+      "tableId": "222"
+    },
+    {
+      "id": "goiaba",
+      "name": "goiaba",
+      "pantryItem": "goiaba",
+      "tableId": "200"
+    },
+    {
+      "id": "ricota",
+      "name": "ricota",
+      "pantryItem": "ricota",
+      "tableId": "469"
+    },
+    {
+      "id": "couve",
+      "name": "couve",
+      "pantryItem": "couve",
+      "tableId": "115"
+    },
+    {
+      "id": "melao",
+      "name": "melão",
+      "pantryItem": "melao",
+      "tableId": "236"
+    },
+    {
+      "id": "sal",
+      "name": "sal",
+      "pantryItem": "sal",
+      "tableId": "517"
+    }
+  ]
+}

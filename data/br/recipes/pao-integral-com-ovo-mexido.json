@@ -1,0 +1,41 @@
+{
+  "id": "pao-integral-com-ovo-mexido",
+  "name": "Pão integral com ovo mexido",
+  "mealTypes": [
+    "breakfast"
+  ],
+  "servings": 1,
+  "prepMinutes": 10,
+  "ingredients": [
+    {
+      "food": "pao-integral",
+      "quantity": 2,
+      "unit": "fatia"
+    },
+    {
+      "food": "ovo",
+      "quantity": 1,
+      "unit": "unidade"
+    },
+    {
+      "food": "oleo-de-soja",
+      "quantity": 1,
+      "unit": "colher_cha"
+    },
+    {
+      "food": "tomate",
+      "quantity": 0.5,
+      "unit": "unidade",
+      "note": "em rodelas"
+    }
+  ],
+  "steps": [
+    "Unte uma frigideira com o óleo e aqueça em fogo baixo.",
+    "Bata o ovo, coloque na frigideira e mexa até firmar.",
+    "Sirva o ovo sobre o pão com as rodelas de tomate."
+  ],
+  "reviewedByNutritionist": false,
+  "tips": [
+    "O pão já tem sal. Não precisa colocar sal no ovo."
+  ]
+}

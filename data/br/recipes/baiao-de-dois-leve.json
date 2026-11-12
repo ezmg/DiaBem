@@ -1,0 +1,71 @@
+{
+  "id": "baiao-de-dois-leve",
+  "name": "Baião de dois leve",
+  "mealTypes": [
+    "lunch"
+  ],
+  "servings": 4,
+  "prepMinutes": 30,
+  "ingredients": [
+    {
+      "food": "arroz-integral-cozido",
+      "quantity": 12,
+      "unit": "colher_sopa"
+    },
+    {
+      "food": "feijao-fradinho-cozido",
+      "quantity": 2,
+      "unit": "concha"
+    },
+    {
+      "food": "queijo-minas",
+      "quantity": 2,
+      "unit": "fatia",
+      "note": "em cubos"
+    },
+    {
+      "food": "cebola",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "picada"
+    },
+    {
+      "food": "alho",
+      "quantity": 2,
+      "unit": "dente",
+      "note": "amassado"
+    },
+    {
+      "food": "tomate",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "picado"
+    },
+    {
+      "food": "oleo-de-soja",
+      "quantity": 1,
+      "unit": "colher_sopa"
+    },
+    {
+      "food": "sal",
+      "quantity": 1,
+      "unit": "g"
+    },
+    {
+      "food": "cebolinha",
+      "quantity": 3,
+      "unit": "colher_sopa",
+      "note": "picada"
+    }
+  ],
+  "steps": [
+    "Refogue a cebola e o alho no óleo.",
+    "Junte o tomate e cozinhe por 3 minutos.",
+    "Coloque o feijão-de-corda cozido, o arroz integral cozido e o sal. Misture bem.",
+    "Desligue, junte o queijo em cubos e a cebolinha. Tampe por 2 minutos e sirva."
+  ],
+  "reviewedByNutritionist": false,
+  "tips": [
+    "Esta versão usa queijo minas frescal, que tem menos sal que o queijo coalho."
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "id": "abobora-com-carne-moida",
+  "name": "Abóbora refogada com carne moída",
+  "mealTypes": [
+    "lunch",
+    "dinner"
+  ],
+  "servings": 3,
+  "prepMinutes": 35,
+  "ingredients": [
+    {
+      "food": "abobora",
+      "quantity": 500,
+      "unit": "g",
+      "note": "sem casca, em cubos"
+    },
+    {
+      "food": "carne-moida",
+      "quantity": 250,
+      "unit": "g"
+    },
+    {
+      "food": "cebola",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "picada"
+    },
+    {
+      "food": "alho",
+      "quantity": 2,
+      "unit": "dente",
+      "note": "amassado"
+    },
+    {
+      "food": "oleo-de-soja",
+      "quantity": 1,
+      "unit": "colher_sopa"
+    },
+    {
+      "food": "sal",
+      "quantity": 1.5,
+      "unit": "g"
+    },
+    {
+      "food": "agua",
+      "quantity": 100,
+      "unit": "ml"
+    },
+    {
+      "food": "cebolinha",
+      "quantity": 2,
+      "unit": "colher_sopa",
+      "note": "picada"
+    }
+  ],
+  "steps": [
+    "Refogue a cebola e o alho no óleo.",
+    "Junte a carne moída e mexa até ficar soltinha.",
+    "Coloque a abóbora, o sal e a água. Tampe e cozinhe por 15 minutos, até a abóbora ficar macia.",
+    "Finalize com a cebolinha."
+  ],
+  "reviewedByNutritionist": false
+}

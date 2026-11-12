@@ -1,0 +1,72 @@
+{
+  "id": "prato-feito-com-frango-grelhado",
+  "name": "Prato feito com frango grelhado",
+  "mealTypes": [
+    "lunch",
+    "dinner"
+  ],
+  "servings": 2,
+  "prepMinutes": 35,
+  "ingredients": [
+    {
+      "food": "peito-de-frango",
+      "quantity": 200,
+      "unit": "g",
+      "note": "em bifes finos"
+    },
+    {
+      "food": "limao",
+      "quantity": 0.5,
+      "unit": "unidade",
+      "note": "só o suco"
+    },
+    {
+      "food": "alho",
+      "quantity": 2,
+      "unit": "dente",
+      "note": "amassado"
+    },
+    {
+      "food": "sal",
+      "quantity": 1,
+      "unit": "g"
+    },
+    {
+      "food": "azeite",
+      "quantity": 1,
+      "unit": "colher_sopa"
+    },
+    {
+      "food": "arroz-integral-cozido",
+      "quantity": 6,
+      "unit": "colher_sopa"
+    },
+    {
+      "food": "feijao-carioca-cozido",
+      "quantity": 2,
+      "unit": "concha"
+    },
+    {
+      "food": "alface",
+      "quantity": 6,
+      "unit": "folha"
+    },
+    {
+      "food": "tomate",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "em rodelas"
+    }
+  ],
+  "steps": [
+    "Tempere o frango com o suco de limão, o alho e metade do sal. Deixe 15 minutos.",
+    "Aqueça uma frigideira com metade do azeite e grelhe o frango, 5 minutos de cada lado.",
+    "Monte a salada com a alface e o tomate. Tempere com o resto do azeite e do sal.",
+    "Sirva cada prato com 3 colheres de sopa de arroz, 1 concha de feijão, o frango e a salada."
+  ],
+  "reviewedByNutritionist": false,
+  "tips": [
+    "Comece a refeição pela salada.",
+    "Arroz e feijão já cozidos sem sal."
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "id": "br",
+  "locale": "pt-BR",
+  "ricePantryItems": ["arroz-integral"],
+  "sources": [
+    {
+      "id": "taco4",
+      "citation": "NEPA/UNICAMP. Tabela Brasileira de Composição de Alimentos – TACO. 4. ed. rev. e ampl. Campinas: NEPA/UNICAMP, 2011.",
+      "url": "https://www.nepa.unicamp.br/",
+      "license": "Reprodução parcial ou total permitida, desde que citada a fonte."
+    },
+    {
+      "id": "ibge-pof-2008",
+      "citation": "IBGE. Pesquisa de Orçamentos Familiares 2008-2009: Tabela de Medidas Referidas para os Alimentos Consumidos no Brasil. Rio de Janeiro: IBGE, 2011.",
+      "url": "https://biblioteca.ibge.gov.br/visualizacao/livros/liv50000.pdf",
+      "license": "Publicação estatística oficial; uso com citação da fonte (IBGE)."
+    },
+    {
+      "id": "usda-fdc-sr",
+      "citation": "U.S. Department of Agriculture, Agricultural Research Service. FoodData Central: SR Legacy, 2018-04.",
+      "url": "https://fdc.nal.usda.gov/",
+      "license": "Domínio público (CC0 1.0). Usada só para valores que a TACO deixa em branco."
+    },
+    {
+      "id": "definition",
+      "citation": "Valor por definição: água potável não fornece energia nem carboidratos; 1 ml de água = 1 g.",
+      "license": "Não se aplica."
+    },
+    {
+      "id": "sbd-2024",
+      "citation": "Sociedade Brasileira de Diabetes. Diretriz Oficial da SBD: Terapia nutricional no pré-diabetes e no diabetes mellitus tipo 2 (recomendação R10 sobre fibras).",
+      "url": "https://diretriz.diabetes.org.br/terapia-nutricional-no-pre-diabetes-e-no-diabetes-mellitus-tipo-2/",
+      "license": "Referência citada (não reproduzida)."
+    },
+    {
+      "id": "who-sodium-2012",
+      "citation": "WHO. Guideline: Sodium intake for adults and children. Geneva: World Health Organization, 2012 (menos de 2 g de sódio por dia).",
+      "url": "https://www.who.int/publications/i/item/9789241504836",
+      "license": "Referência citada (não reproduzida)."
+    },
+    {
+      "id": "who-sugars-2015",
+      "citation": "WHO. Guideline: Sugars intake for adults and children. Geneva: World Health Organization, 2015 (açúcares livres abaixo de 10% da energia).",
+      "url": "https://www.who.int/publications/i/item/9789241549028",
+      "license": "Referência citada (não reproduzida)."
+    },
+    {
+      "id": "anvisa-rdc-429-2020",
+      "citation": "ANVISA. RDC nº 429/2020 e IN nº 75/2020: rotulagem nutricional (limite de 'alto em sódio' de 600 mg por 100 g; valor diário de referência de 50 g de açúcares adicionados).",
+      "url": "https://www.gov.br/anvisa/",
+      "license": "Referência citada (não reproduzida)."
+    },
+    {
+      "id": "uk-fop-2016",
+      "citation": "UK Department of Health / Food Standards Agency. Guide to creating a front of pack (FoP) nutrition label, 2016 (sal 'baixo' até 0,3 g por 100 g; 'alto' acima de 30% da referência diária por porção).",
+      "url": "https://www.gov.uk/government/publications/front-of-pack-nutrition-labelling-guidance",
+      "license": "Referência citada (não reproduzida)."
+    },
+    {
+      "id": "pending-nutritionist",
+      "citation": "Valor provisório sem fonte oficial clara. Precisa ser revisado por nutricionista.",
+      "license": "Não se aplica."
+    }
+  ]
+}

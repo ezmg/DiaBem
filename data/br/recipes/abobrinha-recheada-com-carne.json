@@ -1,0 +1,64 @@
+{
+  "id": "abobrinha-recheada-com-carne",
+  "name": "Abobrinha recheada com carne",
+  "mealTypes": [
+    "dinner",
+    "lunch"
+  ],
+  "servings": 2,
+  "prepMinutes": 45,
+  "ingredients": [
+    {
+      "food": "abobrinha",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "cortada ao meio no comprido"
+    },
+    {
+      "food": "carne-moida",
+      "quantity": 200,
+      "unit": "g"
+    },
+    {
+      "food": "tomate",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "picado"
+    },
+    {
+      "food": "cebola",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "picada"
+    },
+    {
+      "food": "alho",
+      "quantity": 1,
+      "unit": "dente",
+      "note": "amassado"
+    },
+    {
+      "food": "oleo-de-soja",
+      "quantity": 1,
+      "unit": "colher_cha"
+    },
+    {
+      "food": "queijo-minas",
+      "quantity": 2,
+      "unit": "fatia",
+      "note": "esfarelado"
+    },
+    {
+      "food": "sal",
+      "quantity": 1,
+      "unit": "g"
+    }
+  ],
+  "steps": [
+    "Retire o miolo da abobrinha com uma colher e pique o miolo.",
+    "Refogue a cebola e o alho no óleo. Junte a carne e mexa até ficar soltinha.",
+    "Coloque o tomate, o miolo picado e o sal. Cozinhe por 5 minutos.",
+    "Recheie as metades da abobrinha, cubra com o queijo e asse em forno médio por 25 minutos."
+  ],
+  "reviewedByNutritionist": false
+}

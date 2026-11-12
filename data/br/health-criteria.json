@@ -1,0 +1,37 @@
+{
+  "carbohydrate": {
+    "perServingG": {
+      "breakfast": { "greenMax": 30, "amberMax": 45 },
+      "lunch": { "greenMax": 45, "amberMax": 60 },
+      "snack": { "greenMax": 15, "amberMax": 30 },
+      "dinner": { "greenMax": 45, "amberMax": 60 }
+    },
+    "status": "pending_review",
+    "sources": ["pending-nutritionist"],
+    "note": "A diretriz da SBD não fixa gramas de carboidrato por refeição: a quantidade deve ser individualizada. Estes valores são provisórios, baseados na prática habitual de contagem de carboidratos (porções de 15 g), e PRECISAM ser revisados por nutricionista. Se a pessoa tiver um limite dado pelo seu nutricionista, a app usa esse limite."
+  },
+  "sodium": {
+    "dailyLimitMg": 2000,
+    "per100gGreenMaxMg": 120,
+    "per100gRedFromMg": 600,
+    "perServingRedShareOfDaily": 0.3,
+    "status": "derived",
+    "sources": ["who-sodium-2012", "anvisa-rdc-429-2020", "uk-fop-2016"],
+    "note": "Limite diário de 2.000 mg de sódio (OMS). Vermelho: 600 mg ou mais por 100 g (limite 'alto em sódio' da ANVISA) ou mais de 30% do limite diário numa porção (regra do semáforo britânico). Verde: até 120 mg por 100 g (0,3 g de sal, regra britânica). Amarelo: o resto. A combinação das regras deve ser confirmada por nutricionista."
+  },
+  "fiber": {
+    "dailyMinG": 25,
+    "per1000KcalG": 14,
+    "sourcePerServingG": 2.5,
+    "highPerServingG": 5,
+    "status": "pending_review",
+    "sources": ["sbd-2024", "pending-nutritionist"],
+    "note": "Meta diária oficial da SBD (R10): 14 g por 1.000 kcal, mínimo de 25 g por dia. Os rótulos 'fonte de fibras' (2,5 g por porção) e 'rico em fibras' (5 g por porção) são provisórios e precisam de revisão."
+  },
+  "addedSugar": {
+    "dailyLimitG": 50,
+    "status": "official",
+    "sources": ["who-sugars-2015", "anvisa-rdc-429-2020"],
+    "note": "Menos de 10% da energia em açúcares livres (OMS); 50 g é o valor diário de referência da ANVISA para açúcares adicionados numa dieta de 2.000 kcal. As receitas do DiaBem evitam açúcar adicionado."
+  }
+}

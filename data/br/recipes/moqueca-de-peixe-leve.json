@@ -1,0 +1,79 @@
+{
+  "id": "moqueca-de-peixe-leve",
+  "name": "Moqueca de peixe leve",
+  "mealTypes": [
+    "dinner",
+    "lunch"
+  ],
+  "servings": 3,
+  "prepMinutes": 40,
+  "ingredients": [
+    {
+      "food": "file-de-peixe",
+      "quantity": 400,
+      "unit": "g",
+      "note": "em pedaços"
+    },
+    {
+      "food": "tomate",
+      "quantity": 3,
+      "unit": "unidade",
+      "note": "em rodelas"
+    },
+    {
+      "food": "cebola",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "em rodelas"
+    },
+    {
+      "food": "pimentao",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "em rodelas"
+    },
+    {
+      "food": "alho",
+      "quantity": 2,
+      "unit": "dente",
+      "note": "amassado"
+    },
+    {
+      "food": "azeite",
+      "quantity": 2,
+      "unit": "colher_sopa"
+    },
+    {
+      "food": "limao",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "só o suco"
+    },
+    {
+      "food": "sal",
+      "quantity": 1.5,
+      "unit": "g"
+    },
+    {
+      "food": "agua",
+      "quantity": 100,
+      "unit": "ml"
+    },
+    {
+      "food": "cebolinha",
+      "quantity": 3,
+      "unit": "colher_sopa",
+      "note": "picada"
+    }
+  ],
+  "steps": [
+    "Tempere o peixe com o suco de limão, o alho e o sal. Deixe 15 minutos.",
+    "Numa panela larga, faça camadas: metade da cebola, do tomate e do pimentão, depois o peixe, depois o resto dos legumes.",
+    "Regue com o azeite e a água. Tampe e cozinhe em fogo baixo por 20 minutos, sem mexer.",
+    "Finalize com a cebolinha."
+  ],
+  "reviewedByNutritionist": false,
+  "tips": [
+    "Esta versão usa azeite de oliva em vez de azeite de dendê e não leva leite de coco, para ficar mais leve."
+  ]
+}

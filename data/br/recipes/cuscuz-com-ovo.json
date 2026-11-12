@@ -1,0 +1,55 @@
+{
+  "id": "cuscuz-com-ovo",
+  "name": "Cuscuz com ovo mexido",
+  "mealTypes": [
+    "breakfast",
+    "dinner"
+  ],
+  "servings": 2,
+  "prepMinutes": 25,
+  "ingredients": [
+    {
+      "food": "farinha-de-milho",
+      "quantity": 5,
+      "unit": "colher_sopa"
+    },
+    {
+      "food": "agua",
+      "quantity": 120,
+      "unit": "ml"
+    },
+    {
+      "food": "sal",
+      "quantity": 0.5,
+      "unit": "g"
+    },
+    {
+      "food": "ovo",
+      "quantity": 2,
+      "unit": "unidade"
+    },
+    {
+      "food": "tomate",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "picado"
+    },
+    {
+      "food": "cebolinha",
+      "quantity": 1,
+      "unit": "colher_sopa",
+      "note": "picada",
+      "optional": true
+    }
+  ],
+  "steps": [
+    "Misture o flocão de milho com a água e o sal. Deixe descansar por 10 minutos.",
+    "Coloque na cuscuzeira e cozinhe no vapor por 10 minutos.",
+    "Bata os ovos e mexa numa frigideira antiaderente, em fogo baixo, até firmar.",
+    "Sirva o cuscuz com o ovo, o tomate picado e a cebolinha."
+  ],
+  "reviewedByNutritionist": false,
+  "tips": [
+    "O ovo ajuda a deixar a refeição mais equilibrada."
+  ]
+}
