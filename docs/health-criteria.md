@@ -31,6 +31,16 @@ En la pantalla de resultados hay un interruptor para ver primero las recetas con
 Solo cambia el **orden**: las recetas por encima del límite rojo siguen al final y con aviso. La
 app no recomienda cantidades ni trata la hipoglucemia; el texto remite siempre al médico.
 
+### Semáforo de un alimento suelto ("Consultar um alimento")
+
+- Se calcula sobre **la cantidad elegida** (los gramos de hidratos que se van a comer), no por 100 g.
+- Como un alimento suelto no es una comida completa, se compara con la escala de la **merienda**
+  (verde hasta 15 g, amarillo hasta 30 g), la más prudente. Si la persona tiene un límite de su
+  nutricionista, se usa ese. `pending_review`, como el resto de límites de hidratos.
+- El sodio usa las mismas reglas que las recetas.
+- La pantalla nunca dice "puede" o "no puede": remite al médico o nutricionista.
+- Si TACO no tiene el dato de un alimento, no se muestra ese semáforo.
+
 ## Sodio — `derived`
 
 - **Límite diario: 2000 mg** de sodio (OMS, 2012).

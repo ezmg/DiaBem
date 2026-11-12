@@ -26,6 +26,25 @@ data class Food(
     val supplements: Map<Nutrient, SourceRef> = emptyMap(),
 )
 
+/** A way to measure a catalogue food at home: one [unit] weighs [grams]. */
+@Serializable
+data class CatalogPortion(val unit: String, val grams: Double)
+
+/**
+ * Any food of the official composition table, for the "look up a food" screen.
+ * Unlike [Food], it does not need to be used by a recipe.
+ */
+@Serializable
+data class CatalogFood(
+    /** Row id in the composition table. */
+    val id: String,
+    /** Name exactly as written in the table. */
+    val name: String,
+    val per100g: Nutrients,
+    /** Household measures known for this food (may be empty: then only grams are offered). */
+    val portions: List<CatalogPortion> = emptyList(),
+)
+
 /** Something the user can have at home and tick in the ingredient list (e.g. "Arroz"). */
 @Serializable
 data class PantryItem(
