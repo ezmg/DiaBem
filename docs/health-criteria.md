@@ -24,6 +24,13 @@ hidratos en raciones de 15 g, pero **no tienen fuente oficial** y quedan pendien
 Si la persona introduce en su perfil un límite dado por su nutricionista (por ejemplo, "máximo
 45 g de hidratos por comida"), la app usa ese límite: verde si no lo supera, rojo si lo supera.
 
+### Opción "recetas con más hidratos primero"
+
+En la pantalla de resultados hay un interruptor para ver primero las recetas con más hidratos
+(por ejemplo, si el nutricionista ha pedido tomar más hidratos en el desayuno por hipoglucemias).
+Solo cambia el **orden**: las recetas por encima del límite rojo siguen al final y con aviso. La
+app no recomienda cantidades ni trata la hipoglucemia; el texto remite siempre al médico.
+
 ## Sodio — `derived`
 
 - **Límite diario: 2000 mg** de sodio (OMS, 2012).
