@@ -1,9 +1,10 @@
 ---
 id: TASK-12
 title: Filtro y orden según perfil de salud y tipo de comida
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-11-12T14:01:00Z'
+updated_date: '2026-11-12T14:53:00Z'
 labels:
   - fase-2
 dependencies: []
