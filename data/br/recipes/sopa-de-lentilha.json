@@ -1,0 +1,69 @@
+{
+  "id": "sopa-de-lentilha",
+  "name": "Sopa de lentilha",
+  "mealTypes": [
+    "dinner"
+  ],
+  "servings": 4,
+  "prepMinutes": 40,
+  "ingredients": [
+    {
+      "food": "lentilha",
+      "quantity": 150,
+      "unit": "g",
+      "note": "seca"
+    },
+    {
+      "food": "cenoura",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "em cubos"
+    },
+    {
+      "food": "tomate",
+      "quantity": 2,
+      "unit": "unidade",
+      "note": "picado"
+    },
+    {
+      "food": "cebola",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "picada"
+    },
+    {
+      "food": "alho",
+      "quantity": 2,
+      "unit": "dente",
+      "note": "amassado"
+    },
+    {
+      "food": "oleo-de-soja",
+      "quantity": 1,
+      "unit": "colher_sopa"
+    },
+    {
+      "food": "sal",
+      "quantity": 1.5,
+      "unit": "g"
+    },
+    {
+      "food": "agua",
+      "quantity": 1200,
+      "unit": "ml"
+    },
+    {
+      "food": "cebolinha",
+      "quantity": 2,
+      "unit": "colher_sopa",
+      "note": "picada"
+    }
+  ],
+  "steps": [
+    "Refogue a cebola e o alho no óleo. Junte o tomate e cozinhe por 3 minutos.",
+    "Coloque a lentilha lavada, a cenoura, a água e o sal.",
+    "Cozinhe por 30 minutos, até a lentilha desmanchar um pouco.",
+    "Finalize com a cebolinha."
+  ],
+  "reviewedByNutritionist": false
+}

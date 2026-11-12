@@ -1,0 +1,82 @@
+{
+  "id": "sopa-de-legumes-com-frango",
+  "name": "Sopa de legumes com frango",
+  "mealTypes": [
+    "dinner",
+    "lunch"
+  ],
+  "servings": 4,
+  "prepMinutes": 45,
+  "ingredients": [
+    {
+      "food": "peito-de-frango",
+      "quantity": 250,
+      "unit": "g",
+      "note": "em cubos"
+    },
+    {
+      "food": "batata",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "em cubos"
+    },
+    {
+      "food": "cenoura",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "em cubos"
+    },
+    {
+      "food": "chuchu",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "em cubos"
+    },
+    {
+      "food": "abobrinha",
+      "quantity": 0.5,
+      "unit": "unidade",
+      "note": "em cubos"
+    },
+    {
+      "food": "cebola",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "picada"
+    },
+    {
+      "food": "alho",
+      "quantity": 2,
+      "unit": "dente",
+      "note": "amassado"
+    },
+    {
+      "food": "oleo-de-soja",
+      "quantity": 1,
+      "unit": "colher_sopa"
+    },
+    {
+      "food": "sal",
+      "quantity": 2,
+      "unit": "g"
+    },
+    {
+      "food": "agua",
+      "quantity": 1500,
+      "unit": "ml"
+    },
+    {
+      "food": "cebolinha",
+      "quantity": 2,
+      "unit": "colher_sopa",
+      "note": "picada"
+    }
+  ],
+  "steps": [
+    "Refogue a cebola e o alho no óleo. Junte o frango e doure.",
+    "Coloque a água, a batata, a cenoura, o chuchu e o sal. Cozinhe por 20 minutos.",
+    "Junte a abobrinha e cozinhe mais 5 minutos.",
+    "Desligue e coloque a cebolinha."
+  ],
+  "reviewedByNutritionist": false
+}

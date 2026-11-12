@@ -1,0 +1,41 @@
+{
+  "id": "mingau-de-aveia-com-banana",
+  "name": "Mingau de aveia com banana",
+  "mealTypes": [
+    "breakfast"
+  ],
+  "servings": 1,
+  "prepMinutes": 10,
+  "ingredients": [
+    {
+      "food": "aveia",
+      "quantity": 2,
+      "unit": "colher_sopa"
+    },
+    {
+      "food": "leite-em-po-desnatado",
+      "quantity": 2,
+      "unit": "colher_sopa"
+    },
+    {
+      "food": "agua",
+      "quantity": 200,
+      "unit": "ml"
+    },
+    {
+      "food": "banana-prata",
+      "quantity": 0.5,
+      "unit": "unidade",
+      "note": "amassada"
+    }
+  ],
+  "steps": [
+    "Numa panela pequena, misture a água, o leite em pó e a aveia.",
+    "Leve ao fogo baixo, mexendo sempre, por 5 minutos, até engrossar.",
+    "Desligue o fogo e misture a banana amassada. Não precisa de açúcar."
+  ],
+  "reviewedByNutritionist": false,
+  "tips": [
+    "A banana já deixa o mingau docinho."
+  ]
+}

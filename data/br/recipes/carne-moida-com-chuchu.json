@@ -1,0 +1,69 @@
+{
+  "id": "carne-moida-com-chuchu",
+  "name": "Carne moída com chuchu",
+  "mealTypes": [
+    "lunch",
+    "dinner"
+  ],
+  "servings": 3,
+  "prepMinutes": 30,
+  "ingredients": [
+    {
+      "food": "carne-moida",
+      "quantity": 300,
+      "unit": "g"
+    },
+    {
+      "food": "chuchu",
+      "quantity": 2,
+      "unit": "unidade",
+      "note": "em cubos"
+    },
+    {
+      "food": "cebola",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "picada"
+    },
+    {
+      "food": "alho",
+      "quantity": 2,
+      "unit": "dente",
+      "note": "amassado"
+    },
+    {
+      "food": "tomate",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "picado"
+    },
+    {
+      "food": "oleo-de-soja",
+      "quantity": 1,
+      "unit": "colher_sopa"
+    },
+    {
+      "food": "sal",
+      "quantity": 1.5,
+      "unit": "g"
+    },
+    {
+      "food": "agua",
+      "quantity": 100,
+      "unit": "ml"
+    },
+    {
+      "food": "cebolinha",
+      "quantity": 2,
+      "unit": "colher_sopa",
+      "note": "picada"
+    }
+  ],
+  "steps": [
+    "Aqueça o óleo e refogue a cebola e o alho.",
+    "Junte a carne moída e mexa até ficar soltinha e sem partes vermelhas.",
+    "Coloque o tomate, o chuchu, o sal e a água. Tampe e cozinhe por 15 minutos, até o chuchu ficar macio.",
+    "Desligue e coloque a cebolinha."
+  ],
+  "reviewedByNutritionist": false
+}

@@ -1,0 +1,64 @@
+{
+  "id": "lentilha-com-legumes",
+  "name": "Lentilha com legumes",
+  "mealTypes": [
+    "lunch",
+    "dinner"
+  ],
+  "servings": 4,
+  "prepMinutes": 35,
+  "ingredients": [
+    {
+      "food": "lentilha",
+      "quantity": 200,
+      "unit": "g",
+      "note": "seca"
+    },
+    {
+      "food": "cenoura",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "em cubos"
+    },
+    {
+      "food": "abobrinha",
+      "quantity": 0.5,
+      "unit": "unidade",
+      "note": "em cubos"
+    },
+    {
+      "food": "cebola",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "picada"
+    },
+    {
+      "food": "alho",
+      "quantity": 2,
+      "unit": "dente",
+      "note": "amassado"
+    },
+    {
+      "food": "oleo-de-soja",
+      "quantity": 1,
+      "unit": "colher_sopa"
+    },
+    {
+      "food": "sal",
+      "quantity": 1.5,
+      "unit": "g"
+    },
+    {
+      "food": "agua",
+      "quantity": 800,
+      "unit": "ml"
+    }
+  ],
+  "steps": [
+    "Lave a lentilha.",
+    "Numa panela, refogue a cebola e o alho no óleo.",
+    "Junte a lentilha, a cenoura, o sal e a água. Cozinhe por 20 minutos.",
+    "Coloque a abobrinha e cozinhe mais 5 minutos, até a lentilha ficar macia."
+  ],
+  "reviewedByNutritionist": false
+}

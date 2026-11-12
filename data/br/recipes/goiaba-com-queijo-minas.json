@@ -1,0 +1,27 @@
+{
+  "id": "goiaba-com-queijo-minas",
+  "name": "Goiaba com queijo minas",
+  "mealTypes": [
+    "snack"
+  ],
+  "servings": 1,
+  "prepMinutes": 5,
+  "ingredients": [
+    {
+      "food": "goiaba",
+      "quantity": 0.5,
+      "unit": "unidade",
+      "note": "em fatias"
+    },
+    {
+      "food": "queijo-minas",
+      "quantity": 1,
+      "unit": "fatia"
+    }
+  ],
+  "steps": [
+    "Lave a goiaba e corte em fatias.",
+    "Sirva com a fatia de queijo minas. É um 'romeu e julieta' com a fruta, sem goiabada."
+  ],
+  "reviewedByNutritionist": false
+}

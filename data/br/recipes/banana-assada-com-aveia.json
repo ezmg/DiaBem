@@ -1,0 +1,28 @@
+{
+  "id": "banana-assada-com-aveia",
+  "name": "Banana assada com aveia",
+  "mealTypes": [
+    "snack",
+    "breakfast"
+  ],
+  "servings": 1,
+  "prepMinutes": 20,
+  "ingredients": [
+    {
+      "food": "banana-prata",
+      "quantity": 1,
+      "unit": "unidade"
+    },
+    {
+      "food": "aveia",
+      "quantity": 1,
+      "unit": "colher_sopa"
+    }
+  ],
+  "steps": [
+    "Corte a banana ao meio no comprido, com casca.",
+    "Asse em forno médio ou na frigideira tampada por 15 minutos.",
+    "Polvilhe a aveia e sirva morna."
+  ],
+  "reviewedByNutritionist": false
+}

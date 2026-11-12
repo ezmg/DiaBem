@@ -1,0 +1,71 @@
+{
+  "id": "frango-com-quiabo",
+  "name": "Frango com quiabo",
+  "mealTypes": [
+    "lunch",
+    "dinner"
+  ],
+  "servings": 3,
+  "prepMinutes": 40,
+  "ingredients": [
+    {
+      "food": "peito-de-frango",
+      "quantity": 300,
+      "unit": "g",
+      "note": "em cubos"
+    },
+    {
+      "food": "quiabo",
+      "quantity": 15,
+      "unit": "unidade",
+      "note": "em rodelas"
+    },
+    {
+      "food": "cebola",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "picada"
+    },
+    {
+      "food": "alho",
+      "quantity": 3,
+      "unit": "dente",
+      "note": "amassado"
+    },
+    {
+      "food": "tomate",
+      "quantity": 2,
+      "unit": "unidade",
+      "note": "picado"
+    },
+    {
+      "food": "oleo-de-soja",
+      "quantity": 1,
+      "unit": "colher_sopa"
+    },
+    {
+      "food": "sal",
+      "quantity": 1.5,
+      "unit": "g"
+    },
+    {
+      "food": "agua",
+      "quantity": 200,
+      "unit": "ml"
+    },
+    {
+      "food": "cebolinha",
+      "quantity": 2,
+      "unit": "colher_sopa",
+      "note": "picada"
+    }
+  ],
+  "steps": [
+    "Lave e seque bem o quiabo antes de cortar. Isso ajuda a não ficar com baba.",
+    "Numa frigideira, doure o quiabo com metade do óleo por 10 minutos. Reserve.",
+    "Na panela, refogue a cebola e o alho com o resto do óleo. Junte o frango e doure.",
+    "Coloque o tomate, o sal e a água. Cozinhe por 15 minutos.",
+    "Junte o quiabo, cozinhe mais 5 minutos e finalize com a cebolinha."
+  ],
+  "reviewedByNutritionist": false
+}

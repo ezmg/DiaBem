@@ -1,0 +1,53 @@
+{
+  "id": "salada-de-frutas",
+  "name": "Salada de frutas",
+  "mealTypes": [
+    "snack"
+  ],
+  "servings": 4,
+  "prepMinutes": 15,
+  "ingredients": [
+    {
+      "food": "mamao-papaia",
+      "quantity": 1,
+      "unit": "fatia",
+      "note": "em cubos"
+    },
+    {
+      "food": "maca",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "em cubos"
+    },
+    {
+      "food": "morango",
+      "quantity": 8,
+      "unit": "unidade",
+      "note": "picado"
+    },
+    {
+      "food": "melao",
+      "quantity": 1,
+      "unit": "fatia",
+      "note": "em cubos"
+    },
+    {
+      "food": "banana-prata",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "em rodelas"
+    },
+    {
+      "food": "limao",
+      "quantity": 0.5,
+      "unit": "unidade",
+      "note": "só o suco"
+    }
+  ],
+  "steps": [
+    "Lave bem as frutas e corte em cubos pequenos.",
+    "Misture tudo numa tigela e regue com o suco de limão para não escurecer.",
+    "Divida em 4 porções. Não precisa de açúcar nem leite condensado."
+  ],
+  "reviewedByNutritionist": false
+}

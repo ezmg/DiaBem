@@ -1,0 +1,60 @@
+{
+  "id": "arroz-integral-com-legumes",
+  "name": "Arroz integral com legumes",
+  "mealTypes": [
+    "lunch",
+    "dinner"
+  ],
+  "servings": 3,
+  "prepMinutes": 25,
+  "ingredients": [
+    {
+      "food": "arroz-integral-cozido",
+      "quantity": 12,
+      "unit": "colher_sopa"
+    },
+    {
+      "food": "cenoura",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "em cubos pequenos"
+    },
+    {
+      "food": "vagem",
+      "quantity": 100,
+      "unit": "g",
+      "note": "picada"
+    },
+    {
+      "food": "cebola",
+      "quantity": 1,
+      "unit": "unidade",
+      "note": "picada"
+    },
+    {
+      "food": "alho",
+      "quantity": 2,
+      "unit": "dente",
+      "note": "amassado"
+    },
+    {
+      "food": "oleo-de-soja",
+      "quantity": 1,
+      "unit": "colher_sopa"
+    },
+    {
+      "food": "sal",
+      "quantity": 1,
+      "unit": "g"
+    }
+  ],
+  "steps": [
+    "Cozinhe a cenoura e a vagem no vapor por 8 minutos.",
+    "Refogue a cebola e o alho no óleo.",
+    "Junte os legumes, o arroz integral já cozido e o sal. Mexa por 3 minutos e sirva."
+  ],
+  "reviewedByNutritionist": false,
+  "tips": [
+    "Mais legumes e menos arroz no prato ajuda a controlar a glicose."
+  ]
+}

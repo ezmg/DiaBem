@@ -1,0 +1,426 @@
+{
+  "table": "ibge-pof-2008",
+  "tableFile": "sources/ibge_pof2008_medidas.csv",
+  "units": [
+    {
+      "id": "colher_sopa",
+      "singular": "colher de sopa",
+      "plural": "colheres de sopa"
+    },
+    {
+      "id": "colher_cha",
+      "singular": "colher de chá",
+      "plural": "colheres de chá"
+    },
+    {
+      "id": "fatia",
+      "singular": "fatia",
+      "plural": "fatias"
+    },
+    {
+      "id": "unidade",
+      "singular": "unidade",
+      "plural": "unidades"
+    },
+    {
+      "id": "unidade_pequena",
+      "singular": "unidade pequena",
+      "plural": "unidades pequenas"
+    },
+    {
+      "id": "concha",
+      "singular": "concha",
+      "plural": "conchas"
+    },
+    {
+      "id": "copo_americano",
+      "singular": "copo americano",
+      "plural": "copos americanos"
+    },
+    {
+      "id": "folha",
+      "singular": "folha",
+      "plural": "folhas"
+    },
+    {
+      "id": "dente",
+      "singular": "dente",
+      "plural": "dentes"
+    },
+    {
+      "id": "ml",
+      "singular": "ml",
+      "plural": "ml",
+      "maxQuantity": 3000
+    }
+  ],
+  "measures": [
+    {
+      "food": "farinha-de-milho",
+      "unit": "colher_sopa",
+      "official": {
+        "food": "6500603",
+        "measure": "16",
+        "preparation": "99"
+      }
+    },
+    {
+      "food": "goma-de-tapioca",
+      "unit": "unidade",
+      "official": {
+        "food": "6501502",
+        "measure": "103",
+        "preparation": "99"
+      }
+    },
+    {
+      "food": "aveia",
+      "unit": "colher_sopa",
+      "official": {
+        "food": "6500401",
+        "measure": "16",
+        "preparation": "99"
+      }
+    },
+    {
+      "food": "leite-em-po-desnatado",
+      "unit": "colher_sopa",
+      "official": {
+        "food": "7900710",
+        "measure": "16",
+        "preparation": "99"
+      }
+    },
+    {
+      "food": "banana-prata",
+      "unit": "unidade",
+      "official": {
+        "food": "6801101",
+        "measure": "103",
+        "preparation": "1"
+      }
+    },
+    {
+      "food": "pao-integral",
+      "unit": "fatia",
+      "official": {
+        "food": "8001401",
+        "measure": "32",
+        "preparation": "99"
+      }
+    },
+    {
+      "food": "ovo",
+      "unit": "unidade",
+      "official": {
+        "food": "7803301",
+        "measure": "103",
+        "preparation": "1"
+      }
+    },
+    {
+      "food": "tomate",
+      "unit": "unidade",
+      "official": {
+        "food": "6705101",
+        "measure": "103",
+        "preparation": "99"
+      }
+    },
+    {
+      "food": "cebola",
+      "unit": "unidade",
+      "official": {
+        "food": "6705701",
+        "measure": "103",
+        "preparation": "1"
+      }
+    },
+    {
+      "food": "cebola",
+      "unit": "colher_sopa",
+      "official": {
+        "food": "6705701",
+        "measure": "16",
+        "preparation": "1"
+      }
+    },
+    {
+      "food": "alho",
+      "unit": "dente",
+      "official": {
+        "food": "6706201",
+        "measure": "103",
+        "preparation": "99"
+      }
+    },
+    {
+      "food": "espinafre",
+      "unit": "colher_sopa",
+      "official": {
+        "food": "6700701",
+        "measure": "16",
+        "preparation": "1"
+      }
+    },
+    {
+      "food": "azeite",
+      "unit": "colher_sopa",
+      "official": {
+        "food": "8400101",
+        "measure": "16",
+        "preparation": "99"
+      }
+    },
+    {
+      "food": "azeite",
+      "unit": "colher_cha",
+      "official": {
+        "food": "8400101",
+        "measure": "14",
+        "preparation": "99"
+      }
+    },
+    {
+      "food": "oleo-de-soja",
+      "unit": "colher_sopa",
+      "official": {
+        "food": "8400301",
+        "measure": "16",
+        "preparation": "99"
+      }
+    },
+    {
+      "food": "oleo-de-soja",
+      "unit": "colher_cha",
+      "official": {
+        "food": "8400301",
+        "measure": "14",
+        "preparation": "99"
+      }
+    },
+    {
+      "food": "mamao-papaia",
+      "unit": "colher_sopa",
+      "official": {
+        "food": "6803101",
+        "measure": "16",
+        "preparation": "99"
+      }
+    },
+    {
+      "food": "mamao-papaia",
+      "unit": "fatia",
+      "official": {
+        "food": "6803101",
+        "measure": "32",
+        "preparation": "99"
+      }
+    },
+    {
+      "food": "iogurte-natural",
+      "unit": "copo_americano",
+      "official": {
+        "food": "7901204",
+        "measure": "18",
+        "preparation": "99"
+      }
+    },
+    {
+      "food": "morango",
+      "unit": "unidade",
+      "official": {
+        "food": "6805201",
+        "measure": "103",
+        "preparation": "99"
+      }
+    },
+    {
+      "food": "batata-doce-cozida",
+      "unit": "fatia",
+      "official": {
+        "food": "6400401",
+        "measure": "32",
+        "preparation": "2"
+      }
+    },
+    {
+      "food": "arroz-integral-cozido",
+      "unit": "colher_sopa",
+      "official": {
+        "food": "6300201",
+        "measure": "16",
+        "preparation": "99"
+      }
+    },
+    {
+      "food": "feijao-carioca-cozido",
+      "unit": "concha",
+      "official": {
+        "food": "6303102",
+        "measure": "17",
+        "preparation": "99"
+      }
+    },
+    {
+      "food": "feijao-fradinho-cozido",
+      "unit": "concha",
+      "official": {
+        "food": "6301603",
+        "measure": "17",
+        "preparation": "99"
+      }
+    },
+    {
+      "food": "alface",
+      "unit": "folha",
+      "official": {
+        "food": "6700101",
+        "measure": "34",
+        "preparation": "99"
+      }
+    },
+    {
+      "food": "limao",
+      "unit": "unidade",
+      "official": {
+        "food": "6802001",
+        "measure": "103",
+        "preparation": "99"
+      }
+    },
+    {
+      "food": "chuchu",
+      "unit": "unidade",
+      "official": {
+        "food": "6704101",
+        "measure": "103",
+        "preparation": "1"
+      }
+    },
+    {
+      "food": "cebolinha",
+      "unit": "colher_sopa",
+      "official": {
+        "food": "6701101",
+        "measure": "16",
+        "preparation": "99"
+      }
+    },
+    {
+      "food": "batata",
+      "unit": "unidade",
+      "official": {
+        "food": "6400101",
+        "measure": "103",
+        "preparation": "99"
+      }
+    },
+    {
+      "food": "pimentao",
+      "unit": "unidade",
+      "official": {
+        "food": "6704501",
+        "measure": "103",
+        "preparation": "99"
+      }
+    },
+    {
+      "food": "quiabo",
+      "unit": "unidade",
+      "official": {
+        "food": "6705001",
+        "measure": "103",
+        "preparation": "1"
+      }
+    },
+    {
+      "food": "pepino",
+      "unit": "unidade",
+      "official": {
+        "food": "6704001",
+        "measure": "103",
+        "preparation": "99"
+      }
+    },
+    {
+      "food": "cenoura",
+      "unit": "unidade",
+      "official": {
+        "food": "6401201",
+        "measure": "103",
+        "preparation": "1"
+      }
+    },
+    {
+      "food": "abobrinha",
+      "unit": "unidade",
+      "official": {
+        "food": "6703701",
+        "measure": "103",
+        "preparation": "2"
+      }
+    },
+    {
+      "food": "queijo-minas",
+      "unit": "fatia",
+      "official": {
+        "food": "7907301",
+        "measure": "32",
+        "preparation": "99"
+      }
+    },
+    {
+      "food": "maca",
+      "unit": "unidade",
+      "official": {
+        "food": "6803001",
+        "measure": "103",
+        "preparation": "99"
+      }
+    },
+    {
+      "food": "goiaba",
+      "unit": "unidade",
+      "official": {
+        "food": "6804201",
+        "measure": "103",
+        "preparation": "99"
+      }
+    },
+    {
+      "food": "ricota",
+      "unit": "fatia",
+      "official": {
+        "food": "7902201",
+        "measure": "32",
+        "preparation": "99"
+      }
+    },
+    {
+      "food": "couve",
+      "unit": "folha",
+      "official": {
+        "food": "6700501",
+        "measure": "34",
+        "preparation": "99"
+      }
+    },
+    {
+      "food": "melao",
+      "unit": "fatia",
+      "official": {
+        "food": "6803501",
+        "measure": "32",
+        "preparation": "99"
+      }
+    },
+    {
+      "food": "agua",
+      "unit": "ml",
+      "grams": 1,
+      "source": "definition",
+      "reference": "1 ml de água = 1 g"
+    }
+  ]
+}
