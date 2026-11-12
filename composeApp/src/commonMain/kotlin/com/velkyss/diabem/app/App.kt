@@ -24,6 +24,7 @@ import com.velkyss.diabem.app.ui.screens.FavoritesScreen
 import com.velkyss.diabem.app.ui.screens.HomeScreen
 import com.velkyss.diabem.app.ui.screens.IngredientsScreen
 import com.velkyss.diabem.app.ui.screens.NoticeScreen
+import com.velkyss.diabem.app.ui.screens.PlanScreen
 import com.velkyss.diabem.app.ui.screens.ProfileScreen
 import com.velkyss.diabem.app.ui.screens.ResultsScreen
 import com.velkyss.diabem.app.ui.screens.SettingsScreen
@@ -59,13 +60,15 @@ fun AppContent(c: AppController) {
         )
         Screen.Home -> HomeScreen(
             onMeal = { c.go(Screen.Ingredients(it)) },
+            onPlan = { c.go(Screen.Plan) },
             onFavorites = { c.go(Screen.Favorites) },
             onSettings = { c.go(Screen.Settings) },
         )
-        is Screen.Ingredients -> IngredientsScreen(c, s.meal, onBack = c::back, onSeeRecipes = { c.go(Screen.Results(s.meal)) })
-        is Screen.Results -> ResultsScreen(c, s.meal, onBack = c::back, onOpen = { c.go(Screen.Detail(it, s.meal)) })
+        is Screen.Ingredients -> IngredientsScreen(c, s.slot, onBack = c::back, onSeeRecipes = { c.go(Screen.Results(s.slot)) })
+        is Screen.Results -> ResultsScreen(c, s.slot, onBack = c::back, onOpen = { c.go(Screen.Detail(it, s.slot.mealType)) })
         is Screen.Detail -> DetailScreen(c, s.recipeId, s.meal, onBack = c::back)
         Screen.Favorites -> FavoritesScreen(c, onBack = c::back, onOpen = { c.go(Screen.Detail(it, null)) })
+        Screen.Plan -> PlanScreen(c, onBack = c::back)
         Screen.Settings -> SettingsScreen(c, onBack = c::back, onEditProfile = { c.go(Screen.Profile(firstTime = false)) })
     }
 }

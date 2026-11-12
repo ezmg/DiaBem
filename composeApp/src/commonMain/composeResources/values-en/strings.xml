@@ -22,7 +22,7 @@
     <string name="home_title">What will you cook?</string>
     <string name="meal_breakfast">Breakfast</string>
     <string name="meal_lunch">Lunch</string>
-    <string name="meal_snack">Snack</string>
+    <string name="meal_snack">Afternoon snack</string>
     <string name="meal_dinner">Dinner</string>
     <string name="favorites">My favourites</string>
     <string name="settings">Settings</string>
@@ -86,6 +86,18 @@
     <string name="more_carbs_help">Use this only if your doctor or dietitian told you to eat more carbohydrates at this meal. If your glucose is low right now, follow your doctor’s instructions.</string>
     <string name="ideas_title">Other ideas</string>
     <string name="ideas_help">Several ingredients are missing for these recipes.</string>
+    <string name="meal_morning_snack">Mid-morning snack</string>
+    <string name="plan_button">My dietitian’s plan</string>
+    <string name="plan_title">My plan</string>
+    <string name="plan_help">Write here what your dietitian told you for each meal. Copy it from the paper, word for word.</string>
+    <string name="plan_empty_slot">No options yet.</string>
+    <string name="plan_field_label">New option for %1$s</string>
+    <string name="plan_field_hint">Example: 1 fruit + 1 plain yoghurt</string>
+    <string name="plan_add">Add option</string>
+    <string name="plan_remove">Delete: %1$s</string>
+    <string name="plan_box_title">What your dietitian told you</string>
+    <string name="plan_box_hint">From your plan. To change it, go back and tap “My dietitian’s plan”.</string>
+    <string name="ingredients_title_with_plan">Want other ideas?</string>
     <plurals name="recipes_available">
         <item quantity="one">%1$d recipe available</item>
         <item quantity="other">%1$d recipes available</item>

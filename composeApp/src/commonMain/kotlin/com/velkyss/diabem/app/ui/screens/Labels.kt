@@ -19,6 +19,8 @@ import com.velkyss.diabem.app.resources.meal_breakfast
 import com.velkyss.diabem.app.resources.meal_dinner
 import com.velkyss.diabem.app.resources.meal_lunch
 import com.velkyss.diabem.app.resources.meal_snack
+import com.velkyss.diabem.app.resources.meal_morning_snack
+import com.velkyss.diabem.core.model.MealSlot
 import com.velkyss.diabem.core.model.MealType
 import org.jetbrains.compose.resources.StringResource
 
@@ -29,6 +31,18 @@ val MealType.label: StringResource
         MealType.SNACK -> Res.string.meal_snack
         MealType.DINNER -> Res.string.meal_dinner
     }
+
+val MealSlot.label: StringResource
+    get() = when (this) {
+        MealSlot.BREAKFAST -> Res.string.meal_breakfast
+        MealSlot.MORNING_SNACK -> Res.string.meal_morning_snack
+        MealSlot.LUNCH -> Res.string.meal_lunch
+        MealSlot.AFTERNOON_SNACK -> Res.string.meal_snack
+        MealSlot.DINNER -> Res.string.meal_dinner
+    }
+
+val MealSlot.icon: ImageVector
+    get() = if (this == MealSlot.MORNING_SNACK) Icons.Outlined.Spa else mealType.icon
 
 val MealType.icon: ImageVector
     get() = when (this) {
