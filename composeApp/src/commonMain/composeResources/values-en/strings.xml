@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DiaWell</string>
+    <string name="hello_title">Hello! Welcome to DiaWell</string>
+    <string name="hello_body">Simple recipes for people with type 2 diabetes or high blood pressure. Coming soon.</string>
+    <string name="medical_notice">Recipes are for guidance only. They do not replace your doctor or dietitian.</string>
+</resources>

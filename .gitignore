@@ -1,0 +1,13 @@
+.gradle/
+build/
+.kotlin/
+local.properties
+*.iml
+.idea/
+.DS_Store
+captures/
+*.keystore
+*.jks
+xcuserdata/
+node_modules/
+kotlin-js-store/.cache

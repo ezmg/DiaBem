@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DiaBien</string>
+    <string name="hello_title">¡Hola! Bienvenido a DiaBien</string>
+    <string name="hello_body">Recetas sencillas para personas con diabetes tipo 2 o tensión alta. Muy pronto aquí.</string>
+    <string name="medical_notice">Las recetas son solo orientativas. No sustituyen a tu médico ni a tu nutricionista.</string>
+</resources>
