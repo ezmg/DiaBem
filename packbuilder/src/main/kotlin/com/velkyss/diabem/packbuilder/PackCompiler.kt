@@ -1,6 +1,8 @@
 package com.velkyss.diabem.packbuilder
 
 import com.velkyss.diabem.core.health.HealthCriteria
+import com.velkyss.diabem.core.model.CatalogFood
+import com.velkyss.diabem.core.model.CatalogPortion
 import com.velkyss.diabem.core.model.Food
 import com.velkyss.diabem.core.model.FoodMeasure
 import com.velkyss.diabem.core.model.Nutrient
@@ -105,7 +107,21 @@ class PackCompiler(private val countryDir: File) {
             healthCriteria = criteria,
             recipes = compiled,
             ricePantryItems = pack.ricePantryItems,
+            catalog = catalog(taco, foodsFile, foods, measures),
+            catalogSource = foodsFile.table,
         )
+    }
+}
+
+/** Every row of the composition table, with the household measures already known for it. */
+private fun catalog(taco: TacoTable, foodsFile: FoodsFile, foods: List<Food>, measures: List<FoodMeasure>): List<CatalogFood> {
+    val appFoodsByRow = foodsFile.foods.filter { it.tableId != null }.groupBy({ it.tableId!! }, { it.id })
+    return taco.rows.values.map { row ->
+        val ids = appFoodsByRow[row.id].orEmpty()
+        val portions = measures.filter { it.food in ids }.map { CatalogPortion(it.unit, it.grams) }.distinct()
+        // Use the app food's values when there is one: they include the documented supplements.
+        val per100g = foods.firstOrNull { it.id in ids }?.per100g ?: row.per100g
+        CatalogFood(row.id, row.description, per100g, portions)
     }
 }
 

@@ -1,6 +1,7 @@
 package com.velkyss.diabem.core.pack
 
 import com.velkyss.diabem.core.health.HealthCriteria
+import com.velkyss.diabem.core.model.CatalogFood
 import com.velkyss.diabem.core.model.CompiledRecipe
 import com.velkyss.diabem.core.model.Food
 import com.velkyss.diabem.core.model.FoodMeasure
@@ -40,6 +41,10 @@ data class CountryPack(
     val recipes: List<CompiledRecipe>,
     /** Pantry items counted by the "maximum spoons of rice per meal" limit. */
     val ricePantryItems: Set<String> = emptySet(),
+    /** Every food of the composition table, for looking up a single food. */
+    val catalog: List<CatalogFood> = emptyList(),
+    /** Source id of the composition table the [catalog] comes from. */
+    val catalogSource: String? = null,
 ) {
     companion object {
         const val FORMAT_VERSION = 1

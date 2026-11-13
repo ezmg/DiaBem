@@ -182,6 +182,8 @@ class AppUiTest {
             com.velkyss.diabem.app.ui.Screen.Detail("caldo-verde-leve", null),
             com.velkyss.diabem.app.ui.Screen.Settings,
             com.velkyss.diabem.app.ui.Screen.Plan,
+            com.velkyss.diabem.app.ui.Screen.FoodSearch,
+            com.velkyss.diabem.app.ui.Screen.FoodDetail("53"),
         )
         for (screen in screens) {
             controller.go(screen)
@@ -255,5 +257,29 @@ class AppUiTest {
         controller.go(com.velkyss.diabem.app.ui.Screen.Plan)
         onNodeWithContentDescription("Apagar: 1 fruta + 1 iogurte natural").performScrollTo().performClick()
         assertTrue(store.plan.isEmpty)
+    }
+
+    @Test
+    fun lookUpAFoodAndSeeTheLightChangeWithTheAmount() = runComposeUiTest {
+        launch(newStore(withProfile = true))
+        onNodeWithText("Consultar um alimento").performScrollTo().performClick()
+        onNode(hasSetTextAction()).performTextInput("pao frances")
+        onNodeWithText("Pão, trigo, francês").performClick()
+
+        // default amount: 1 unit = 50 g -> 29 g of carbohydrate -> amber on the snack scale
+        onNodeWithText("1 unidade (50 g)").assertIsSelected()
+        onNodeWithText("29 g").assertExists()
+        onNode(hasContentDescription("Carboidratos: médio")).assertExists()
+        // bread has 648 mg of sodium per 100 g: red, and the profile has hypertension
+        onNode(hasContentDescription("Sal: muito")).assertExists()
+        onNodeWithText("passa do limite indicado para você", substring = true).assertExists()
+
+        // half a unit: 15 g -> green; two units: 59 g -> red
+        onNodeWithText("1/2 unidade (25 g)").performClick()
+        onNode(hasContentDescription("Carboidratos: pouco")).assertExists()
+        onNodeWithText("2 unidades (100 g)").performClick()
+        onNode(hasContentDescription("Carboidratos: muito")).assertExists()
+        onNodeWithText("59 g").assertExists()
+        onNodeWithText("quem decide é o seu médico ou nutricionista", substring = true).assertExists()
     }
 }

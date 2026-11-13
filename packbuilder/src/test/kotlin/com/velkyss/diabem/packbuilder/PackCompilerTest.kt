@@ -77,6 +77,20 @@ class PackCompilerTest {
     }
 
     @Test
+    fun catalogHasEveryTacoFoodWithKnownMeasures() {
+        val pack = PackCompiler(File(dataDir, "br")).compile()
+        assertEquals(597, pack.catalog.size)
+        assertEquals("taco4", pack.catalogSource)
+        val bread = pack.catalog.single { it.id == "53" }
+        assertEquals("Pão, trigo, francês", bread.name)
+        assertEquals(50.0, bread.portions.single { it.unit == "unidade" }.grams)
+        // foods not used by any recipe are there too, with grams only
+        val sausage = pack.catalog.single { it.name == "Lingüiça, frango, frita" }
+        assertTrue(sausage.portions.isEmpty())
+        assertTrue(sausage.per100g.isKnown(Nutrient.SODIUM_MG))
+    }
+
+    @Test
     fun tacoMarkersAreParsedCorrectly() {
         assertEquals(0.0, TacoTable.parse("Tr"))
         assertEquals(0.0, TacoTable.parse("NA"))

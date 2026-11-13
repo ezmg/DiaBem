@@ -33,14 +33,32 @@ class HealthEvaluator(private val criteria: HealthCriteria) {
 
     fun sodiumLight(recipe: CompiledRecipe): TrafficLight {
         val sodium = recipe.perServing[Nutrient.SODIUM_MG] ?: return TrafficLight.RED
+        return sodiumLight(sodium, recipe.servingGrams)
+    }
+
+    /** Sodium light for [sodiumMg] eaten in [grams] of food. */
+    fun sodiumLight(sodiumMg: Double, grams: Double): TrafficLight {
+        val sodium = sodiumMg
         val c = criteria.sodium
-        val per100g = if (recipe.servingGrams > 0) sodium * 100.0 / recipe.servingGrams else Double.MAX_VALUE
+        val per100g = if (grams > 0) sodium * 100.0 / grams else Double.MAX_VALUE
         return when {
             per100g >= c.per100gRedFromMg -> TrafficLight.RED
             sodium > c.dailyLimitMg * c.perServingRedShareOfDaily -> TrafficLight.RED
             per100g <= c.per100gGreenMaxMg -> TrafficLight.GREEN
             else -> TrafficLight.AMBER
         }
+    }
+
+    /**
+     * Carbohydrate light for an amount of a single food (not a whole meal). It uses the snack
+     * thresholds, the most cautious ones, or the person's own limit when they have one.
+     * The light depends only on the grams of carbohydrate in the amount eaten.
+     */
+    fun carbLightForAmount(carbsG: Double, profile: HealthProfile? = null): TrafficLight {
+        val custom = profile?.customLimits?.maxCarbsPerMealG
+        if (custom != null) return if (carbsG <= custom) TrafficLight.GREEN else TrafficLight.RED
+        val t = criteria.carbohydrate.perServingG[MealType.SNACK] ?: return TrafficLight.AMBER
+        return light(carbsG, t.greenMax, t.amberMax)
     }
 
     fun fiberLabel(recipe: CompiledRecipe): FiberLabel {

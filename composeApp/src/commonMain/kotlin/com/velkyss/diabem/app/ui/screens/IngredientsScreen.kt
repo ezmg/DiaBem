@@ -47,36 +47,19 @@ import com.velkyss.diabem.app.ui.components.BigButton
 import com.velkyss.diabem.app.ui.components.ScreenScaffold
 import com.velkyss.diabem.app.ui.theme.MinTouch
 import com.velkyss.diabem.core.model.MealSlot
+import com.velkyss.diabem.core.search.normalizeText
 import com.velkyss.diabem.app.resources.ingredients_title_with_plan
 import com.velkyss.diabem.app.resources.plan_box_hint
 import com.velkyss.diabem.app.resources.plan_box_title
 import org.jetbrains.compose.resources.pluralStringResource
 import org.jetbrains.compose.resources.stringResource
 
-/** Lower-case text without accents, so "acucar" finds "açúcar". */
-internal fun normalize(text: String): String = buildString {
-    for (c in text.lowercase()) {
-        append(
-            when (c) {
-                'á', 'à', 'â', 'ã', 'ä' -> 'a'
-                'é', 'è', 'ê', 'ë' -> 'e'
-                'í', 'ì', 'î', 'ï' -> 'i'
-                'ó', 'ò', 'ô', 'õ', 'ö' -> 'o'
-                'ú', 'ù', 'û', 'ü' -> 'u'
-                'ç' -> 'c'
-                'ñ' -> 'n'
-                else -> c
-            },
-        )
-    }
-}
-
 @Composable
 fun IngredientsScreen(controller: AppController, meal: MealSlot, onBack: () -> Unit, onSeeRecipes: () -> Unit) {
     var query by remember { mutableStateOf("") }
     val pack = controller.pack
     val visible = pack.pantry.filterNot { it.staple }
-        .filter { query.isBlank() || normalize(it.name).contains(normalize(query.trim())) }
+        .filter { query.isBlank() || normalizeText(it.name).contains(normalizeText(query.trim())) }
     val selected = controller.selected
 
     ScreenScaffold(

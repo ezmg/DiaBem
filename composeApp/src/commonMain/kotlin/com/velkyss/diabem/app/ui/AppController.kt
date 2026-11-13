@@ -12,6 +12,7 @@ import com.velkyss.diabem.core.profile.NutritionistPlan
 import com.velkyss.diabem.core.pack.CountryPack
 import com.velkyss.diabem.core.profile.HealthProfile
 import com.velkyss.diabem.core.search.CarbPreference
+import com.velkyss.diabem.core.search.FoodLookup
 import com.velkyss.diabem.core.search.RecipeMatch
 import com.velkyss.diabem.core.search.RecipeSearch
 import com.velkyss.diabem.core.search.SearchQuery
@@ -26,11 +27,14 @@ sealed interface Screen {
     data object Favorites : Screen
     data object Settings : Screen
     data object Plan : Screen
+    data object FoodSearch : Screen
+    data class FoodDetail(val foodId: String) : Screen
 }
 
 /** Holds the app state and the simple back stack. No business logic lives here: see core. */
 class AppController(val pack: CountryPack, private val store: UserStore) {
     private val search = RecipeSearch(pack)
+    val foodLookup = FoodLookup(pack)
 
     var profile by mutableStateOf(store.profile)
         private set
