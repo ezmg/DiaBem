@@ -43,6 +43,9 @@ y la app le propone varias recetas adecuadas a su perfil, con un semáforo senci
 - **Android**: en la pestaña *Actions* de GitHub, abre la última ejecución correcta de **CI** y
   descarga el artefacto `diabem-debug-apk`.
 
+- **Política de privacidad**: `https://<usuario>.github.io/diabem/privacy.html`
+- **Publicación** (APK firmado y Google Play): ver [docs/release.md](docs/release.md).
+
 ## Tecnología
 
 - Kotlin Multiplatform + Compose Multiplatform.

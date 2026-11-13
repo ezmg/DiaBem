@@ -1,0 +1,84 @@
+name: Release
+
+# Publishes a signed APK (and an AAB for Google Play) in GitHub Releases.
+# Runs when a tag like v1.0.0 is pushed, or by hand from the Actions tab.
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version name, for example 1.0.0"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Signed APK and release
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      DIABEM_KEYSTORE_BASE64: ${{ secrets.DIABEM_KEYSTORE_BASE64 }}
+      DIABEM_KEYSTORE_PASSWORD: ${{ secrets.DIABEM_KEYSTORE_PASSWORD }}
+      DIABEM_KEY_ALIAS: ${{ secrets.DIABEM_KEY_ALIAS }}
+      DIABEM_KEY_PASSWORD: ${{ secrets.DIABEM_KEY_PASSWORD }}
+      INPUT_VERSION: ${{ inputs.version }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Work out the version
+        id: version
+        run: |
+          if [ -n "$INPUT_VERSION" ]; then name="$INPUT_VERSION"; else name="${GITHUB_REF_NAME#v}"; fi
+          if ! echo "$name" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+$'; then
+            echo "::error::Version must look like 1.0.0 (got '$name')"; exit 1
+          fi
+          echo "name=$name" >> "$GITHUB_OUTPUT"
+          echo "code=$GITHUB_RUN_NUMBER" >> "$GITHUB_OUTPUT"
+
+      - name: Check the signing secrets
+        run: |
+          for v in DIABEM_KEYSTORE_BASE64 DIABEM_KEYSTORE_PASSWORD DIABEM_KEY_ALIAS DIABEM_KEY_PASSWORD; do
+            if [ -z "${!v}" ]; then
+              echo "::error::Missing secret $v. See docs/release.md."; exit 1
+            fi
+          done
+          echo "$DIABEM_KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/diabem.jks"
+          echo "DIABEM_KEYSTORE_FILE=$RUNNER_TEMP/diabem.jks" >> "$GITHUB_ENV"
+
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - uses: gradle/actions/setup-gradle@v5
+
+      - name: Tests and checks
+        run: ./gradlew --no-daemon check
+
+      - name: Signed APK and AAB
+        run: >
+          ./gradlew --no-daemon :composeApp:assembleRelease :composeApp:bundleRelease
+          -PdiabemVersionName=${{ steps.version.outputs.name }}
+          -PdiabemVersionCode=${{ steps.version.outputs.code }}
+
+      - name: Verify the APK signature
+        run: |
+          apksigner="$(ls "$ANDROID_HOME"/build-tools/*/apksigner | sort | tail -1)"
+          "$apksigner" verify --print-certs composeApp/build/outputs/apk/release/composeApp-release.apk
+
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.version.outputs.name }}
+        run: |
+          cp composeApp/build/outputs/apk/release/composeApp-release.apk "diabem-$VERSION.apk"
+          cp composeApp/build/outputs/bundle/release/composeApp-release.aab "diabem-$VERSION.aab"
+          gh release create "v$VERSION" "diabem-$VERSION.apk" "diabem-$VERSION.aab" \
+            --title "DiaBem $VERSION" --generate-notes --target "$GITHUB_SHA"
+
+      - name: Remove the keystore
+        if: always()
+        run: rm -f "$RUNNER_TEMP/diabem.jks"
