@@ -98,8 +98,23 @@ android {
         applicationId = "com.velkyss.diabem"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
-        versionCode = 1
-        versionName = "0.1.0"
+        // The release workflow passes the real values: -PdiabemVersionName / -PdiabemVersionCode.
+        versionCode = (providers.gradleProperty("diabemVersionCode").orNull ?: "1").toInt()
+        versionName = providers.gradleProperty("diabemVersionName").orNull ?: "0.1.0-dev"
+    }
+
+    // The signing key never lives in the repository: it comes from environment variables
+    // (GitHub secrets in the release workflow). Without them, release builds stay unsigned.
+    val keystorePath = providers.environmentVariable("DIABEM_KEYSTORE_FILE").orNull
+    val releaseSigning = if (keystorePath != null) {
+        signingConfigs.create("release") {
+            storeFile = file(keystorePath)
+            storePassword = providers.environmentVariable("DIABEM_KEYSTORE_PASSWORD").get()
+            keyAlias = providers.environmentVariable("DIABEM_KEY_ALIAS").get()
+            keyPassword = providers.environmentVariable("DIABEM_KEY_PASSWORD").get()
+        }
+    } else {
+        null
     }
     packaging {
         resources { excludes += "/META-INF/{AL2.0,LGPL2.1}" }
@@ -107,10 +122,19 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
+            signingConfig = releaseSigning
         }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
+    }
+}
+
+// Store screenshots are generated on demand: -Pdiabem.screenshots=<folder>
+tasks.withType<Test>().configureEach {
+    providers.gradleProperty("diabem.screenshots").orNull?.let {
+        systemProperty("diabem.screenshots", rootProject.file(it).absolutePath)
+        outputs.upToDateWhen { false }
     }
 }
