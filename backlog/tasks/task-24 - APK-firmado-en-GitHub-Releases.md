@@ -1,9 +1,10 @@
 ---
 id: TASK-24
 title: APK firmado en GitHub Releases
-status: To Do
+status: In Progress
 assignee: []
 created_date: '2026-11-12T14:01:00Z'
+updated_date: '2026-11-13T17:57:00Z'
 labels:
   - fase-5
 dependencies: []
