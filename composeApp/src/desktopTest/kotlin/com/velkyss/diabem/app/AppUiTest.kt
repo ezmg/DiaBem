@@ -45,6 +45,7 @@ import kotlin.test.assertTrue
 @OptIn(ExperimentalTestApi::class)
 class AppUiTest {
     private val pack = runBlocking { PackLoader.load() }
+    private val testToday = com.velkyss.diabem.core.profile.LocalDay(2026, 11, 14)
 
     /** The device is in Spanish on purpose: the app must still be all in the pack's language. */
     @BeforeTest
@@ -69,7 +70,7 @@ class AppUiTest {
         store: UserStore,
         reminders: com.velkyss.diabem.app.reminders.ReminderPlatform = com.velkyss.diabem.app.reminders.NoReminders,
     ): AppController {
-        val controller = AppController(pack, store, reminders)
+        val controller = AppController(pack, store, reminders, today = { testToday })
         setContent {
             DiaBemTheme(highContrast = controller.display.highContrast, textScale = controller.display.textScale) {
                 WithAppLanguage(controller.pack.locale) { AppContent(controller) }
@@ -196,6 +197,7 @@ class AppUiTest {
             com.velkyss.diabem.app.ui.Screen.Settings,
             com.velkyss.diabem.app.ui.Screen.Plan,
             com.velkyss.diabem.app.ui.Screen.Reminders,
+            com.velkyss.diabem.app.ui.Screen.Glucose,
             com.velkyss.diabem.app.ui.Screen.FoodSearch,
             com.velkyss.diabem.app.ui.Screen.FoodDetail("53"),
         )
@@ -387,5 +389,67 @@ class AppUiTest {
     fun remindersAreHiddenWhereThePlatformCannotShowThem() = runComposeUiTest {
         launch(newStore(withProfile = true))
         onAllNodesWithText("Lembretes das refeições").assertCountEquals(0)
+    }
+
+    @Test
+    fun glucoseReadingsAreWrittenDownByDayAndShownInTheTable() = runComposeUiTest {
+        val store = newStore(withProfile = true)
+        launch(store)
+        val fasting = com.velkyss.diabem.core.profile.GlucoseMoment.FASTING
+        val afterBreakfast = com.velkyss.diabem.core.profile.GlucoseMoment.AFTER_BREAKFAST
+
+        onNodeWithText("Minhas medições de glicemia").performScrollTo().performClick()
+        onNodeWithText("14/11/2026").assertIsDisplayed()
+        onNodeWithText("Hoje").assertIsDisplayed()
+        onNodeWithText("não indica insulina nem remédios", substring = true).assertExists()
+
+        onNode(hasSetTextAction() and hasText("Glicemia de jejum")).performTextInput("98")
+        onNode(hasSetTextAction() and hasText("2 horas após o café da manhã")).performScrollTo().performTextInput("135")
+        assertEquals(mapOf(fasting to 98, afterBreakfast to 135), store.glucoseLog.valuesFor(testToday))
+        // the same table as the paper sheet
+        onNodeWithText("14/11").assertExists()
+        onNodeWithText("Após café").assertExists()
+
+        // yesterday is a separate, empty day; tomorrow cannot be chosen
+        onNodeWithContentDescription("Dia seguinte").assertIsNotEnabled()
+        onNodeWithContentDescription("Dia anterior").performScrollTo().performClick()
+        onNodeWithText("13/11/2026").assertExists()
+        onNode(hasSetTextAction() and hasText("Glicemia de jejum")).performTextInput("110")
+        assertEquals(110, store.glucoseLog.valuesFor(testToday.plusDays(-1))[fasting])
+        assertEquals(98, store.glucoseLog.valuesFor(testToday)[fasting])
+    }
+
+    @Test
+    fun glucoseTyposAreNotSavedAndValuesCanBeCorrectedOrErased() = runComposeUiTest {
+        val store = newStore(withProfile = true)
+        val controller = launch(store)
+        val fasting = com.velkyss.diabem.core.profile.GlucoseMoment.FASTING
+        controller.go(com.velkyss.diabem.app.ui.Screen.Glucose)
+        val field = hasSetTextAction() and hasText("Glicemia de jejum")
+
+        onNode(field).performTextInput("9")
+        onNodeWithText("Confira o número", substring = true).assertExists()
+        assertTrue(store.glucoseLog.isEmpty)
+
+        onNode(field).performTextClearance()
+        onNode(field).performTextInput("104")
+        assertEquals(104, store.glucoseLog.valuesFor(testToday)[fasting])
+        onNode(field).performTextClearance()
+        assertTrue(store.glucoseLog.isEmpty)
+    }
+
+    @Test
+    fun glucoseDiaryNeverJudgesTheNumbers() = runComposeUiTest {
+        val controller = launch(newStore(withProfile = true))
+        controller.setGlucose(testToday, com.velkyss.diabem.core.profile.GlucoseMoment.FASTING, 320)
+        controller.go(com.velkyss.diabem.app.ui.Screen.Glucose)
+        // a very high value is shown as a plain number: no traffic light, no warning words
+        onAllNodesWithText("320").onFirst().assertExists()
+        onAllNodes(hasContentDescription("Carboidratos:", substring = true)).assertCountEquals(0)
+        for (word in listOf("alto", "alta", "baixo", "baixa", "muito", "perigo", "atenção")) {
+            onAllNodesWithText(word, substring = true, ignoreCase = true).assertCountEquals(0)
+        }
+        onNodeWithText("Copiar para mostrar à nutricionista").performScrollTo().performClick()
+        onNodeWithText("Glicemia de jejum: 320 mg/dL", substring = true).assertExists()
     }
 }

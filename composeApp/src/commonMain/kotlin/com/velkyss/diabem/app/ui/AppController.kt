@@ -10,6 +10,9 @@ import com.velkyss.diabem.core.model.MealSlot
 import com.velkyss.diabem.core.model.MealType
 import com.velkyss.diabem.app.reminders.ReminderPlatform
 import com.velkyss.diabem.app.reminders.reminderPlatform
+import com.velkyss.diabem.core.profile.GlucoseLog
+import com.velkyss.diabem.core.profile.GlucoseMoment
+import com.velkyss.diabem.core.profile.LocalDay
 import com.velkyss.diabem.core.profile.MealReminder
 import com.velkyss.diabem.core.profile.MealReminders
 import com.velkyss.diabem.core.profile.NutritionistPlan
@@ -32,6 +35,7 @@ sealed interface Screen {
     data object Settings : Screen
     data object Plan : Screen
     data object Reminders : Screen
+    data object Glucose : Screen
     data object FoodSearch : Screen
     data class FoodDetail(val foodId: String) : Screen
 }
@@ -41,6 +45,8 @@ class AppController(
     val pack: CountryPack,
     private val store: UserStore,
     val reminderPlatform: ReminderPlatform = reminderPlatform(),
+    /** Today's date; replaceable in tests. */
+    val today: () -> LocalDay = { com.velkyss.diabem.app.ui.today() },
 ) {
     private val search = RecipeSearch(pack)
     val foodLookup = FoodLookup(pack)
@@ -54,6 +60,8 @@ class AppController(
     var plan by mutableStateOf(store.plan)
         private set
     var reminders by mutableStateOf(store.reminders)
+        private set
+    var glucoseLog by mutableStateOf(store.glucoseLog)
         private set
 
     /** Ingredients ticked by the person in this session. */
@@ -124,6 +132,15 @@ class AppController(
 
     fun editPlanOption(slot: MealSlot, index: Int, text: String) = savePlan(plan.replace(slot, index, text))
 
+    /** Sets, corrects or (null) removes one glucose value. Returns false when the number is not accepted. */
+    fun setGlucose(day: LocalDay, moment: GlucoseMoment, value: Int?): Boolean {
+        val updated = glucoseLog.with(day, moment, value)
+        if (updated == glucoseLog && value != null && glucoseLog.valuesFor(day)[moment] != value) return false
+        glucoseLog = updated
+        store.glucoseLog = updated
+        return true
+    }
+
     fun setReminder(slot: MealSlot, reminder: MealReminder) {
         reminders = reminders.with(slot, reminder)
         store.reminders = reminders
@@ -155,6 +172,7 @@ class AppController(
         favorites = emptySet()
         plan = NutritionistPlan()
         reminders = MealReminders()
+        glucoseLog = GlucoseLog()
         display = DisplayPrefs()
         selected = emptySet()
         resetTo(Screen.Notice)

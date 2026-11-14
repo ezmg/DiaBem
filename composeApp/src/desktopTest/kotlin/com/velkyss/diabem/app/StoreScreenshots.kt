@@ -45,7 +45,8 @@ class StoreScreenshots {
             override fun notificationsAllowed() = true
             override fun apply(items: List<com.velkyss.diabem.app.reminders.ReminderItem>, channelName: String) = Unit
         }
-        val controller = AppController(runBlocking { PackLoader.load() }, store, phone)
+        val day = com.velkyss.diabem.core.profile.LocalDay(2026, 11, 14)
+        val controller = AppController(runBlocking { PackLoader.load() }, store, phone, today = { day })
         prepare(controller)
         setContent {
             DiaBemTheme(highContrast = false, textScale = 1f) {
@@ -72,6 +73,14 @@ class StoreScreenshots {
             c.go(Screen.Ingredients(MealSlot.BREAKFAST))
         }
         shot("6-consultar-alimento") { c -> c.go(Screen.FoodDetail("182")) }
+        shot("8-glicemia") { c ->
+            val m = com.velkyss.diabem.core.profile.GlucoseMoment.entries
+            val day = com.velkyss.diabem.core.profile.LocalDay(2026, 11, 14)
+            listOf(listOf(96, 138, 145, 150), listOf(101, 142, null, 139), listOf(94, null, 151, 147)).forEachIndexed { back, row ->
+                row.forEachIndexed { i, v -> if (v != null) c.setGlucose(day.plusDays(-back), m[i], v) }
+            }
+            c.go(Screen.Glucose)
+        }
         shot("7-lembretes") { c ->
             c.setReminder(MealSlot.MORNING_SNACK, com.velkyss.diabem.core.profile.MealReminder(10, 0, enabled = true))
             c.setReminder(MealSlot.AFTERNOON_SNACK, com.velkyss.diabem.core.profile.MealReminder(15, 30, enabled = true))
