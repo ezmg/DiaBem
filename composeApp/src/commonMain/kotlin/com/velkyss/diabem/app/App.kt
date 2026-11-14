@@ -24,6 +24,7 @@ import com.velkyss.diabem.app.ui.screens.FavoritesScreen
 import com.velkyss.diabem.app.ui.screens.FoodDetailScreen
 import com.velkyss.diabem.app.ui.screens.FoodSearchScreen
 import com.velkyss.diabem.app.ui.screens.GlucoseScreen
+import com.velkyss.diabem.app.ui.screens.GlucoseViewScreen
 import com.velkyss.diabem.app.ui.screens.HomeScreen
 import com.velkyss.diabem.app.ui.screens.IngredientsScreen
 import com.velkyss.diabem.app.ui.screens.NoticeScreen
@@ -79,7 +80,8 @@ fun AppContent(c: AppController) {
         Screen.Favorites -> FavoritesScreen(c, onBack = c::back, onOpen = { c.go(Screen.Detail(it, null)) })
         Screen.FoodSearch -> FoodSearchScreen(c, onBack = c::back, onOpen = { c.go(Screen.FoodDetail(it)) })
         is Screen.FoodDetail -> FoodDetailScreen(c, s.foodId, onBack = c::back)
-        Screen.Glucose -> GlucoseScreen(c, onBack = c::back)
+        Screen.Glucose -> GlucoseScreen(c, onBack = c::back, onShow = { c.go(Screen.GlucoseView) })
+        Screen.GlucoseView -> GlucoseViewScreen(c, onBack = c::back)
         Screen.Reminders -> RemindersScreen(c, onBack = c::back)
         Screen.Plan -> PlanScreen(c, onBack = c::back)
         Screen.Settings -> SettingsScreen(

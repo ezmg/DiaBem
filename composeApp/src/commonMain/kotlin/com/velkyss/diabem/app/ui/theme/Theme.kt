@@ -22,6 +22,15 @@ data class LightColors(val green: Color, val amber: Color, val red: Color, val o
 
 val LocalLightColors = staticCompositionLocalOf { normalLights }
 
+/** Colour of the glucose diary button, so it stands apart from the green meal buttons. */
+@Immutable
+data class DiaryColors(val container: Color, val onContainer: Color)
+
+val LocalDiaryColors = staticCompositionLocalOf { normalDiary }
+
+internal val normalDiary = DiaryColors(Color(0xFF1A4F8B), Color.White)
+internal val contrastDiary = DiaryColors(Color(0xFF0B2F5C), Color.White)
+
 internal val normalLights = LightColors(Color(0xFF1B5E20), Color(0xFF8A4B00), Color(0xFFB71C1C), Color.White)
 internal val contrastLights = LightColors(Color(0xFF003300), Color(0xFF5C2E00), Color(0xFF7F0000), Color.White)
 
@@ -86,6 +95,7 @@ fun DiaBemTheme(highContrast: Boolean, textScale: Float, content: @Composable ()
     CompositionLocalProvider(
         LocalDensity provides Density(density.density, density.fontScale * textScale),
         LocalLightColors provides if (highContrast) contrastLights else normalLights,
+        LocalDiaryColors provides if (highContrast) contrastDiary else normalDiary,
     ) {
         MaterialTheme(
             colorScheme = if (highContrast) highContrastScheme else normalScheme,

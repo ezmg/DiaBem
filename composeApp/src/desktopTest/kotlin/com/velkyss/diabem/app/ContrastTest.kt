@@ -46,4 +46,14 @@ class ContrastTest {
             assertTrue(ratio(p.first, p.second) >= 7.0, "$name: ${ratio(p.first, p.second)}")
         }
     }
+
+    @Test
+    fun glucoseDiaryButtonIsReadableAndClearlyNotGreen() {
+        val normal = com.velkyss.diabem.app.ui.theme.normalDiary
+        val contrast = com.velkyss.diabem.app.ui.theme.contrastDiary
+        assertTrue(ratio(normal.onContainer, normal.container) >= 4.5)
+        assertTrue(ratio(contrast.onContainer, contrast.container) >= 7.0)
+        // blue: more blue than green, unlike the meal buttons
+        assertTrue(normal.container.blue > normal.container.green && normalScheme.primary.green > normalScheme.primary.blue)
+    }
 }

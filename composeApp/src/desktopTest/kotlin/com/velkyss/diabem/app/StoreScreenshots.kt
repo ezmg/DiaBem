@@ -32,8 +32,8 @@ import kotlin.test.Test
 class StoreScreenshots {
     private val outDir: File? = System.getProperty("diabem.screenshots")?.takeIf { it.isNotBlank() }?.let(::File)
 
-    private fun shot(name: String, prepare: (AppController) -> Unit) = runSkikoComposeUiTest(
-        size = Size(1080f, 1920f),
+    private fun shot(name: String, height: Float = 1920f, prepare: (AppController) -> Unit) = runSkikoComposeUiTest(
+        size = Size(1080f, height),
         density = Density(3f),
     ) {
         val store = UserStore(MapSettings()).apply {
@@ -64,6 +64,7 @@ class StoreScreenshots {
         if (outDir == null) return
         val kitchen = listOf("arroz", "feijao", "ovo", "tomate", "cebola", "alho", "frango", "alface")
         shot("1-inicio") {}
+        shot("1b-inicio-alto", height = 2900f) {}
         shot("2-ingredientes") { c -> kitchen.take(3).forEach(c::toggleIngredient); c.go(Screen.Ingredients(MealSlot.LUNCH)) }
         shot("3-receitas") { c -> kitchen.forEach(c::toggleIngredient); c.go(Screen.Results(MealSlot.LUNCH)) }
         shot("4-receita") { c -> c.go(Screen.Detail("arroz-feijao-e-ovo", null)) }
@@ -80,6 +81,13 @@ class StoreScreenshots {
                 row.forEachIndexed { i, v -> if (v != null) c.setGlucose(day.plusDays(-back), m[i], v) }
             }
             c.go(Screen.Glucose)
+        }
+        shot("9-glicemia-consulta") { c ->
+            val m = com.velkyss.diabem.core.profile.GlucoseMoment.entries
+            val day = com.velkyss.diabem.core.profile.LocalDay(2026, 11, 14)
+            val rows = listOf(listOf(96, 138, 145, 150), listOf(101, 142, null, 139), listOf(94, null, 151, 147), listOf(99, 133, 148, null), listOf(103, 140, 152, 144), listOf(97, 136, null, 141), listOf(100, 129, 146, 149))
+            rows.forEachIndexed { back, row -> row.forEachIndexed { i, v -> if (v != null) c.setGlucose(day.plusDays(-back), m[i], v) } }
+            c.go(Screen.GlucoseView)
         }
         shot("7-lembretes") { c ->
             c.setReminder(MealSlot.MORNING_SNACK, com.velkyss.diabem.core.profile.MealReminder(10, 0, enabled = true))

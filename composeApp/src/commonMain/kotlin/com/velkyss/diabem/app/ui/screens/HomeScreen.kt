@@ -28,6 +28,7 @@ import androidx.compose.material.icons.outlined.Assignment
 import androidx.compose.material.icons.outlined.EditNote
 import androidx.compose.material.icons.outlined.Notifications
 import com.velkyss.diabem.app.resources.glucose_button
+import com.velkyss.diabem.app.ui.theme.LocalDiaryColors
 import androidx.compose.material.icons.outlined.Search
 import com.velkyss.diabem.app.resources.reminders_title
 import com.velkyss.diabem.app.resources.food_lookup_button
@@ -44,9 +45,16 @@ fun HomeScreen(onMeal: (MealSlot) -> Unit, onPlan: () -> Unit, onFoodLookup: () 
             MealSlot.entries.forEach { meal ->
                 BigButton(stringResource(meal.label), onClick = { onMeal(meal) }, icon = meal.icon)
             }
+            val diary = LocalDiaryColors.current
+            BigButton(
+                stringResource(Res.string.glucose_button),
+                onGlucose,
+                icon = Icons.Outlined.EditNote,
+                containerColor = diary.container,
+                contentColor = diary.onContainer,
+            )
             BigOutlinedButton(stringResource(Res.string.plan_button), onPlan, icon = Icons.Outlined.Assignment)
             BigOutlinedButton(stringResource(Res.string.food_lookup_button), onFoodLookup, icon = Icons.Outlined.Search)
-            BigOutlinedButton(stringResource(Res.string.glucose_button), onGlucose, icon = Icons.Outlined.EditNote)
             if (onReminders != null) {
                 BigOutlinedButton(stringResource(Res.string.reminders_title), onReminders, icon = Icons.Outlined.Notifications)
             }
