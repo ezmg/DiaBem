@@ -40,7 +40,12 @@ class StoreScreenshots {
             noticeAccepted = true
             profile = HealthProfile(setOf(Condition.DIABETES_TYPE_2, Condition.HYPERTENSION))
         }
-        val controller = AppController(runBlocking { PackLoader.load() }, store)
+        val phone = object : com.velkyss.diabem.app.reminders.ReminderPlatform {
+            override val supported = true
+            override fun notificationsAllowed() = true
+            override fun apply(items: List<com.velkyss.diabem.app.reminders.ReminderItem>, channelName: String) = Unit
+        }
+        val controller = AppController(runBlocking { PackLoader.load() }, store, phone)
         prepare(controller)
         setContent {
             DiaBemTheme(highContrast = false, textScale = 1f) {
@@ -67,5 +72,10 @@ class StoreScreenshots {
             c.go(Screen.Ingredients(MealSlot.BREAKFAST))
         }
         shot("6-consultar-alimento") { c -> c.go(Screen.FoodDetail("182")) }
+        shot("7-lembretes") { c ->
+            c.setReminder(MealSlot.MORNING_SNACK, com.velkyss.diabem.core.profile.MealReminder(10, 0, enabled = true))
+            c.setReminder(MealSlot.AFTERNOON_SNACK, com.velkyss.diabem.core.profile.MealReminder(15, 30, enabled = true))
+            c.go(Screen.Reminders)
+        }
     }
 }

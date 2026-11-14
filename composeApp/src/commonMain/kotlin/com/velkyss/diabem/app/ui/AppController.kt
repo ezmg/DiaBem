@@ -8,6 +8,10 @@ import com.velkyss.diabem.app.data.DisplayPrefs
 import com.velkyss.diabem.app.data.UserStore
 import com.velkyss.diabem.core.model.MealSlot
 import com.velkyss.diabem.core.model.MealType
+import com.velkyss.diabem.app.reminders.ReminderPlatform
+import com.velkyss.diabem.app.reminders.reminderPlatform
+import com.velkyss.diabem.core.profile.MealReminder
+import com.velkyss.diabem.core.profile.MealReminders
 import com.velkyss.diabem.core.profile.NutritionistPlan
 import com.velkyss.diabem.core.pack.CountryPack
 import com.velkyss.diabem.core.profile.HealthProfile
@@ -27,12 +31,17 @@ sealed interface Screen {
     data object Favorites : Screen
     data object Settings : Screen
     data object Plan : Screen
+    data object Reminders : Screen
     data object FoodSearch : Screen
     data class FoodDetail(val foodId: String) : Screen
 }
 
 /** Holds the app state and the simple back stack. No business logic lives here: see core. */
-class AppController(val pack: CountryPack, private val store: UserStore) {
+class AppController(
+    val pack: CountryPack,
+    private val store: UserStore,
+    val reminderPlatform: ReminderPlatform = reminderPlatform(),
+) {
     private val search = RecipeSearch(pack)
     val foodLookup = FoodLookup(pack)
 
@@ -43,6 +52,8 @@ class AppController(val pack: CountryPack, private val store: UserStore) {
     var display by mutableStateOf(store.displayPrefs)
         private set
     var plan by mutableStateOf(store.plan)
+        private set
+    var reminders by mutableStateOf(store.reminders)
         private set
 
     /** Ingredients ticked by the person in this session. */
@@ -111,6 +122,13 @@ class AppController(val pack: CountryPack, private val store: UserStore) {
 
     fun addPlanOption(slot: MealSlot, text: String) = savePlan(plan.add(slot, text))
 
+    fun editPlanOption(slot: MealSlot, index: Int, text: String) = savePlan(plan.replace(slot, index, text))
+
+    fun setReminder(slot: MealSlot, reminder: MealReminder) {
+        reminders = reminders.with(slot, reminder)
+        store.reminders = reminders
+    }
+
     fun removePlanOption(slot: MealSlot, index: Int) = savePlan(plan.remove(slot, index))
 
     /** Adds the options of a plan backup text. Returns how many options were added. */
@@ -136,6 +154,7 @@ class AppController(val pack: CountryPack, private val store: UserStore) {
         profile = null
         favorites = emptySet()
         plan = NutritionistPlan()
+        reminders = MealReminders()
         display = DisplayPrefs()
         selected = emptySet()
         resetTo(Screen.Notice)

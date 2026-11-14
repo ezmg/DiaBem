@@ -125,6 +125,23 @@
         <item quantity="one">%1$d opção recuperada</item>
         <item quantity="other">%1$d opções recuperadas</item>
     </plurals>
+    <string name="plan_edit">Corrigir: %1$s</string>
+    <string name="plan_edit_title">Corrigir a opção</string>
+    <string name="plan_edit_label">Texto da opção</string>
+    <string name="reminders_title">Lembretes das refeições</string>
+    <string name="reminders_help">Ligue o lembrete das refeições que você quer lembrar e escolha a hora. O celular avisa todos os dias, com som, mesmo com o aplicativo fechado.</string>
+    <string name="reminder_switch">Lembrar todos os dias</string>
+    <string name="reminder_hour_less">%1$s: uma hora antes</string>
+    <string name="reminder_hour_more">%1$s: uma hora depois</string>
+    <string name="reminder_minute_less">%1$s: cinco minutos antes</string>
+    <string name="reminder_minute_more">%1$s: cinco minutos depois</string>
+    <string name="reminders_permission_needed">O celular não deixa o DiaBem mostrar avisos. Abra as configurações do celular, procure o DiaBem e ative as notificações.</string>
+    <string name="reminders_delay_note">O aviso pode chegar alguns minutos depois da hora marcada. Se o celular estiver no silencioso, ele não toca.</string>
+    <string name="reminder_notification_title">Hora do %1$s</string>
+    <string name="reminder_body_default">Abra o DiaBem para ver ideias do que comer.</string>
+    <string name="reminder_body_plan">Seu plano: %1$s</string>
+    <string name="reminder_hour">Hora</string>
+    <string name="reminder_minutes">Minutos</string>
     <plurals name="recipes_available">
         <item quantity="one">%1$d receita disponível</item>
         <item quantity="other">%1$d receitas disponíveis</item>

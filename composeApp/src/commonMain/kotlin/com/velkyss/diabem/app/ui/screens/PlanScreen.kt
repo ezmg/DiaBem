@@ -16,6 +16,11 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Edit
+import com.velkyss.diabem.app.resources.plan_edit
+import com.velkyss.diabem.app.resources.plan_edit_label
+import com.velkyss.diabem.app.resources.plan_edit_title
+import com.velkyss.diabem.app.resources.save
 import androidx.compose.material.icons.outlined.ContentCopy
 import androidx.compose.material.icons.outlined.ContentPaste
 import androidx.compose.material3.AlertDialog
@@ -158,6 +163,33 @@ private fun BackupSection(controller: AppController) {
 @Composable
 private fun SlotCard(controller: AppController, slot: MealSlot) {
     var draft by rememberSaveable(slot) { mutableStateOf("") }
+    var editing by rememberSaveable(slot) { mutableStateOf<Int?>(null) }
+    var editText by rememberSaveable(slot) { mutableStateOf("") }
+    editing?.let { index ->
+        AlertDialog(
+            onDismissRequest = { editing = null },
+            title = { Text(stringResource(Res.string.plan_edit_title)) },
+            text = {
+                OutlinedTextField(
+                    value = editText,
+                    onValueChange = { editText = it.take(NutritionistPlan.MAX_OPTION_LENGTH) },
+                    label = { Text(stringResource(Res.string.plan_edit_label)) },
+                    textStyle = MaterialTheme.typography.bodyLarge,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            },
+            confirmButton = {
+                TextButton(onClick = { controller.editPlanOption(slot, index, editText); editing = null }, modifier = Modifier.heightIn(min = MinTouch)) {
+                    Text(stringResource(Res.string.save), style = MaterialTheme.typography.labelLarge)
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { editing = null }, modifier = Modifier.heightIn(min = MinTouch)) {
+                    Text(stringResource(Res.string.back), style = MaterialTheme.typography.labelLarge)
+                }
+            },
+        )
+    }
     val options = controller.plan.optionsFor(slot)
     val slotName = stringResource(slot.label)
     Surface(
@@ -179,6 +211,11 @@ private fun SlotCard(controller: AppController, slot: MealSlot) {
                 val removeLabel = stringResource(Res.string.plan_remove, option)
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(option, style = MaterialTheme.typography.bodyLarge, modifier = Modifier.weight(1f))
+                    val editLabel = stringResource(Res.string.plan_edit, option)
+                    IconButton(
+                        onClick = { editing = index; editText = option },
+                        modifier = Modifier.size(MinTouch).semantics { contentDescription = editLabel },
+                    ) { Icon(Icons.Filled.Edit, contentDescription = null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(28.dp)) }
                     IconButton(
                         onClick = { controller.removePlanOption(slot, index) },
                         modifier = Modifier.size(MinTouch).semantics { contentDescription = removeLabel },

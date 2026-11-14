@@ -21,6 +21,7 @@ import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
+import androidx.compose.ui.test.performTextClearance
 import androidx.compose.ui.test.performTextInput
 import androidx.compose.ui.test.runComposeUiTest
 import com.russhwolf.settings.MapSettings
@@ -56,8 +57,19 @@ class AppUiTest {
         }
     }
 
-    private fun ComposeUiTest.launch(store: UserStore): AppController {
-        val controller = AppController(pack, store)
+    /** Records what the app asks the phone to schedule. */
+    private class FakeReminders(var allowed: Boolean = true) : com.velkyss.diabem.app.reminders.ReminderPlatform {
+        override val supported = true
+        var applied: List<com.velkyss.diabem.app.reminders.ReminderItem> = emptyList()
+        override fun notificationsAllowed() = allowed
+        override fun apply(items: List<com.velkyss.diabem.app.reminders.ReminderItem>, channelName: String) { applied = items }
+    }
+
+    private fun ComposeUiTest.launch(
+        store: UserStore,
+        reminders: com.velkyss.diabem.app.reminders.ReminderPlatform = com.velkyss.diabem.app.reminders.NoReminders,
+    ): AppController {
+        val controller = AppController(pack, store, reminders)
         setContent {
             DiaBemTheme(highContrast = controller.display.highContrast, textScale = controller.display.textScale) {
                 WithAppLanguage(controller.pack.locale) { AppContent(controller) }
@@ -183,6 +195,7 @@ class AppUiTest {
             com.velkyss.diabem.app.ui.Screen.Detail("caldo-verde-leve", null),
             com.velkyss.diabem.app.ui.Screen.Settings,
             com.velkyss.diabem.app.ui.Screen.Plan,
+            com.velkyss.diabem.app.ui.Screen.Reminders,
             com.velkyss.diabem.app.ui.Screen.FoodSearch,
             com.velkyss.diabem.app.ui.Screen.FoodDetail("53"),
         )
@@ -314,5 +327,65 @@ class AppUiTest {
         onNodeWithText("Recuperar").performClick()
         assertEquals(listOf("1 pão francês + café com leite"), store.plan.optionsFor(com.velkyss.diabem.core.model.MealSlot.BREAKFAST))
         onNodeWithText("1 opção recuperada").assertExists()
+    }
+
+    @Test
+    fun aPlanOptionCanBeCorrected() = runComposeUiTest {
+        val store = newStore(withProfile = true)
+        val controller = launch(store)
+        val slot = com.velkyss.diabem.core.model.MealSlot.LUNCH
+        controller.addPlanOption(slot, "3 colheres de arros")
+        controller.go(com.velkyss.diabem.app.ui.Screen.Plan)
+
+        onNodeWithContentDescription("Corrigir: 3 colheres de arros").performScrollTo().performClick()
+        onNode(hasSetTextAction() and hasText("Texto da opção")).performTextClearance()
+        onNode(hasSetTextAction() and hasText("Texto da opção")).performTextInput("3 colheres de arroz")
+        onNodeWithText("Salvar").performClick()
+
+        assertEquals(listOf("3 colheres de arroz"), store.plan.optionsFor(slot))
+        onNodeWithText("3 colheres de arroz").assertExists()
+    }
+
+    @Test
+    fun mealReminderIsTurnedOnWithItsTimeAndPlanText() = runComposeUiTest {
+        val store = newStore(withProfile = true)
+        val phone = FakeReminders()
+        val controller = launch(store, phone)
+        val slot = com.velkyss.diabem.core.model.MealSlot.MORNING_SNACK
+        controller.addPlanOption(slot, "1 fruta")
+
+        onNodeWithText("Lembretes das refeições").performScrollTo().performClick()
+        onNodeWithText("mesmo com o aplicativo fechado", substring = true).assertExists()
+        // 10:00 -> 10:30, then switch it on
+        repeat(6) { onNodeWithContentDescription("Lanche da manhã: cinco minutos depois").performScrollTo().performClick() }
+        onNodeWithText("10:30").assertExists()
+        onAllNodes(androidx.compose.ui.test.isToggleable())[1].performScrollTo().performClick()
+        waitForIdle()
+
+        val saved = store.reminders.reminderFor(slot)
+        assertEquals(com.velkyss.diabem.core.profile.MealReminder(10, 30, enabled = true), saved)
+        val item = phone.applied.single { it.slotKey == "morning_snack" }
+        assertTrue(item.enabled)
+        assertEquals(10 to 30, item.hour to item.minute)
+        assertEquals("Hora do Lanche da manhã", item.title)
+        assertEquals("Seu plano: 1 fruta", item.body)
+        // the other meals stay off
+        assertEquals(4, phone.applied.count { !it.enabled })
+        assertEquals("Abra o DiaBem para ver ideias do que comer.", phone.applied.first { it.slotKey == "dinner" }.body)
+    }
+
+    @Test
+    fun reminderScreenExplainsWhenThePhoneBlocksNotifications() = runComposeUiTest {
+        val store = newStore(withProfile = true)
+        val controller = launch(store, FakeReminders(allowed = false))
+        controller.setReminder(com.velkyss.diabem.core.model.MealSlot.DINNER, com.velkyss.diabem.core.profile.MealReminder(19, 0, enabled = true))
+        controller.go(com.velkyss.diabem.app.ui.Screen.Reminders)
+        onNodeWithText("ative as notificações", substring = true).assertExists()
+    }
+
+    @Test
+    fun remindersAreHiddenWhereThePlatformCannotShowThem() = runComposeUiTest {
+        launch(newStore(withProfile = true))
+        onAllNodesWithText("Lembretes das refeições").assertCountEquals(0)
     }
 }

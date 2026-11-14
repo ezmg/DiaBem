@@ -25,12 +25,14 @@ import com.velkyss.diabem.app.ui.components.SectionTitle
 import com.velkyss.diabem.core.model.MealSlot
 import com.velkyss.diabem.app.resources.plan_button
 import androidx.compose.material.icons.outlined.Assignment
+import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.material.icons.outlined.Search
+import com.velkyss.diabem.app.resources.reminders_title
 import com.velkyss.diabem.app.resources.food_lookup_button
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun HomeScreen(onMeal: (MealSlot) -> Unit, onPlan: () -> Unit, onFoodLookup: () -> Unit, onFavorites: () -> Unit, onSettings: () -> Unit) {
+fun HomeScreen(onMeal: (MealSlot) -> Unit, onPlan: () -> Unit, onFoodLookup: () -> Unit, onReminders: (() -> Unit)?, onFavorites: () -> Unit, onSettings: () -> Unit) {
     ScreenScaffold(title = stringResource(Res.string.app_name), onBack = null) { pad ->
         Column(
             Modifier.verticalScroll(rememberScrollState()).padding(pad),
@@ -42,6 +44,9 @@ fun HomeScreen(onMeal: (MealSlot) -> Unit, onPlan: () -> Unit, onFoodLookup: () 
             }
             BigOutlinedButton(stringResource(Res.string.plan_button), onPlan, icon = Icons.Outlined.Assignment)
             BigOutlinedButton(stringResource(Res.string.food_lookup_button), onFoodLookup, icon = Icons.Outlined.Search)
+            if (onReminders != null) {
+                BigOutlinedButton(stringResource(Res.string.reminders_title), onReminders, icon = Icons.Outlined.Notifications)
+            }
             BigOutlinedButton(stringResource(Res.string.favorites), onFavorites, icon = Icons.Outlined.StarOutline)
             BigOutlinedButton(stringResource(Res.string.settings), onSettings, icon = Icons.Outlined.Settings)
             NoticeBox(stringResource(Res.string.medical_notice))

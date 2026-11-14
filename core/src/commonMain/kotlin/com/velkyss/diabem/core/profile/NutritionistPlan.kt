@@ -17,10 +17,22 @@ data class NutritionistPlan(val options: Map<MealSlot, List<String>> = emptyMap(
 
     /** Adds [text] to [slot]. Blank text, repeated text or a full slot leave the plan unchanged. */
     fun add(slot: MealSlot, text: String): NutritionistPlan {
-        val clean = text.trim().replace(Regex("\\s+"), " ").take(MAX_OPTION_LENGTH)
+        val clean = clean(text)
         val current = optionsFor(slot)
         if (clean.isEmpty() || clean in current || current.size >= MAX_OPTIONS_PER_SLOT) return this
         return copy(options = options + (slot to current + clean))
+    }
+
+    /**
+     * Changes the text of one option. Blank text, or text equal to another option of the same
+     * meal, leaves the plan unchanged.
+     */
+    fun replace(slot: MealSlot, index: Int, text: String): NutritionistPlan {
+        val current = optionsFor(slot)
+        val clean = clean(text)
+        if (index !in current.indices || clean.isEmpty()) return this
+        if (current.filterIndexed { i, _ -> i != index }.contains(clean)) return this
+        return copy(options = options + (slot to current.mapIndexed { i, old -> if (i == index) clean else old }))
     }
 
     fun remove(slot: MealSlot, index: Int): NutritionistPlan {
@@ -62,6 +74,8 @@ data class NutritionistPlan(val options: Map<MealSlot, List<String>> = emptyMap(
         }
         return plan
     }
+
+    private fun clean(text: String) = text.trim().replace(Regex("\\s+"), " ").take(MAX_OPTION_LENGTH)
 
     companion object {
         const val BACKUP_HEADER = "DiaBem – Meu plano"

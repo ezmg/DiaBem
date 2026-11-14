@@ -2,6 +2,7 @@ package com.velkyss.diabem.app.data
 
 import com.russhwolf.settings.Settings
 import com.velkyss.diabem.core.profile.HealthProfile
+import com.velkyss.diabem.core.profile.MealReminders
 import com.velkyss.diabem.core.profile.NutritionistPlan
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
@@ -44,6 +45,11 @@ class UserStore(private val settings: Settings = Settings()) {
         get() = settings.getStringOrNull(KEY_PLAN)?.let { runCatching { json.decodeFromString(NutritionistPlan.serializer(), it) }.getOrNull() } ?: NutritionistPlan()
         set(value) = settings.putString(KEY_PLAN, json.encodeToString(NutritionistPlan.serializer(), value))
 
+    /** Meal reminder times chosen by the person. */
+    var reminders: MealReminders
+        get() = settings.getStringOrNull(KEY_REMINDERS)?.let { runCatching { json.decodeFromString(MealReminders.serializer(), it) }.getOrNull() } ?: MealReminders()
+        set(value) = settings.putString(KEY_REMINDERS, json.encodeToString(MealReminders.serializer(), value))
+
     var displayPrefs: DisplayPrefs
         get() = settings.getStringOrNull(KEY_DISPLAY)?.let { runCatching { json.decodeFromString(DisplayPrefs.serializer(), it) }.getOrNull() } ?: DisplayPrefs()
         set(value) = settings.putString(KEY_DISPLAY, json.encodeToString(DisplayPrefs.serializer(), value))
@@ -56,6 +62,7 @@ class UserStore(private val settings: Settings = Settings()) {
         const val KEY_PROFILE = "health_profile_v1"
         const val KEY_FAVORITES = "favorites_v1"
         const val KEY_PLAN = "nutritionist_plan_v1"
+        const val KEY_REMINDERS = "meal_reminders_v1"
         const val KEY_DISPLAY = "display_prefs_v1"
         const val SEP = ","
     }
