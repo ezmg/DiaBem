@@ -43,7 +43,11 @@ Si falta algún secreto, el flujo se detiene con un mensaje claro y no publica n
 
 - Instalar el APK nuevo **encima** del anterior (sin desinstalar): los datos se conservan porque el
   identificador de la app y la clave de firma son los mismos.
-- **No desinstalar** la app: al desinstalar, Android borra el plan, el perfil y las favoritas.
+- **Copia automática**: la app entra en la copia de seguridad de Android (cuenta de Google del
+  usuario). Al reinstalar o cambiar de teléfono, Android restaura el plan, el perfil y las
+  favoritas. Depende de que el teléfono tenga la copia activada y no es inmediata (aprox. diaria).
+- **No desinstalar** la app sin necesidad: si la copia de Android no está activada o aún no se ha
+  hecho, al desinstalar se pierden el plan, el perfil y las favoritas.
 - El APK de GitHub y la versión de Google Play llevan **firmas distintas** (en Google Play firma
   Google). Para pasar de uno a otro hay que desinstalar, y eso borra los datos. Antes de hacerlo:
   *Meu plano → Guardar uma cópia do plano*, y después *Recuperar um plano guardado*.

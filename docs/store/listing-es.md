@@ -32,7 +32,7 @@ HECHA PARA SER FÁCIL
 
 TU PRIVACIDAD
 • Sin registro, sin anuncios, sin rastreo.
-• Tus datos se quedan solo en tu dispositivo.
+• Tus datos se quedan en tu dispositivo y en la copia de seguridad de tu propio móvil.
 • Funciona sin internet.
 
 AVISO IMPORTANTE
