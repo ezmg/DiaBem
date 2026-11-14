@@ -152,9 +152,9 @@
     <string name="glucose_after_lunch">2 horas después del almuerzo</string>
     <string name="glucose_after_dinner">2 horas después de la cena</string>
     <string name="glucose_fasting_short">Ayunas</string>
-    <string name="glucose_after_breakfast_short">Tras\ndesay.</string>
-    <string name="glucose_after_lunch_short">Tras\nalmuerzo</string>
-    <string name="glucose_after_dinner_short">Tras\ncena</string>
+    <string name="glucose_after_breakfast_short">Desay.</string>
+    <string name="glucose_after_lunch_short">Almuerzo</string>
+    <string name="glucose_after_dinner_short">Cena</string>
     <string name="glucose_invalid">Revisa el número. Debe estar entre %1$d y %2$d.</string>
     <string name="glucose_notice">La app solo guarda los números. No dice si están bien o mal y no indica insulina ni medicamentos. Enseña las mediciones a tu médico o nutricionista.</string>
     <string name="glucose_history">Historial</string>

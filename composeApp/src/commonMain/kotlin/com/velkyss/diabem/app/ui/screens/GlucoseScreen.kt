@@ -233,7 +233,7 @@ private fun HistoryTable(log: GlucoseLog, days: List<LocalDay>, fullDates: Boole
             Row(Modifier.fillMaxWidth().padding(vertical = 6.dp), verticalAlignment = Alignment.Bottom) {
                 Text(stringResource(Res.string.glucose_date), style = MaterialTheme.typography.labelMedium, modifier = Modifier.width(dateWidth).semantics { heading() })
                 GlucoseMoment.entries.forEach {
-                    Text(stringResource(it.shortLabel), style = MaterialTheme.typography.labelMedium, textAlign = TextAlign.Center, maxLines = 2, softWrap = false, modifier = Modifier.weight(1f))
+                    Text(stringResource(it.shortLabel), style = MaterialTheme.typography.labelMedium, textAlign = TextAlign.Center, maxLines = 1, softWrap = false, modifier = Modifier.weight(1f))
                 }
             }
             days.forEach { day ->

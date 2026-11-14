@@ -410,8 +410,6 @@ class AppUiTest {
         // the same table as the paper sheet
         onNodeWithText("14/11").assertExists()
         onNodeWithText("2 horas após a refeição", substring = true).assertExists()
-        // the three "after" headers have the same two-line shape
-        for (h in listOf("Após\ncafé", "Após\nalmoço", "Após\njantar")) onNodeWithText(h).assertExists()
 
         // yesterday is a separate, empty day; tomorrow cannot be chosen
         onNodeWithContentDescription("Dia seguinte").assertIsNotEnabled()

@@ -153,9 +153,9 @@
     <string name="glucose_after_lunch">2 horas após o almoço</string>
     <string name="glucose_after_dinner">2 horas após o jantar</string>
     <string name="glucose_fasting_short">Jejum</string>
-    <string name="glucose_after_breakfast_short">Após\ncafé</string>
-    <string name="glucose_after_lunch_short">Após\nalmoço</string>
-    <string name="glucose_after_dinner_short">Após\njantar</string>
+    <string name="glucose_after_breakfast_short">Café</string>
+    <string name="glucose_after_lunch_short">Almoço</string>
+    <string name="glucose_after_dinner_short">Jantar</string>
     <string name="glucose_invalid">Confira o número. Ele deve ficar entre %1$d e %2$d.</string>
     <string name="glucose_notice">O aplicativo só guarda os números. Ele não diz se estão bons ou ruins e não indica insulina nem remédios. Mostre as medições ao seu médico ou nutricionista.</string>
     <string name="glucose_history">Histórico</string>
@@ -166,7 +166,7 @@
     <string name="glucose_show">Mostrar à nutricionista</string>
     <string name="glucose_view_period">De %1$s a %2$s</string>
     <string name="glucose_view_unit">Valores em %1$s, do dia mais recente para o mais antigo.</string>
-    <string name="glucose_table_legend">Jejum: antes de comer. As outras: 2 horas após a refeição.</string>
+    <string name="glucose_table_legend">Jejum: antes de comer. Café, Almoço e Jantar: 2 horas após a refeição.</string>
     <plurals name="recipes_available">
         <item quantity="one">%1$d receita disponível</item>
         <item quantity="other">%1$d receitas disponíveis</item>
