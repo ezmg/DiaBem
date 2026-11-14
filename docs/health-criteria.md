@@ -74,7 +74,8 @@ glicemia en ayunas y 2 horas después del desayuno, del almuerzo y de la cena.
   comprueba la prueba `glucoseDiaryNeverJudgesTheNumbers`.
 - El único control es de errores de tecleo: solo acepta valores entre 20 y 600, que es lo que
   puede mostrar un medidor. No es un límite de salud.
-- Se puede copiar como texto para enseñarlo al médico o nutricionista.
+- Vista de solo lectura (*Mostrar à nutricionista*) para enseñar el teléfono en la consulta: toda
+  la tabla, sin nada que tocar. También se puede copiar como texto.
 
 ## Lo que la app NUNCA hace
 

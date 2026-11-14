@@ -17,6 +17,13 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.outlined.ContentCopy
+import androidx.compose.material.icons.outlined.Visibility
+import com.velkyss.diabem.app.resources.glucose_show
+import com.velkyss.diabem.app.resources.glucose_table_legend
+import com.velkyss.diabem.app.resources.glucose_view_period
+import com.velkyss.diabem.app.resources.glucose_view_unit
+import com.velkyss.diabem.app.ui.components.BigButton
+import com.velkyss.diabem.app.ui.theme.LocalDiaryColors
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.FilledIconButton
 import androidx.compose.material3.HorizontalDivider
@@ -102,7 +109,7 @@ private const val HISTORY_DAYS = 30
  * no colours, no "high/low", no advice about insulin or medicine.
  */
 @Composable
-fun GlucoseScreen(controller: AppController, onBack: () -> Unit) {
+fun GlucoseScreen(controller: AppController, onBack: () -> Unit, onShow: () -> Unit) {
     val today = controller.today()
     var dayEpoch by rememberSaveable { mutableStateOf(today.toEpochDay()) }
     val day = LocalDay.fromEpochDay(dayEpoch)
@@ -142,7 +149,15 @@ fun GlucoseScreen(controller: AppController, onBack: () -> Unit) {
             if (log.isEmpty) {
                 Text(stringResource(Res.string.glucose_history_empty), style = MaterialTheme.typography.bodyMedium)
             } else {
-                HistoryTable(log)
+                HistoryTable(log, log.days.take(HISTORY_DAYS))
+                val diary = LocalDiaryColors.current
+                BigButton(
+                    stringResource(Res.string.glucose_show),
+                    onShow,
+                    icon = Icons.Outlined.Visibility,
+                    containerColor = diary.container,
+                    contentColor = diary.onContainer,
+                )
                 BigOutlinedButton(stringResource(Res.string.glucose_copy), { showCopy = true }, icon = Icons.Outlined.ContentCopy)
             }
         }
@@ -209,24 +224,52 @@ private fun ValueField(label: String, stored: Int?, key: String, onSave: (Int?) 
 
 /** The same table as the paper sheet: one row per day, one column per moment. */
 @Composable
-private fun HistoryTable(log: GlucoseLog) {
+private fun HistoryTable(log: GlucoseLog, days: List<LocalDay>, fullDates: Boolean = false) {
     Surface(shape = RoundedCornerShape(12.dp), color = MaterialTheme.colorScheme.surface, border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline), modifier = Modifier.fillMaxWidth()) {
-        Column(Modifier.padding(horizontal = 8.dp, vertical = 6.dp)) {
+        val dateWidth = if (fullDates) 112.dp else 54.dp
+        Column(Modifier.padding(horizontal = 4.dp, vertical = 6.dp)) {
+            Text(stringResource(Res.string.glucose_table_legend), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(vertical = 6.dp))
+            HorizontalDivider()
             Row(Modifier.fillMaxWidth().padding(vertical = 6.dp), verticalAlignment = Alignment.Bottom) {
-                Text(stringResource(Res.string.glucose_date), style = MaterialTheme.typography.labelMedium, modifier = Modifier.width(64.dp).semantics { heading() })
+                Text(stringResource(Res.string.glucose_date), style = MaterialTheme.typography.labelMedium, modifier = Modifier.width(dateWidth).semantics { heading() })
                 GlucoseMoment.entries.forEach {
-                    Text(stringResource(it.shortLabel), style = MaterialTheme.typography.labelMedium, textAlign = TextAlign.Center, modifier = Modifier.weight(1f))
+                    Text(stringResource(it.shortLabel), style = MaterialTheme.typography.labelMedium, textAlign = TextAlign.Center, maxLines = 1, softWrap = false, modifier = Modifier.weight(1f))
                 }
             }
-            log.days.take(HISTORY_DAYS).forEach { day ->
+            days.forEach { day ->
                 HorizontalDivider()
                 val values = log.valuesFor(day)
                 Row(Modifier.fillMaxWidth().padding(vertical = 10.dp), verticalAlignment = Alignment.CenterVertically) {
-                    Text(day.shortDisplay, style = MaterialTheme.typography.bodyLarge, modifier = Modifier.width(64.dp))
+                    Text(if (fullDates) day.display else day.shortDisplay, style = MaterialTheme.typography.bodyLarge, modifier = Modifier.width(dateWidth))
                     GlucoseMoment.entries.forEach { moment ->
                         Text(values[moment]?.toString() ?: "–", style = MaterialTheme.typography.titleMedium, textAlign = TextAlign.Center, modifier = Modifier.weight(1f))
                     }
                 }
+            }
+        }
+    }
+}
+
+/**
+ * Read-only view to hand the phone to the doctor or nutritionist during the appointment:
+ * the whole diary as one table, with nothing to tap by mistake.
+ */
+@Composable
+fun GlucoseViewScreen(controller: AppController, onBack: () -> Unit) {
+    val log = controller.glucoseLog
+    val days = log.days
+    ScreenScaffold(title = stringResource(Res.string.glucose_title), onBack = onBack) { pad ->
+        Column(Modifier.verticalScroll(rememberScrollState()).padding(pad), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            if (days.isEmpty()) {
+                Text(stringResource(Res.string.glucose_history_empty), style = MaterialTheme.typography.bodyLarge)
+            } else {
+                Text(
+                    stringResource(Res.string.glucose_view_period, days.last().display, days.first().display),
+                    style = MaterialTheme.typography.titleMedium,
+                    modifier = Modifier.semantics { heading() },
+                )
+                Text(stringResource(Res.string.glucose_view_unit, GlucoseLog.UNIT), style = MaterialTheme.typography.bodyMedium)
+                HistoryTable(log, days, fullDates = false)
             }
         }
     }

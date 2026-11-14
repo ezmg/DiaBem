@@ -22,6 +22,8 @@ import androidx.compose.material.icons.filled.Verified
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material.icons.outlined.HelpOutline
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.ui.graphics.Color
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -110,10 +112,20 @@ private fun BackButton(onBack: () -> Unit) {
 }
 
 @Composable
-fun BigButton(text: String, onClick: () -> Unit, modifier: Modifier = Modifier, icon: ImageVector? = null, enabled: Boolean = true) {
+fun BigButton(
+    text: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    icon: ImageVector? = null,
+    enabled: Boolean = true,
+    /** Null uses the app's green. */
+    containerColor: Color? = null,
+    contentColor: Color = Color.White,
+) {
     Button(
         onClick = onClick,
         enabled = enabled,
+        colors = if (containerColor != null) ButtonDefaults.buttonColors(containerColor = containerColor, contentColor = contentColor) else ButtonDefaults.buttonColors(),
         modifier = modifier.fillMaxWidth().heightIn(min = 64.dp),
         shape = RoundedCornerShape(16.dp),
         contentPadding = PaddingValues(horizontal = 20.dp, vertical = 12.dp),

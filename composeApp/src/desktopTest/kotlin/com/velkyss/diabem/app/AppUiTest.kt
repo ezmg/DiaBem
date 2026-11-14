@@ -198,6 +198,7 @@ class AppUiTest {
             com.velkyss.diabem.app.ui.Screen.Plan,
             com.velkyss.diabem.app.ui.Screen.Reminders,
             com.velkyss.diabem.app.ui.Screen.Glucose,
+            com.velkyss.diabem.app.ui.Screen.GlucoseView,
             com.velkyss.diabem.app.ui.Screen.FoodSearch,
             com.velkyss.diabem.app.ui.Screen.FoodDetail("53"),
         )
@@ -408,7 +409,7 @@ class AppUiTest {
         assertEquals(mapOf(fasting to 98, afterBreakfast to 135), store.glucoseLog.valuesFor(testToday))
         // the same table as the paper sheet
         onNodeWithText("14/11").assertExists()
-        onNodeWithText("Após café").assertExists()
+        onNodeWithText("2 horas após a refeição", substring = true).assertExists()
 
         // yesterday is a separate, empty day; tomorrow cannot be chosen
         onNodeWithContentDescription("Dia seguinte").assertIsNotEnabled()
@@ -449,7 +450,24 @@ class AppUiTest {
         for (word in listOf("alto", "alta", "baixo", "baixa", "muito", "perigo", "atenção")) {
             onAllNodesWithText(word, substring = true, ignoreCase = true).assertCountEquals(0)
         }
-        onNodeWithText("Copiar para mostrar à nutricionista").performScrollTo().performClick()
+        onNodeWithText("Copiar como texto").performScrollTo().performClick()
         onNodeWithText("Glicemia de jejum: 320 mg/dL", substring = true).assertExists()
+    }
+
+    @Test
+    fun glucoseDiaryHasAReadOnlyViewForTheAppointment() = runComposeUiTest {
+        val controller = launch(newStore(withProfile = true))
+        val moments = com.velkyss.diabem.core.profile.GlucoseMoment.entries
+        // 40 days of readings: the view shows them all, not only the last 30
+        repeat(40) { back -> controller.setGlucose(testToday.plusDays(-back), moments[back % 4], 100 + back) }
+        controller.go(com.velkyss.diabem.app.ui.Screen.Glucose)
+
+        onNodeWithText("Mostrar à nutricionista").performScrollTo().performClick()
+        onNodeWithText("De 06/10/2026 a 14/11/2026").assertExists()
+        onNodeWithText("06/10").assertExists()
+        onNodeWithText("139").assertExists()
+        // nothing to type or change on this screen
+        onAllNodes(hasSetTextAction()).assertCountEquals(0)
+        onAllNodes(hasContentDescription("Carboidratos:", substring = true)).assertCountEquals(0)
     }
 }

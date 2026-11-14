@@ -36,6 +36,7 @@ sealed interface Screen {
     data object Plan : Screen
     data object Reminders : Screen
     data object Glucose : Screen
+    data object GlucoseView : Screen
     data object FoodSearch : Screen
     data class FoodDetail(val foodId: String) : Screen
 }
