@@ -124,6 +124,23 @@
         <item quantity="one">%1$d opción recuperada</item>
         <item quantity="other">%1$d opciones recuperadas</item>
     </plurals>
+    <string name="plan_edit">Corregir: %1$s</string>
+    <string name="plan_edit_title">Corregir la opción</string>
+    <string name="plan_edit_label">Texto de la opción</string>
+    <string name="reminders_title">Recordatorios de las comidas</string>
+    <string name="reminders_help">Activa el recordatorio de las comidas que quieras recordar y elige la hora. El móvil avisa todos los días, con sonido, aunque la app esté cerrada.</string>
+    <string name="reminder_switch">Recordar todos los días</string>
+    <string name="reminder_hour_less">%1$s: una hora antes</string>
+    <string name="reminder_hour_more">%1$s: una hora después</string>
+    <string name="reminder_minute_less">%1$s: cinco minutos antes</string>
+    <string name="reminder_minute_more">%1$s: cinco minutos después</string>
+    <string name="reminders_permission_needed">El móvil no deja que la app muestre avisos. Abre los ajustes del móvil, busca la app y activa las notificaciones.</string>
+    <string name="reminders_delay_note">El aviso puede llegar unos minutos después de la hora marcada. Si el móvil está en silencio, no suena.</string>
+    <string name="reminder_notification_title">Hora de: %1$s</string>
+    <string name="reminder_body_default">Abre la app para ver ideas de qué comer.</string>
+    <string name="reminder_body_plan">Tu plan: %1$s</string>
+    <string name="reminder_hour">Hora</string>
+    <string name="reminder_minutes">Minutos</string>
     <plurals name="recipes_available">
         <item quantity="one">%1$d receta disponible</item>
         <item quantity="other">%1$d recetas disponibles</item>

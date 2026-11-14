@@ -58,6 +58,15 @@ pide el permiso de internet (se puede comprobar en el manifiesto).
 | ¿Es un dispositivo médico? | No. No diagnostica, no trata y no calcula dosis |
 | Aviso médico | Se muestra en el primer uso, en el inicio, en los resultados, en cada receta y en la consulta de alimentos |
 
+### Permisos de la app
+
+| Permiso | Para qué |
+|---|---|
+| Notificaciones (`POST_NOTIFICATIONS`) | Mostrar los recordatorios de las comidas que la persona activa |
+| Arranque (`RECEIVE_BOOT_COMPLETED`) | Volver a programar los recordatorios tras reiniciar el teléfono |
+
+No usa alarmas exactas ni permiso de internet.
+
 ## Versión
 
 | Campo | Respuesta |

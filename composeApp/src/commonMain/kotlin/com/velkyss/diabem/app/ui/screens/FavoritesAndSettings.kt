@@ -17,7 +17,9 @@ import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.DeleteForever
+import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.material.icons.outlined.Person
+import com.velkyss.diabem.app.resources.reminders_title
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.MaterialTheme
@@ -68,7 +70,7 @@ fun FavoritesScreen(controller: AppController, onBack: () -> Unit, onOpen: (Stri
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun SettingsScreen(controller: AppController, onBack: () -> Unit, onEditProfile: () -> Unit) {
+fun SettingsScreen(controller: AppController, onBack: () -> Unit, onEditProfile: () -> Unit, onReminders: () -> Unit) {
     var confirmErase by remember { mutableStateOf(false) }
     val prefs = controller.display
     ScreenScaffold(title = stringResource(Res.string.settings), onBack = onBack) { pad ->
@@ -94,6 +96,9 @@ fun SettingsScreen(controller: AppController, onBack: () -> Unit, onEditProfile:
                 Switch(checked = prefs.highContrast, onCheckedChange = null)
             }
             BigOutlinedButton(stringResource(Res.string.edit_profile), onEditProfile, icon = Icons.Outlined.Person)
+            if (controller.reminderPlatform.supported) {
+                BigOutlinedButton(stringResource(Res.string.reminders_title), onReminders, icon = Icons.Outlined.Notifications)
+            }
 
             SectionTitle(stringResource(Res.string.about_sources))
             controller.pack.sources.filter { it.url != null }.forEach {

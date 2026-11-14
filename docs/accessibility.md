@@ -24,3 +24,14 @@ sustituyen una prueba con TalkBack en un teléfono Android. Lista para esa prueb
 2. Marcar tres ingredientes y abrir una receta solo con gestos.
 3. Cambiar las raciones y comprobar que se anuncia el nuevo número.
 4. Poner el tamaño de letra del sistema al máximo y la app al 150 %: nada debe cortarse.
+
+## Recordatorios de comidas (solo Android)
+
+- Se configuran en *Lembretes das refeições* (inicio y ajustes): un interruptor y la hora por comida.
+- Son avisos locales: los programa el propio teléfono, sin servidor ni internet.
+- Suenan con el sonido de notificaciones del teléfono; en silencio no suenan.
+- Android puede retrasarlos unos minutos (se usan alarmas inexactas para no pedir un permiso especial).
+- Se vuelven a programar solos al reiniciar el teléfono y al actualizar la app.
+- Algunos fabricantes (Xiaomi, Samsung con ahorro de batería agresivo) pueden bloquear avisos de
+  apps poco usadas: si no llegan, hay que excluir DiaBem del ahorro de batería.
+- Pendiente de probar en un teléfono real: que suene a su hora con la app cerrada y tras reiniciar.

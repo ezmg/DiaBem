@@ -43,4 +43,15 @@ class StoredDataCompatibilityTest {
         assertEquals(1.3f, store.displayPrefs.textScale)
         assertTrue(store.displayPrefs.highContrast)
     }
+
+    @Test
+    fun remindersStoredByVersion1Dot1SurviveLaterUpdates() {
+        // Exact value written by the first version with reminders. Do not edit: fix the code.
+        val later = UserStore(MapSettings(mutableMapOf<String, Any>("meal_reminders_v1" to """{"times":{"morning_snack":{"hour":10,"minute":30,"enabled":true}}}""")))
+        val reminder = later.reminders.reminderFor(MealSlot.MORNING_SNACK)
+        assertEquals("10:30", reminder.label)
+        assertTrue(reminder.enabled)
+        // data from 1.0.0 has no reminders: they start switched off
+        assertTrue(!store.reminders.anyEnabled)
+    }
 }

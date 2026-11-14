@@ -28,6 +28,8 @@ import com.velkyss.diabem.app.ui.screens.IngredientsScreen
 import com.velkyss.diabem.app.ui.screens.NoticeScreen
 import com.velkyss.diabem.app.ui.screens.PlanScreen
 import com.velkyss.diabem.app.ui.screens.ProfileScreen
+import com.velkyss.diabem.app.ui.screens.ReminderSync
+import com.velkyss.diabem.app.ui.screens.RemindersScreen
 import com.velkyss.diabem.app.ui.screens.ResultsScreen
 import com.velkyss.diabem.app.ui.screens.SettingsScreen
 import com.velkyss.diabem.app.ui.theme.DiaBemTheme
@@ -52,6 +54,7 @@ fun App(store: UserStore = remember { UserStore() }) {
 
 @Composable
 fun AppContent(c: AppController) {
+    ReminderSync(c)
     PlatformBackHandler(enabled = c.canGoBack) { c.back() }
     when (val s = c.screen) {
         Screen.Notice -> NoticeScreen(onAccept = c::acceptNotice)
@@ -64,6 +67,7 @@ fun AppContent(c: AppController) {
             onMeal = { c.go(Screen.Ingredients(it)) },
             onPlan = { c.go(Screen.Plan) },
             onFoodLookup = { c.go(Screen.FoodSearch) },
+            onReminders = if (c.reminderPlatform.supported) ({ c.go(Screen.Reminders) }) else null,
             onFavorites = { c.go(Screen.Favorites) },
             onSettings = { c.go(Screen.Settings) },
         )
@@ -73,7 +77,13 @@ fun AppContent(c: AppController) {
         Screen.Favorites -> FavoritesScreen(c, onBack = c::back, onOpen = { c.go(Screen.Detail(it, null)) })
         Screen.FoodSearch -> FoodSearchScreen(c, onBack = c::back, onOpen = { c.go(Screen.FoodDetail(it)) })
         is Screen.FoodDetail -> FoodDetailScreen(c, s.foodId, onBack = c::back)
+        Screen.Reminders -> RemindersScreen(c, onBack = c::back)
         Screen.Plan -> PlanScreen(c, onBack = c::back)
-        Screen.Settings -> SettingsScreen(c, onBack = c::back, onEditProfile = { c.go(Screen.Profile(firstTime = false)) })
+        Screen.Settings -> SettingsScreen(
+            c,
+            onBack = c::back,
+            onEditProfile = { c.go(Screen.Profile(firstTime = false)) },
+            onReminders = { c.go(Screen.Reminders) },
+        )
     }
 }

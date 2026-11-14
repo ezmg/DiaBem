@@ -124,6 +124,23 @@
         <item quantity="one">%1$d option restored</item>
         <item quantity="other">%1$d options restored</item>
     </plurals>
+    <string name="plan_edit">Edit: %1$s</string>
+    <string name="plan_edit_title">Edit the option</string>
+    <string name="plan_edit_label">Option text</string>
+    <string name="reminders_title">Meal reminders</string>
+    <string name="reminders_help">Turn on the reminder for the meals you want to remember and choose the time. The phone alerts you every day, with sound, even when the app is closed.</string>
+    <string name="reminder_switch">Remind every day</string>
+    <string name="reminder_hour_less">%1$s: one hour earlier</string>
+    <string name="reminder_hour_more">%1$s: one hour later</string>
+    <string name="reminder_minute_less">%1$s: five minutes earlier</string>
+    <string name="reminder_minute_more">%1$s: five minutes later</string>
+    <string name="reminders_permission_needed">The phone does not let this app show alerts. Open the phone settings, find the app and turn on notifications.</string>
+    <string name="reminders_delay_note">The alert may arrive a few minutes after the chosen time. If the phone is on silent, it makes no sound.</string>
+    <string name="reminder_notification_title">Time for: %1$s</string>
+    <string name="reminder_body_default">Open the app for ideas of what to eat.</string>
+    <string name="reminder_body_plan">Your plan: %1$s</string>
+    <string name="reminder_hour">Hour</string>
+    <string name="reminder_minutes">Minutes</string>
     <plurals name="recipes_available">
         <item quantity="one">%1$d recipe available</item>
         <item quantity="other">%1$d recipes available</item>

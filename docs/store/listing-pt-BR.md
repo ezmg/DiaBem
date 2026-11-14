@@ -31,6 +31,9 @@ FEITO PARA SER FÁCIL
 SEU PLANO DA NUTRICIONISTA
 Copie para o aplicativo o que a sua nutricionista indicou para cada refeição. Ele aparece primeiro, antes das receitas.
 
+LEMBRETES DAS REFEIÇÕES
+Escolha a hora de cada refeição e o celular avisa todos os dias, com som. Útil para não esquecer o lanche.
+
 CONSULTE UM ALIMENTO
 Escreva o nome de um alimento e veja quanto ele tem de carboidratos e de sal na quantidade que você vai comer.
 
