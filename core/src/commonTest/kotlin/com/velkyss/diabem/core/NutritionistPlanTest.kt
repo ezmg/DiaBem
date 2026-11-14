@@ -85,3 +85,43 @@ class NutritionistPlanBackupTest {
         assertEquals(plan, plan.mergeBackupText("olá\n- sem refeição\n[xyz] nada\n- outra"))
     }
 }
+
+class NutritionistPlanEditTest {
+    private val plan = NutritionistPlan().add(MealSlot.LUNCH, "3 colheres de arros").add(MealSlot.LUNCH, "salada")
+
+    @Test
+    fun anOptionCanBeCorrected() {
+        val fixed = plan.replace(MealSlot.LUNCH, 0, "  3 colheres de arroz ")
+        assertEquals(listOf("3 colheres de arroz", "salada"), fixed.optionsFor(MealSlot.LUNCH))
+    }
+
+    @Test
+    fun blankDuplicateOrWrongIndexChangeNothing() {
+        assertEquals(plan, plan.replace(MealSlot.LUNCH, 0, "   "))
+        assertEquals(plan, plan.replace(MealSlot.LUNCH, 0, "salada"))
+        assertEquals(plan, plan.replace(MealSlot.LUNCH, 5, "outra"))
+        assertEquals(plan, plan.replace(MealSlot.DINNER, 0, "outra"))
+    }
+}
+
+class MealRemindersTest {
+    @Test
+    fun defaultsAreOffAndCoverEveryMeal() {
+        val r = com.velkyss.diabem.core.profile.MealReminders()
+        MealSlot.entries.forEach { assertTrue(!r.reminderFor(it).enabled) }
+        assertTrue(!r.anyEnabled)
+        assertEquals("10:00", r.reminderFor(MealSlot.MORNING_SNACK).label)
+    }
+
+    @Test
+    fun timeCanBeChangedAndWrapsAround() {
+        val t = com.velkyss.diabem.core.profile.MealReminder(23, 55, enabled = true)
+        assertEquals("00:55", t.plusHours(1).label)
+        assertEquals("23:00", t.plusMinutes(5).label)
+        assertEquals("23:50", t.plusMinutes(-5).label)
+        assertEquals("07:05", com.velkyss.diabem.core.profile.MealReminder(7, 5).label)
+        val r = com.velkyss.diabem.core.profile.MealReminders().with(MealSlot.MORNING_SNACK, t)
+        assertTrue(r.anyEnabled)
+        assertEquals(t, r.reminderFor(MealSlot.MORNING_SNACK))
+    }
+}
