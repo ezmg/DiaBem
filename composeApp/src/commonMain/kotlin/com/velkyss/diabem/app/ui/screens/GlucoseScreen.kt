@@ -226,21 +226,21 @@ private fun ValueField(label: String, stored: Int?, key: String, onSave: (Int?) 
 @Composable
 private fun HistoryTable(log: GlucoseLog, days: List<LocalDay>, fullDates: Boolean = false) {
     Surface(shape = RoundedCornerShape(12.dp), color = MaterialTheme.colorScheme.surface, border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline), modifier = Modifier.fillMaxWidth()) {
-        val dateWidth = if (fullDates) 112.dp else 54.dp
+        val dateWidth = if (fullDates) 112.dp else 66.dp
         Column(Modifier.padding(horizontal = 4.dp, vertical = 6.dp)) {
             Text(stringResource(Res.string.glucose_table_legend), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(vertical = 6.dp))
             HorizontalDivider()
             Row(Modifier.fillMaxWidth().padding(vertical = 6.dp), verticalAlignment = Alignment.Bottom) {
                 Text(stringResource(Res.string.glucose_date), style = MaterialTheme.typography.labelMedium, modifier = Modifier.width(dateWidth).semantics { heading() })
                 GlucoseMoment.entries.forEach {
-                    Text(stringResource(it.shortLabel), style = MaterialTheme.typography.labelMedium, textAlign = TextAlign.Center, maxLines = 1, softWrap = false, modifier = Modifier.weight(1f))
+                    Text(stringResource(it.shortLabel), style = MaterialTheme.typography.labelMedium, textAlign = TextAlign.Center, maxLines = 2, softWrap = false, modifier = Modifier.weight(1f))
                 }
             }
             days.forEach { day ->
                 HorizontalDivider()
                 val values = log.valuesFor(day)
                 Row(Modifier.fillMaxWidth().padding(vertical = 10.dp), verticalAlignment = Alignment.CenterVertically) {
-                    Text(if (fullDates) day.display else day.shortDisplay, style = MaterialTheme.typography.bodyLarge, modifier = Modifier.width(dateWidth))
+                    Text(if (fullDates) day.display else day.shortDisplay, style = MaterialTheme.typography.bodyLarge, maxLines = 1, softWrap = false, modifier = Modifier.width(dateWidth))
                     GlucoseMoment.entries.forEach { moment ->
                         Text(values[moment]?.toString() ?: "–", style = MaterialTheme.typography.titleMedium, textAlign = TextAlign.Center, modifier = Modifier.weight(1f))
                     }
