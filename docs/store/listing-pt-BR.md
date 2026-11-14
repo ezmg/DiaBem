@@ -34,6 +34,9 @@ Copie para o aplicativo o que a sua nutricionista indicou para cada refeição. 
 LEMBRETES DAS REFEIÇÕES
 Escolha a hora de cada refeição e o celular avisa todos os dias, com som. Útil para não esquecer o lanche.
 
+SUAS MEDIÇÕES DE GLICEMIA
+Anote os números do seu aparelho (em jejum e 2 horas após as refeições) e copie tudo para mostrar ao médico ou nutricionista. O aplicativo só guarda os números: não diz se estão bons ou ruins.
+
 CONSULTE UM ALIMENTO
 Escreva o nome de um alimento e veja quanto ele tem de carboidratos e de sal na quantidade que você vai comer.
 

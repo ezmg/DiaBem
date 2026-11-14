@@ -64,6 +64,18 @@ Las cifras son oficiales; la combinación de reglas es nuestra y debe confirmarl
 - Las recetas de DiaBem no usan azúcar. El compilador suma los gramos de los ingredientes marcados
   como azúcar añadido (`addedSugar: true`), ya que TACO no tiene columna de azúcares.
 
+## Diario de glicemia
+
+La pantalla *Minha glicemia* reproduce la hoja de registro que dan los nutricionistas: fecha,
+glicemia en ayunas y 2 horas después del desayuno, del almuerzo y de la cena.
+
+- Solo guarda y muestra los números que la persona lee en su aparato (mg/dL).
+- **No interpreta**: no hay colores, ni "alto/bajo", ni objetivos, ni avisos, ni consejos. Lo
+  comprueba la prueba `glucoseDiaryNeverJudgesTheNumbers`.
+- El único control es de errores de tecleo: solo acepta valores entre 20 y 600, que es lo que
+  puede mostrar un medidor. No es un límite de salud.
+- Se puede copiar como texto para enseñarlo al médico o nutricionista.
+
 ## Lo que la app NUNCA hace
 
 - No calcula ni sugiere dosis de insulina ni de medicamentos.

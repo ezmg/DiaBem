@@ -13,7 +13,9 @@ decidir qué cocinar con los ingredientes que tienen.
    seguridad de Android de la cuenta de Google del propio usuario (decisión del responsable,
    14-11-2026). Nadie del proyecto tiene acceso a esos datos.
 3. **Seguridad sanitaria**: NUNCA calcular ni sugerir dosis de insulina ni de medicamentos. Mostrar
-   siempre el aviso de que las recetas no sustituyen al médico o nutricionista.
+   siempre el aviso de que las recetas no sustituyen al médico o nutricionista. El diario de
+   glicemia solo guarda y muestra los números que anota la persona: sin colores, sin "alto/bajo",
+   sin objetivos y sin consejos.
 4. **Datos fiables**: los nutrientes se calculan SIEMPRE a partir de tablas oficiales de composición
    (TACO para Brasil). Nunca inventar valores. Si falta un dato, se deja vacío y se marca.
 5. **Accesibilidad para mayores**: letra grande, alto contraste, botones grandes (mínimo 56 dp),
@@ -59,7 +61,7 @@ La app ya está instalada y hay personas con su plan de la nutricionista guardad
 no puede perderlo:
 
 - No cambiar las claves de almacenamiento (`*_v1` en `UserStore`) ni los nombres serializados
-  (`@SerialName`) de `MealSlot`, `Condition`, etc. Si hace falta otro formato, escribir una
+  (`@SerialName`) de `MealSlot`, `Condition`, `GlucoseMoment`, etc. Si hace falta otro formato, escribir una
   migración y mantener la lectura del antiguo.
 - No desactivar la copia de seguridad de Android (`allowBackup` y `res/xml/*_rules.xml`) ni quitar
   la copia en texto del plan (*Meu plano → Guardar uma cópia do plano*).

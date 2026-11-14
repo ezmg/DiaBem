@@ -54,4 +54,16 @@ class StoredDataCompatibilityTest {
         // data from 1.0.0 has no reminders: they start switched off
         assertTrue(!store.reminders.anyEnabled)
     }
+
+    @Test
+    fun glucoseDiaryStoredByVersion1Dot1SurvivesLaterUpdates() {
+        // Exact value written by the first version with the diary. Do not edit: fix the code.
+        val later = UserStore(MapSettings(mutableMapOf<String, Any>("glucose_log_v1" to """{"entries":{"2026-11-14":{"fasting":98,"after_breakfast":135},"2026-11-13":{"after_dinner":150}}}""")))
+        val day = com.velkyss.diabem.core.profile.LocalDay(2026, 11, 14)
+        val values = later.glucoseLog.valuesFor(day)
+        assertEquals(98, values[com.velkyss.diabem.core.profile.GlucoseMoment.FASTING])
+        assertEquals(135, values[com.velkyss.diabem.core.profile.GlucoseMoment.AFTER_BREAKFAST])
+        assertEquals(150, later.glucoseLog.valuesFor(day.plusDays(-1))[com.velkyss.diabem.core.profile.GlucoseMoment.AFTER_DINNER])
+        assertTrue(store.glucoseLog.isEmpty)
+    }
 }
