@@ -16,6 +16,7 @@ import androidx.compose.ui.test.hasSetTextAction
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.onAllNodesWithText
 import androidx.compose.ui.test.onFirst
+import androidx.compose.ui.test.onLast
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
@@ -281,5 +282,37 @@ class AppUiTest {
         onNode(hasContentDescription("Carboidratos: muito")).assertExists()
         onNodeWithText("59 g").assertExists()
         onNodeWithText("quem decide é o seu médico ou nutricionista", substring = true).assertExists()
+    }
+
+    @Test
+    fun everydayFoodNameIsFound() = runComposeUiTest {
+        launch(newStore(withProfile = true))
+        onNodeWithText("Consultar um alimento").performScrollTo().performClick()
+        onNode(hasSetTextAction()).performTextInput("goiabada")
+        onAllNodesWithText("Goiabada").onFirst().performClick()
+        onNodeWithText("Na Tabela TACO: Goiaba, doce", substring = true).assertExists()
+        onNode(hasContentDescription("Carboidratos:", substring = true)).assertExists()
+    }
+
+    @Test
+    fun planBackupCanBeCopiedAndRestored() = runComposeUiTest {
+        val store = newStore(withProfile = true)
+        val controller = launch(store)
+        controller.addPlanOption(com.velkyss.diabem.core.model.MealSlot.BREAKFAST, "1 pão francês + café com leite")
+        controller.go(com.velkyss.diabem.app.ui.Screen.Plan)
+
+        onNodeWithText("Guardar uma cópia do plano").performScrollTo().performClick()
+        onNodeWithText("[breakfast] Café da manhã", substring = true).assertExists()
+        onAllNodesWithText("Voltar").onLast().performClick()
+
+        // simulate a fresh install, then paste the saved text back
+        val saved = store.plan.toBackupText { it.key }
+        controller.removePlanOption(com.velkyss.diabem.core.model.MealSlot.BREAKFAST, 0)
+        assertTrue(store.plan.isEmpty)
+        onNodeWithText("Recuperar um plano guardado").performScrollTo().performClick()
+        onNode(hasSetTextAction() and hasText("Texto do plano")).performTextInput(saved)
+        onNodeWithText("Recuperar").performClick()
+        assertEquals(listOf("1 pão francês + café com leite"), store.plan.optionsFor(com.velkyss.diabem.core.model.MealSlot.BREAKFAST))
+        onNodeWithText("1 opção recuperada").assertExists()
     }
 }
