@@ -53,6 +53,7 @@ import com.velkyss.diabem.app.resources.food_notice
 import com.velkyss.diabem.app.resources.food_portion
 import com.velkyss.diabem.app.resources.food_red_warning
 import com.velkyss.diabem.app.resources.food_search_hint
+import com.velkyss.diabem.app.resources.food_table_name
 import com.velkyss.diabem.app.resources.no_data
 import com.velkyss.diabem.app.resources.nutrition_source
 import com.velkyss.diabem.app.resources.sodium
@@ -100,7 +101,12 @@ fun FoodSearchScreen(controller: AppController, onBack: () -> Unit, onOpen: (Str
                     modifier = Modifier.fillMaxWidth().heightIn(min = MinTouch).clickable(role = Role.Button) { onOpen(food.id) },
                 ) {
                     Row(Modifier.padding(horizontal = 14.dp, vertical = 10.dp), verticalAlignment = Alignment.CenterVertically) {
-                        Text(food.name, style = MaterialTheme.typography.bodyLarge, modifier = Modifier.weight(1f))
+                        Column(Modifier.weight(1f)) {
+                            Text(food.displayName, style = MaterialTheme.typography.bodyLarge)
+                            if (food.aliases.isNotEmpty()) {
+                                Text(food.name, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                            }
+                        }
                         Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, contentDescription = null, modifier = Modifier.size(28.dp))
                     }
                 }
@@ -141,8 +147,11 @@ fun FoodDetailScreen(controller: AppController, foodId: String, onBack: () -> Un
     val amount = amounts[selected.coerceIn(amounts.indices)]
     val assessment = remember(foodId, amount.grams, controller.profile) { controller.foodLookup.assess(food, amount.grams, controller.profile) }
 
-    ScreenScaffold(title = food.name, onBack = onBack) { pad ->
+    ScreenScaffold(title = food.displayName, onBack = onBack) { pad ->
         Column(Modifier.verticalScroll(rememberScrollState()).padding(pad), verticalArrangement = Arrangement.spacedBy(14.dp)) {
+            if (food.aliases.isNotEmpty()) {
+                Text(stringResource(Res.string.food_table_name, food.name), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
             SectionTitle(stringResource(Res.string.food_amount_question))
             FlowRow(Modifier.selectableGroup(), horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 amounts.forEachIndexed { index, a ->

@@ -80,6 +80,17 @@ class PackCompiler(private val countryDir: File) {
 
         val sources = PackSources(pantry.categories, pantry.items, foods, measuresFile.units, measures, substitutions, recipes)
         errors += PackValidator.validateSources(sources)
+        val aliasFile = File(countryDir, "food-aliases.json")
+        val aliasesByRow = mutableMapOf<String, MutableList<String>>()
+        if (aliasFile.isFile) {
+            read<FoodAliasesFile>("food-aliases.json").aliases.forEach { (alias, rows) ->
+                if (alias.isBlank() || rows.isEmpty()) errors += "food-aliases.json: empty alias or empty row list ('$alias')"
+                rows.forEach { row ->
+                    if (row !in taco.rows) errors += "food-aliases.json: '$alias' points to row $row, which is not in ${foodsFile.tableFile}"
+                    else aliasesByRow.getOrPut(row) { mutableListOf() } += alias
+                }
+            }
+        }
         pack.ricePantryItems.filter { id -> pantry.items.none { it.id == id } }
             .forEach { errors += "pack.json: unknown rice pantry item '$it'" }
         criteria.allSources().filter { it !in sourceIds }.forEach { errors += "health-criteria.json: source '$it' is not declared in pack.json" }
@@ -107,21 +118,27 @@ class PackCompiler(private val countryDir: File) {
             healthCriteria = criteria,
             recipes = compiled,
             ricePantryItems = pack.ricePantryItems,
-            catalog = catalog(taco, foodsFile, foods, measures),
+            catalog = catalog(taco, foodsFile, foods, measures, aliasesByRow),
             catalogSource = foodsFile.table,
         )
     }
 }
 
 /** Every row of the composition table, with the household measures already known for it. */
-private fun catalog(taco: TacoTable, foodsFile: FoodsFile, foods: List<Food>, measures: List<FoodMeasure>): List<CatalogFood> {
+private fun catalog(
+    taco: TacoTable,
+    foodsFile: FoodsFile,
+    foods: List<Food>,
+    measures: List<FoodMeasure>,
+    aliasesByRow: Map<String, List<String>>,
+): List<CatalogFood> {
     val appFoodsByRow = foodsFile.foods.filter { it.tableId != null }.groupBy({ it.tableId!! }, { it.id })
     return taco.rows.values.map { row ->
         val ids = appFoodsByRow[row.id].orEmpty()
         val portions = measures.filter { it.food in ids }.map { CatalogPortion(it.unit, it.grams) }.distinct()
         // Use the app food's values when there is one: they include the documented supplements.
         val per100g = foods.firstOrNull { it.id in ids }?.per100g ?: row.per100g
-        CatalogFood(row.id, row.description, per100g, portions)
+        CatalogFood(row.id, row.description, per100g, portions, aliasesByRow[row.id].orEmpty())
     }
 }
 
