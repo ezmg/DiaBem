@@ -29,8 +29,9 @@ y la app le propone varias recetas adecuadas a su perfil, con un semáforo senci
 ## Principios
 
 - **Coste cero**: sin servidores ni servicios de pago. Todo funciona dentro del teléfono.
-- **Privacidad total**: el perfil de salud no sale del dispositivo. Sin analítica ni rastreo.
-  La app de Android ni siquiera pide permiso de acceso a internet.
+- **Privacidad**: la app no envía datos a nadie. Sin analítica, sin rastreo y sin cuentas; la app
+  de Android ni siquiera pide permiso de acceso a internet. Los datos se guardan en el teléfono y
+  entran en la copia de seguridad de Android del propio usuario, para que no se pierdan.
 - **Datos oficiales**: los nutrientes se calculan con la Tabla Brasileña de Composición de
   Alimentos (TACO, NEPA/Unicamp). Ver [DATA_SOURCES.md](DATA_SOURCES.md).
 - **Fácil de usar**: letra grande, alto contraste, botones grandes y lenguaje sencillo.

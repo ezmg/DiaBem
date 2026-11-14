@@ -39,7 +39,7 @@ Os valores nutricionais são calculados com a Tabela Brasileira de Composição 
 
 SUA PRIVACIDADE
 • Sem cadastro, sem anúncios, sem rastreamento.
-• Seus dados ficam só no seu aparelho.
+• Seus dados ficam no seu aparelho e na cópia de segurança do seu próprio celular. Ninguém mais recebe.
 • Funciona sem internet. O aplicativo nem pede permissão de internet.
 
 GRATUITO E DE CÓDIGO ABERTO

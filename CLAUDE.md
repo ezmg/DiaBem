@@ -7,8 +7,11 @@ decidir qué cocinar con los ingredientes que tienen.
 ## Principios innegociables (no cambiarlos sin permiso explícito del responsable)
 
 1. **Coste cero**: sin servidor, sin IA en tiempo de ejecución, sin APIs de pago. Funciona sin internet.
-2. **Privacidad**: el perfil de salud se queda solo en el dispositivo. Sin analítica, sin rastreo, sin
-   cuentas. La app Android no pide el permiso `INTERNET`.
+2. **Privacidad**: la app no envía datos a nadie. Sin analítica, sin rastreo, sin cuentas, sin
+   servidor. La app Android no pide el permiso `INTERNET`. Los datos del usuario (perfil, plan,
+   favoritas) se guardan en el dispositivo y, para que no se pierdan, entran en la copia de
+   seguridad de Android de la cuenta de Google del propio usuario (decisión del responsable,
+   14-11-2026). Nadie del proyecto tiene acceso a esos datos.
 3. **Seguridad sanitaria**: NUNCA calcular ni sugerir dosis de insulina ni de medicamentos. Mostrar
    siempre el aviso de que las recetas no sustituyen al médico o nutricionista.
 4. **Datos fiables**: los nutrientes se calculan SIEMPRE a partir de tablas oficiales de composición
@@ -58,6 +61,8 @@ no puede perderlo:
 - No cambiar las claves de almacenamiento (`*_v1` en `UserStore`) ni los nombres serializados
   (`@SerialName`) de `MealSlot`, `Condition`, etc. Si hace falta otro formato, escribir una
   migración y mantener la lectura del antiguo.
+- No desactivar la copia de seguridad de Android (`allowBackup` y `res/xml/*_rules.xml`) ni quitar
+  la copia en texto del plan (*Meu plano → Guardar uma cópia do plano*).
 - No cambiar el `applicationId` (`com.velkyss.diabem`) ni la clave de firma.
 - No borrar ni renombrar recetas publicadas (`data/br/released-recipe-ids.txt`): las favoritas
   guardan su id. Al publicar una versión, añadir ahí los ids nuevos.

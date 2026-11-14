@@ -7,7 +7,7 @@
     <string name="notice_point_recipes">O %1$s sugere receitas simples para quem tem diabetes tipo 2 ou pressão alta.</string>
     <string name="notice_point_doctor">As receitas são só orientações. Elas não substituem seu médico ou nutricionista.</string>
     <string name="notice_point_doses">O app nunca calcula doses de insulina ou de remédios. Siga sempre o que o seu médico mandou.</string>
-    <string name="notice_point_privacy">Seus dados ficam só neste aparelho. Não pedimos cadastro e não enviamos nada pela internet.</string>
+    <string name="notice_point_privacy">Seus dados ficam neste aparelho e na cópia de segurança do seu próprio celular. Não pedimos cadastro e ninguém mais recebe seus dados.</string>
     <string name="notice_accept">Entendi</string>
     <string name="profile_title">Sobre a sua saúde</string>
     <string name="profile_question">O que você tem?</string>
@@ -113,7 +113,7 @@
     <string name="food_notice">Isto é só uma orientação. Se você pode comer este alimento, e quanto, quem decide é o seu médico ou nutricionista.</string>
     <string name="food_table_name">Na Tabela TACO: %1$s</string>
     <string name="plan_backup_title">Cópia de segurança</string>
-    <string name="plan_backup_help">Guarde uma cópia do plano fora do aplicativo, por exemplo numa mensagem para você mesmo. Assim você não perde o plano se trocar de celular ou reinstalar o aplicativo.</string>
+    <string name="plan_backup_help">Se o seu celular faz cópia de segurança na sua conta Google, o plano já é guardado sozinho. Para ter mais segurança, guarde também uma cópia em texto, por exemplo numa mensagem para você mesmo.</string>
     <string name="plan_backup_copy">Guardar uma cópia do plano</string>
     <string name="plan_backup_copy_help">Toque em “Copiar” e cole este texto numa mensagem ou nota.</string>
     <string name="plan_backup_copy_button">Copiar</string>

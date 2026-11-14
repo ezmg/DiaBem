@@ -45,7 +45,9 @@ porque Google cambia la consola con frecuencia: lo importante es la respuesta.
 | ¿Los datos se cifran en tránsito? | No aplica: no se transmite ningún dato |
 | ¿Se puede pedir el borrado de los datos? | No aplica: no hay datos fuera del dispositivo. En la app: Ajustes → "Apagar meus dados deste aparelho" |
 
-Motivo: el perfil de salud, el plan y las favoritas se guardan solo en el dispositivo. La app no
+Motivo: el perfil de salud, el plan y las favoritas se guardan en el dispositivo. Entran en la copia
+de seguridad de Android de la cuenta de Google del propio usuario, que hace el sistema y no la app;
+el desarrollador no recibe ni puede ver esos datos, así que no cuenta como recogida de datos. La app no
 pide el permiso de internet (se puede comprobar en el manifiesto).
 
 ### Apps de salud
