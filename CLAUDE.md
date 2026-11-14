@@ -50,6 +50,20 @@ iOS está declarado pero desactivado: `diabem.ios.enabled=false` en `gradle.prop
 ./gradlew :composeApp:wasmJsBrowserDistribution  # web en composeApp/build/dist/wasmJs/productionExecutable
 ```
 
+## Datos ya guardados en los teléfonos (no romperlos nunca)
+
+La app ya está instalada y hay personas con su plan de la nutricionista guardado. Una actualización
+no puede perderlo:
+
+- No cambiar las claves de almacenamiento (`*_v1` en `UserStore`) ni los nombres serializados
+  (`@SerialName`) de `MealSlot`, `Condition`, etc. Si hace falta otro formato, escribir una
+  migración y mantener la lectura del antiguo.
+- No cambiar el `applicationId` (`com.velkyss.diabem`) ni la clave de firma.
+- No borrar ni renombrar recetas publicadas (`data/br/released-recipe-ids.txt`): las favoritas
+  guardan su id. Al publicar una versión, añadir ahí los ids nuevos.
+- `StoredDataCompatibilityTest` y `recipesOfPublishedVersionsAreNeverRemoved` lo comprueban: si
+  fallan, se corrige el código, no la prueba.
+
 ## Forma de trabajar
 
 - Commits pequeños con mensajes claros (en inglés, en imperativo).

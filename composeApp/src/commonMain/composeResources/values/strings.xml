@@ -111,6 +111,20 @@
     <string name="food_no_light">A tabela não tem todos os dados deste alimento. Por isso não mostramos o semáforo completo.</string>
     <string name="food_red_warning">Atenção: nesta quantidade, este alimento passa do limite indicado para você.</string>
     <string name="food_notice">Isto é só uma orientação. Se você pode comer este alimento, e quanto, quem decide é o seu médico ou nutricionista.</string>
+    <string name="food_table_name">Na Tabela TACO: %1$s</string>
+    <string name="plan_backup_title">Cópia de segurança</string>
+    <string name="plan_backup_help">Guarde uma cópia do plano fora do aplicativo, por exemplo numa mensagem para você mesmo. Assim você não perde o plano se trocar de celular ou reinstalar o aplicativo.</string>
+    <string name="plan_backup_copy">Guardar uma cópia do plano</string>
+    <string name="plan_backup_copy_help">Toque em “Copiar” e cole este texto numa mensagem ou nota.</string>
+    <string name="plan_backup_copy_button">Copiar</string>
+    <string name="plan_backup_restore">Recuperar um plano guardado</string>
+    <string name="plan_backup_restore_help">Cole aqui o texto do plano que você guardou. O que já está no plano não é apagado.</string>
+    <string name="plan_backup_paste_label">Texto do plano</string>
+    <string name="plan_backup_restore_button">Recuperar</string>
+    <plurals name="plan_backup_restored">
+        <item quantity="one">%1$d opção recuperada</item>
+        <item quantity="other">%1$d opções recuperadas</item>
+    </plurals>
     <plurals name="recipes_available">
         <item quantity="one">%1$d receita disponível</item>
         <item quantity="other">%1$d receitas disponíveis</item>

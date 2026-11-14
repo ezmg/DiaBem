@@ -110,6 +110,20 @@
     <string name="food_no_light">The table does not have all the data for this food, so the full traffic light is not shown.</string>
     <string name="food_red_warning">Warning: in this amount, this food is above the limit set for you.</string>
     <string name="food_notice">This is guidance only. Whether you can eat this food, and how much, is for your doctor or dietitian to decide.</string>
+    <string name="food_table_name">In the TACO table: %1$s</string>
+    <string name="plan_backup_title">Backup</string>
+    <string name="plan_backup_help">Keep a copy of the plan outside the app, for example in a message to yourself. Then you will not lose it if you change phones or reinstall the app.</string>
+    <string name="plan_backup_copy">Save a copy of the plan</string>
+    <string name="plan_backup_copy_help">Tap “Copy” and paste this text into a message or note.</string>
+    <string name="plan_backup_copy_button">Copy</string>
+    <string name="plan_backup_restore">Restore a saved plan</string>
+    <string name="plan_backup_restore_help">Paste here the plan text you saved. What is already in the plan is not deleted.</string>
+    <string name="plan_backup_paste_label">Plan text</string>
+    <string name="plan_backup_restore_button">Restore</string>
+    <plurals name="plan_backup_restored">
+        <item quantity="one">%1$d option restored</item>
+        <item quantity="other">%1$d options restored</item>
+    </plurals>
     <plurals name="recipes_available">
         <item quantity="one">%1$d recipe available</item>
         <item quantity="other">%1$d recipes available</item>

@@ -16,6 +16,25 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.outlined.ContentCopy
+import androidx.compose.material.icons.outlined.ContentPaste
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.TextButton
+import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.text.AnnotatedString
+import com.velkyss.diabem.app.resources.back
+import com.velkyss.diabem.app.resources.plan_backup_copy
+import com.velkyss.diabem.app.resources.plan_backup_copy_button
+import com.velkyss.diabem.app.resources.plan_backup_copy_help
+import com.velkyss.diabem.app.resources.plan_backup_help
+import com.velkyss.diabem.app.resources.plan_backup_paste_label
+import com.velkyss.diabem.app.resources.plan_backup_restore
+import com.velkyss.diabem.app.resources.plan_backup_restore_button
+import com.velkyss.diabem.app.resources.plan_backup_restore_help
+import com.velkyss.diabem.app.resources.plan_backup_restored
+import com.velkyss.diabem.app.resources.plan_backup_title
+import com.velkyss.diabem.app.ui.components.SectionTitle
+import org.jetbrains.compose.resources.pluralStringResource
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -60,7 +79,79 @@ fun PlanScreen(controller: AppController, onBack: () -> Unit) {
         Column(Modifier.verticalScroll(rememberScrollState()).padding(pad), verticalArrangement = Arrangement.spacedBy(16.dp)) {
             Text(stringResource(Res.string.plan_help), style = MaterialTheme.typography.bodyLarge)
             MealSlot.entries.forEach { slot -> SlotCard(controller, slot) }
+            BackupSection(controller)
         }
+    }
+}
+
+/** Lets the person keep a copy of the plan outside the app, and bring it back. */
+@Composable
+private fun BackupSection(controller: AppController) {
+    var showCopy by rememberSaveable { mutableStateOf(false) }
+    var showRestore by rememberSaveable { mutableStateOf(false) }
+    var restored by rememberSaveable { mutableStateOf<Int?>(null) }
+    val clipboard = LocalClipboardManager.current
+    val labels = MealSlot.entries.associateWith { stringResource(it.label) }
+
+    SectionTitle(stringResource(Res.string.plan_backup_title))
+    Text(stringResource(Res.string.plan_backup_help), style = MaterialTheme.typography.bodyMedium)
+    if (!controller.plan.isEmpty) {
+        BigOutlinedButton(stringResource(Res.string.plan_backup_copy), { showCopy = true }, icon = Icons.Outlined.ContentCopy)
+    }
+    BigOutlinedButton(stringResource(Res.string.plan_backup_restore), { showRestore = true; restored = null }, icon = Icons.Outlined.ContentPaste)
+    restored?.let { Text(pluralStringResource(Res.plurals.plan_backup_restored, it, it), style = MaterialTheme.typography.bodyLarge) }
+
+    if (showCopy) {
+        val text = controller.plan.toBackupText { labels.getValue(it) }
+        AlertDialog(
+            onDismissRequest = { showCopy = false },
+            title = { Text(stringResource(Res.string.plan_backup_copy)) },
+            text = {
+                Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                    Text(stringResource(Res.string.plan_backup_copy_help), style = MaterialTheme.typography.bodyMedium)
+                    OutlinedTextField(value = text, onValueChange = {}, readOnly = true, textStyle = MaterialTheme.typography.bodyMedium, modifier = Modifier.fillMaxWidth().heightIn(max = 260.dp))
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { clipboard.setText(AnnotatedString(text)); showCopy = false }, modifier = Modifier.heightIn(min = MinTouch)) {
+                    Text(stringResource(Res.string.plan_backup_copy_button), style = MaterialTheme.typography.labelLarge)
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showCopy = false }, modifier = Modifier.heightIn(min = MinTouch)) {
+                    Text(stringResource(Res.string.back), style = MaterialTheme.typography.labelLarge)
+                }
+            },
+        )
+    }
+    if (showRestore) {
+        var pasted by rememberSaveable { mutableStateOf("") }
+        AlertDialog(
+            onDismissRequest = { showRestore = false },
+            title = { Text(stringResource(Res.string.plan_backup_restore)) },
+            text = {
+                Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                    Text(stringResource(Res.string.plan_backup_restore_help), style = MaterialTheme.typography.bodyMedium)
+                    OutlinedTextField(
+                        value = pasted,
+                        onValueChange = { pasted = it.take(20_000) },
+                        label = { Text(stringResource(Res.string.plan_backup_paste_label)) },
+                        textStyle = MaterialTheme.typography.bodyMedium,
+                        modifier = Modifier.fillMaxWidth().heightIn(min = 120.dp, max = 260.dp),
+                    )
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { restored = controller.restorePlan(pasted); showRestore = false }, modifier = Modifier.heightIn(min = MinTouch)) {
+                    Text(stringResource(Res.string.plan_backup_restore_button), style = MaterialTheme.typography.labelLarge)
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showRestore = false }, modifier = Modifier.heightIn(min = MinTouch)) {
+                    Text(stringResource(Res.string.back), style = MaterialTheme.typography.labelLarge)
+                }
+            },
+        )
     }
 }
 

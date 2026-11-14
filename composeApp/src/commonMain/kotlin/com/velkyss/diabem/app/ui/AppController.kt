@@ -113,6 +113,13 @@ class AppController(val pack: CountryPack, private val store: UserStore) {
 
     fun removePlanOption(slot: MealSlot, index: Int) = savePlan(plan.remove(slot, index))
 
+    /** Adds the options of a plan backup text. Returns how many options were added. */
+    fun restorePlan(text: String): Int {
+        val before = MealSlot.entries.sumOf { plan.optionsFor(it).size }
+        savePlan(plan.mergeBackupText(text))
+        return MealSlot.entries.sumOf { plan.optionsFor(it).size } - before
+    }
+
     private fun savePlan(newPlan: NutritionistPlan) {
         plan = newPlan
         store.plan = newPlan

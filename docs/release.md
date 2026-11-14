@@ -39,6 +39,17 @@ base64 -w0 diabem.jks   # el resultado es DIABEM_KEYSTORE_BASE64
 El resultado aparece en la pestaña **Releases** con `diabem-1.0.0.apk` y `diabem-1.0.0.aab`.
 Si falta algún secreto, el flujo se detiene con un mensaje claro y no publica nada.
 
+### Actualizar sin perder datos
+
+- Instalar el APK nuevo **encima** del anterior (sin desinstalar): los datos se conservan porque el
+  identificador de la app y la clave de firma son los mismos.
+- **No desinstalar** la app: al desinstalar, Android borra el plan, el perfil y las favoritas.
+- El APK de GitHub y la versión de Google Play llevan **firmas distintas** (en Google Play firma
+  Google). Para pasar de uno a otro hay que desinstalar, y eso borra los datos. Antes de hacerlo:
+  *Meu plano → Guardar uma cópia do plano*, y después *Recuperar um plano guardado*.
+- Las pruebas `StoredDataCompatibilityTest` comprueban en cada cambio que los datos guardados por
+  la versión 1.0.0 se siguen leyendo.
+
 ## 2. Google Play (tiene coste: 25 USD una sola vez)
 
 > ⚠️ No se ha dado ningún paso de pago. Crear la cuenta de desarrollador es decisión del responsable.

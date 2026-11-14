@@ -86,4 +86,16 @@ class FoodLookupTest {
         assertNull(a.sodium)
         assertFalse(a.relevantRed)
     }
+
+    @Test
+    fun everydayNamesAreFoundAndRankFirst() {
+        val jam = CatalogFood("7", "Goiaba, doce em pasta", bread.per100g, aliases = listOf("Goiabada"))
+        val fruit = CatalogFood("8", "Goiaba, vermelha, crua", bread.per100g)
+        val withAliases = FoodLookup(SearchFixtures.pack.copy(catalog = listOf(fruit, jam, bread)))
+        assertEquals(listOf("7"), withAliases.search("goiabada").map { it.id })
+        // "goiaba" matches both; the table name is still searchable
+        assertEquals(setOf("7", "8"), withAliases.search("goiaba").map { it.id }.toSet())
+        assertEquals("Goiabada", jam.displayName)
+        assertEquals("Goiaba, vermelha, crua", fruit.displayName)
+    }
 }

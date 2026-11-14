@@ -45,7 +45,8 @@ data class FoodAssessment(
  */
 class FoodLookup(private val pack: CountryPack) {
     private val evaluator = HealthEvaluator(pack.healthCriteria)
-    private val index = pack.catalog.map { normalizeText(it.name) to it }
+    // Everyday names first, so a search that starts with one of them ranks at the top.
+    private val index = pack.catalog.map { normalizeText((it.aliases + it.name).joinToString(" | ")) to it }
 
     fun food(id: String): CatalogFood? = pack.catalog.firstOrNull { it.id == id }
 
@@ -57,7 +58,7 @@ class FoodLookup(private val pack: CountryPack) {
         val words = normalizeText(query).split(' ', ',').filter { it.isNotBlank() }
         if (words.isEmpty() || words.all { it.length < MIN_QUERY_LENGTH }) return emptyList()
         return index.filter { (name, _) -> words.all { it in name } }
-            .sortedWith(compareBy<Pair<String, CatalogFood>> { !it.first.startsWith(words.first()) }.thenBy { it.first })
+            .sortedWith(compareBy<Pair<String, CatalogFood>> { (name, _) -> name.split(" | ").none { it.startsWith(words.first()) } }.thenBy { it.first })
             .take(limit)
             .map { it.second }
     }

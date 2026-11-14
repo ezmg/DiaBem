@@ -91,6 +91,32 @@ class PackCompilerTest {
     }
 
     @Test
+    fun recipesOfPublishedVersionsAreNeverRemoved() {
+        // People keep favourites by recipe id. A published recipe id must exist forever.
+        val released = File(dataDir, "br/released-recipe-ids.txt").readLines().filter { it.isNotBlank() }
+        val current = PackCompiler(File(dataDir, "br")).compile().recipes.map { it.id }.toSet()
+        assertTrue(released.size >= 53)
+        assertEquals(emptyList(), released.filterNot { it in current }, "published recipes removed or renamed")
+    }
+
+    @Test
+    fun everydayNamesAreAttachedToTableFoods() {
+        val pack = PackCompiler(File(dataDir, "br")).compile()
+        val goiabada = pack.catalog.filter { "Goiabada" in it.aliases }
+        assertEquals(setOf("Goiaba, doce em pasta", "Goiaba, doce, cascão"), goiabada.map { it.name }.toSet())
+        assertEquals("Goiabada", goiabada.first().displayName)
+        assertTrue(pack.catalog.count { it.aliases.isNotEmpty() } > 40)
+    }
+
+    @Test
+    fun aliasToUnknownRowFailsTheBuild() {
+        val br = copyOfBrazil()
+        File(br, "food-aliases.json").writeText("""{"aliases":{"Coisa":["9999"]}}""")
+        val e = assertFailsWith<PackBuildException> { PackCompiler(br).compile() }
+        assertTrue(e.errors.any { "row 9999" in it }, e.errors.toString())
+    }
+
+    @Test
     fun tacoMarkersAreParsedCorrectly() {
         assertEquals(0.0, TacoTable.parse("Tr"))
         assertEquals(0.0, TacoTable.parse("NA"))

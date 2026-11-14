@@ -92,6 +92,15 @@ data class MeasuresFile(
     val measures: List<MeasureEntry>,
 )
 
+/**
+ * data/<country>/food-aliases.json: everyday names for foods of the composition table.
+ * Key: the name people use. Value: row ids of the table.
+ */
+@Serializable
+data class FoodAliasesFile(
+    val aliases: Map<String, List<String>>,
+)
+
 @Serializable
 data class SubstitutionsFile(
     val substitutions: List<com.velkyss.diabem.core.model.Substitution>,

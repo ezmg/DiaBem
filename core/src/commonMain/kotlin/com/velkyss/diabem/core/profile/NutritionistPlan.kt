@@ -29,7 +29,42 @@ data class NutritionistPlan(val options: Map<MealSlot, List<String>> = emptyMap(
         return copy(options = options + (slot to current.filterIndexed { i, _ -> i != index }))
     }
 
+    /**
+     * The plan as plain text that a person can copy, send to themselves and paste back later.
+     * [slotLabel] gives the readable name of each meal; only the [MealSlot.key] is read back.
+     */
+    fun toBackupText(slotLabel: (MealSlot) -> String): String = buildString {
+        appendLine(BACKUP_HEADER)
+        MealSlot.entries.forEach { slot ->
+            val list = optionsFor(slot)
+            if (list.isNotEmpty()) {
+                appendLine("[${slot.key}] ${slotLabel(slot)}")
+                list.forEach { appendLine("- $it") }
+            }
+        }
+    }.trimEnd()
+
+    /**
+     * Adds to this plan the options found in [text] (written by [toBackupText]).
+     * Nothing already in the plan is removed. Lines that are not understood are ignored.
+     */
+    fun mergeBackupText(text: String): NutritionistPlan {
+        var plan = this
+        var slot: MealSlot? = null
+        text.lineSequence().map { it.trim() }.forEach { line ->
+            when {
+                line.startsWith("[") && line.contains("]") -> {
+                    val key = line.substring(1, line.indexOf(']')).trim()
+                    slot = MealSlot.entries.firstOrNull { it.key == key }
+                }
+                line.startsWith("-") -> slot?.let { plan = plan.add(it, line.removePrefix("-")) }
+            }
+        }
+        return plan
+    }
+
     companion object {
+        const val BACKUP_HEADER = "DiaBem – Meu plano"
         const val MAX_OPTIONS_PER_SLOT = 10
         const val MAX_OPTION_LENGTH = 200
     }

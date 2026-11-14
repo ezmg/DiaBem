@@ -43,7 +43,12 @@ data class CatalogFood(
     val per100g: Nutrients,
     /** Household measures known for this food (may be empty: then only grams are offered). */
     val portions: List<CatalogPortion> = emptyList(),
-)
+    /** Everyday names people use for this food ("Goiabada"), so the search finds it. */
+    val aliases: List<String> = emptyList(),
+) {
+    /** The everyday name when there is one, otherwise the table name. */
+    val displayName: String get() = aliases.firstOrNull() ?: name
+}
 
 /** Something the user can have at home and tick in the ingredient list (e.g. "Arroz"). */
 @Serializable
