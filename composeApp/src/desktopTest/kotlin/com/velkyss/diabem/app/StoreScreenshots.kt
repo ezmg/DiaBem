@@ -89,6 +89,7 @@ class StoreScreenshots {
             rows.forEachIndexed { back, row -> row.forEachIndexed { i, v -> if (v != null) c.setGlucose(day.plusDays(-back), m[i], v) } }
             c.go(Screen.GlucoseView)
         }
+        shot("6b-alimento-ibge") { c -> c.go(Screen.FoodDetail("ibge-pof-2008-composicao:7701901:99")) }
         shot("7-lembretes") { c ->
             c.setReminder(MealSlot.MORNING_SNACK, com.velkyss.diabem.core.profile.MealReminder(10, 0, enabled = true))
             c.setReminder(MealSlot.AFTERNOON_SNACK, com.velkyss.diabem.core.profile.MealReminder(15, 30, enabled = true))

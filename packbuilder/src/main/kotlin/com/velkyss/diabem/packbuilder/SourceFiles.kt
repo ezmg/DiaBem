@@ -101,6 +101,25 @@ data class FoodAliasesFile(
     val aliases: Map<String, List<String>>,
 )
 
+/** One household measure offered in the food lookup for foods of the extra table. */
+@Serializable
+data class CatalogUnit(val code: String, val singular: String, val plural: String)
+
+/**
+ * data/<country>/catalog.json: a second composition table used ONLY for the food lookup
+ * (never for recipes), with the household measures to offer, in order of preference.
+ */
+@Serializable
+data class CatalogFile(
+    /** Source id of the extra table, declared in pack.json. */
+    val table: String,
+    val tableFile: String,
+    /** Source code inside the extra table that means "taken from the main table". */
+    val mainTableSourceCode: String,
+    val maxPortionsPerFood: Int = 3,
+    val units: List<CatalogUnit>,
+)
+
 @Serializable
 data class SubstitutionsFile(
     val substitutions: List<com.velkyss.diabem.core.model.Substitution>,

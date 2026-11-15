@@ -79,7 +79,7 @@ class PackCompilerTest {
     @Test
     fun catalogHasEveryTacoFoodWithKnownMeasures() {
         val pack = PackCompiler(File(dataDir, "br")).compile()
-        assertEquals(597, pack.catalog.size)
+        assertEquals(597, pack.catalog.count { it.source == null })
         assertEquals("taco4", pack.catalogSource)
         val bread = pack.catalog.single { it.id == "53" }
         assertEquals("Pão, trigo, francês", bread.name)
@@ -114,6 +114,37 @@ class PackCompilerTest {
         File(br, "food-aliases.json").writeText("""{"aliases":{"Coisa":["9999"]}}""")
         val e = assertFailsWith<PackBuildException> { PackCompiler(br).compile() }
         assertTrue(e.errors.any { "row 9999" in it }, e.errors.toString())
+    }
+
+    @Test
+    fun extraIbgeTableBroadensTheFoodLookupWithoutTouchingRecipes() {
+        val pack = PackCompiler(File(dataDir, "br")).compile()
+        val extra = pack.catalog.filter { it.source == "ibge-pof-2008-composicao" }
+        assertTrue(extra.size > 1000, "expected more than 1000 IBGE foods, got ${extra.size}")
+        assertEquals("ibge-pof-2008-composicao", pack.approximateCatalogSource)
+        assertEquals(pack.catalog.size, pack.catalog.map { it.id }.toSet().size)
+        // a dish that TACO does not have, with the published values and a household measure
+        val feijoada = extra.single { it.name == "Feijoada" }
+        assertEquals(16.92, feijoada.per100g[Nutrient.CARBOHYDRATE_G])
+        assertEquals(353.09, feijoada.per100g[Nutrient.SODIUM_MG])
+        assertTrue(feijoada.portions.any { it.unit == "ibge-17" && it.grams == 225.0 })
+        assertTrue(pack.units.any { it.id == "ibge-17" && it.singular == "concha" })
+        // sodium = the food's own sodium + the salt of preparation estimated by IBGE (413.20 + 100.00)
+        val pastel = extra.single { it.name.startsWith("Pastel (queijo") }
+        assertEquals(513.2, pastel.per100g[Nutrient.SODIUM_MG])
+        assertEquals(100.0, pastel.addedSodiumMgPer100g)
+        // recipes still use only the main table
+        assertTrue(pack.foods.none { it.origin.source == "ibge-pof-2008-composicao" })
+    }
+
+    @Test
+    fun foodsThatIbgeTookFromTacoAreNotListedTwice() {
+        val pack = PackCompiler(File(dataDir, "br")).compile()
+        // IBGE "Pão de sal" is TACO "Pão, trigo, francês": one entry, with the IBGE name as everyday name
+        assertTrue(pack.catalog.none { it.source != null && it.name == "Pão de sal" })
+        assertTrue("Pão de sal" in pack.catalog.single { it.id == "53" }.aliases)
+        // foods with a hand-written everyday name keep the main-table entry only
+        assertTrue(pack.catalog.none { it.source != null && it.name == "Goiabada" })
     }
 
     @Test

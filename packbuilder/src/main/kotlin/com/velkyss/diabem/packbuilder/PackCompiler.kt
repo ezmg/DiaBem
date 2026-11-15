@@ -96,6 +96,19 @@ class PackCompiler(private val countryDir: File) {
         criteria.allSources().filter { it !in sourceIds }.forEach { errors += "health-criteria.json: source '$it' is not declared in pack.json" }
         if (errors.isNotEmpty()) throw PackBuildException(errors)
 
+        // Second, broader table: only for the food lookup, never for recipes.
+        val catalogConfig = File(countryDir, "catalog.json").takeIf { it.isFile }?.let { read<CatalogFile>("catalog.json") }
+        if (catalogConfig != null && catalogConfig.table !in sourceIds) errors += "catalog.json: table '${catalogConfig.table}' is not declared in pack.json"
+        val extra = catalogConfig?.let { ExtraCatalog(countryDir, it, measuresFile.tableFile).build(taco, aliasesByRow.values.flatten().toSet(), errors) }
+        if (errors.isNotEmpty()) throw PackBuildException(errors)
+        val mainCatalog = catalog(taco, foodsFile, foods, measures, aliasesByRow).map { food ->
+            val moreNames = extra?.mainTableAliases?.get(food.id).orEmpty().filterNot { it in food.aliases }
+            food.copy(
+                aliases = food.aliases + moreNames,
+                portions = food.portions.ifEmpty { extra?.mainTablePortions?.get(food.id).orEmpty() },
+            )
+        }
+
         val calculator = NutritionCalculator(foods, measures)
         val compiled = recipes.map { calculator.compile(it) }
         compiled.forEach { errors += PackValidator.validateCompiled(it) }
@@ -112,14 +125,15 @@ class PackCompiler(private val countryDir: File) {
             categories = pantry.categories.filter { c -> pantry.items.any { it.category == c.id && it.id in usedPantry } },
             pantry = pantry.items.filter { it.id in usedPantry },
             foods = keptFoods,
-            units = measuresFile.units,
+            units = measuresFile.units + extra?.units.orEmpty(),
             measures = measures.filter { it.food in usedFoods },
             substitutions = substitutions.filter { it.from in usedPantry && it.to in usedPantry },
             healthCriteria = criteria,
             recipes = compiled,
             ricePantryItems = pack.ricePantryItems,
-            catalog = catalog(taco, foodsFile, foods, measures, aliasesByRow),
+            catalog = mainCatalog + extra?.foods.orEmpty(),
             catalogSource = foodsFile.table,
+            approximateCatalogSource = catalogConfig?.table,
         )
     }
 }

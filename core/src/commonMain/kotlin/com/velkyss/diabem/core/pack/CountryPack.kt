@@ -45,6 +45,8 @@ data class CountryPack(
     val catalog: List<CatalogFood> = emptyList(),
     /** Source id of the composition table the [catalog] comes from. */
     val catalogSource: String? = null,
+    /** Source id of a second, broader table whose values are approximate. */
+    val approximateCatalogSource: String? = null,
 ) {
     companion object {
         const val FORMAT_VERSION = 1
