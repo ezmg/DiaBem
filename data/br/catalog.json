@@ -1,0 +1,118 @@
+{
+  "table": "ibge-pof-2008-composicao",
+  "tableFile": "sources/ibge_pof2008_composicao.csv",
+  "mainTableSourceCode": "2",
+  "maxPortionsPerFood": 3,
+  "units": [
+    {
+      "code": "103",
+      "singular": "unidade",
+      "plural": "unidades"
+    },
+    {
+      "code": "104",
+      "singular": "unidade pequena",
+      "plural": "unidades pequenas"
+    },
+    {
+      "code": "32",
+      "singular": "fatia",
+      "plural": "fatias"
+    },
+    {
+      "code": "5",
+      "singular": "bife",
+      "plural": "bifes"
+    },
+    {
+      "code": "33",
+      "singular": "filé",
+      "plural": "filés"
+    },
+    {
+      "code": "89",
+      "singular": "posta",
+      "plural": "postas"
+    },
+    {
+      "code": "25",
+      "singular": "coxa",
+      "plural": "coxas"
+    },
+    {
+      "code": "99",
+      "singular": "sobrecoxa",
+      "plural": "sobrecoxas"
+    },
+    {
+      "code": "81",
+      "singular": "pedaço",
+      "plural": "pedaços"
+    },
+    {
+      "code": "16",
+      "singular": "colher de sopa",
+      "plural": "colheres de sopa"
+    },
+    {
+      "code": "17",
+      "singular": "concha",
+      "plural": "conchas"
+    },
+    {
+      "code": "12",
+      "singular": "colher de servir",
+      "plural": "colheres de servir"
+    },
+    {
+      "code": "18",
+      "singular": "copo americano",
+      "plural": "copos americanos"
+    },
+    {
+      "code": "106",
+      "singular": "xícara de chá",
+      "plural": "xícaras de chá"
+    },
+    {
+      "code": "105",
+      "singular": "xícara de café",
+      "plural": "xícaras de café"
+    },
+    {
+      "code": "15",
+      "singular": "colher de sobremesa",
+      "plural": "colheres de sobremesa"
+    },
+    {
+      "code": "14",
+      "singular": "colher de chá",
+      "plural": "colheres de chá"
+    },
+    {
+      "code": "34",
+      "singular": "folha",
+      "plural": "folhas"
+    },
+    {
+      "code": "96",
+      "singular": "rodela",
+      "plural": "rodelas"
+    },
+    {
+      "code": "67",
+      "singular": "gomo",
+      "plural": "gomos"
+    },
+    {
+      "code": "93",
+      "singular": "prato raso",
+      "plural": "pratos rasos"
+    },
+    {
+      "code": "92",
+      "singular": "prato fundo",
+      "plural": "pratos fundos"
+    }
+  ]
+}

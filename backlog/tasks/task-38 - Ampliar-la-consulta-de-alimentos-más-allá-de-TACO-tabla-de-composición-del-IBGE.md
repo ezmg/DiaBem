@@ -3,9 +3,10 @@ id: TASK-38
 title: >-
   Ampliar la consulta de alimentos más allá de TACO (tabla de composición del
   IBGE)
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-11-14T12:10:00Z'
+updated_date: '2026-11-15T23:36:00Z'
 labels:
   - mejoras
 dependencies: []

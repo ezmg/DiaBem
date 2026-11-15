@@ -470,4 +470,16 @@ class AppUiTest {
         onAllNodes(hasSetTextAction()).assertCountEquals(0)
         onAllNodes(hasContentDescription("Carboidratos:", substring = true)).assertCountEquals(0)
     }
+
+    @Test
+    fun foodFromTheIbgeTableShowsItsMeasuresAndSaysItIsApproximate() = runComposeUiTest {
+        launch(newStore(withProfile = true))
+        onNodeWithText("Consultar um alimento").performScrollTo().performClick()
+        onNode(hasSetTextAction()).performTextInput("feijoada")
+        onNodeWithText("Feijoada").performClick()
+        onNodeWithText("1 concha (225 g)", substring = true).assertExists()
+        onNodeWithText("Valores aproximados, da tabela do IBGE", substring = true).assertExists()
+        onNode(hasContentDescription("Sal:", substring = true)).assertExists()
+        onNodeWithText("quem decide é o seu médico ou nutricionista", substring = true).assertExists()
+    }
 }

@@ -103,7 +103,7 @@
     <string name="food_lookup_help">Escribe el nombre del alimento para ver cuántos hidratos y cuánta sal tiene.</string>
     <string name="food_search_hint">Ejemplo: pan, plátano, queso</string>
     <string name="food_lookup_none">No encontramos ese alimento. Prueba con otra palabra.</string>
-    <string name="food_lookup_scope">%1$d alimentos de la Tabla TACO (NEPA/Unicamp). Los productos de marca no aparecen: mira la etiqueta del envase.</string>
+    <string name="food_lookup_scope">%1$d alimentos de las tablas TACO (NEPA/Unicamp) y del IBGE. Los productos de marca no aparecen: mira la etiqueta del envase.</string>
     <string name="food_amount_question">¿Cuánto vas a comer?</string>
     <string name="food_portion">%1$s %2$s (%3$s g)</string>
     <string name="food_in_this_amount">En esta cantidad</string>
@@ -166,6 +166,8 @@
     <string name="glucose_view_period">Del %1$s al %2$s</string>
     <string name="glucose_view_unit">Valores en %1$s, del día más reciente al más antiguo.</string>
     <string name="glucose_table_legend">Ayunas: antes de comer. Las demás: 2 horas después de esa comida.</string>
+    <string name="food_source_approximate">Valores aproximados, de la tabla del IBGE (POF 2008-2009). La receta de cada casa cambia el resultado.</string>
+    <string name="food_added_sodium">El sodio incluye %1$s mg de la sal usada al preparar (estimación del IBGE).</string>
     <plurals name="recipes_available">
         <item quantity="one">%1$d receta disponible</item>
         <item quantity="other">%1$d recetas disponibles</item>

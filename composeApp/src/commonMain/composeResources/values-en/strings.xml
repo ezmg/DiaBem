@@ -103,7 +103,7 @@
     <string name="food_lookup_help">Type the name of a food to see how much carbohydrate and salt it has.</string>
     <string name="food_search_hint">Example: bread, banana, cheese</string>
     <string name="food_lookup_none">We could not find that food. Try another word.</string>
-    <string name="food_lookup_scope">%1$d foods from the TACO table (NEPA/Unicamp). Branded products are not listed: check the label on the package.</string>
+    <string name="food_lookup_scope">%1$d foods from the TACO (NEPA/Unicamp) and IBGE tables. Branded products are not listed: check the label on the package.</string>
     <string name="food_amount_question">How much will you eat?</string>
     <string name="food_portion">%1$s %2$s (%3$s g)</string>
     <string name="food_in_this_amount">In this amount</string>
@@ -166,6 +166,8 @@
     <string name="glucose_view_period">From %1$s to %2$s</string>
     <string name="glucose_view_unit">Values in %1$s, newest day first.</string>
     <string name="glucose_table_legend">Fasting: before eating. The others: 2 hours after that meal.</string>
+    <string name="food_source_approximate">Approximate values, from the IBGE table (POF 2008-2009). Each household’s recipe changes the result.</string>
+    <string name="food_added_sodium">Sodium includes %1$s mg from salt used in preparation (IBGE estimate).</string>
     <plurals name="recipes_available">
         <item quantity="one">%1$d recipe available</item>
         <item quantity="other">%1$d recipes available</item>

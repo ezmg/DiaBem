@@ -52,6 +52,30 @@ reutilización, **no se usa**.
   `317ace59e53e25f3fc4913c5f552adf181bf001e6272edb5ae7a46804aa360b0`).
 - **Limitación**: el IBGE no registra la sal. Por eso la sal se indica **en gramos** en las recetas.
 
+### IBGE — Tabelas de Composição Nutricional dos Alimentos Consumidos no Brasil (POF 2008-2009)
+
+- **Autor**: IBGE, con el Ministerio de Salud, 2011.
+- **Dónde**: https://biblioteca.ibge.gov.br/visualizacao/livros/liv50002.pdf
+- **Licencia / condiciones**: publicación estadística oficial; se cita la fuente. Misma duda que con
+  la tabla de medidas: ⚠️ confirmar con el IBGE antes de publicar en tiendas.
+- **Uso en DiaBem**: SOLO en *Consultar um alimento*. Las recetas siguen calculándose con TACO.
+- **Archivo**: `data/br/sources/ibge_pof2008_composicao.csv` (1971 filas, 1121 alimentos), convertido
+  con `tools/importers/ibge_composition_to_csv.py` a partir de las tablas 1, 2, 3 y 5 del PDF
+  (SHA-256: `ac4d965423793224cb28865c6bde4fb7cacdc84ef6f0ace0e5511a248bdd805a`). El importador se
+  detiene si las tablas no coinciden fila a fila.
+- **Qué son estos valores**: una recopilación. De las 1971 filas, 1749 vienen de la base
+  estadounidense NDSR (Universidad de Minnesota), 127 de TACO y el resto de otras fuentes o
+  combinaciones. Por eso la app los presenta como **aproximados**.
+- **Reglas de integración** (`data/br/catalog.json`, `packbuilder/.../ExtraCatalog.kt`):
+  - Las filas que el IBGE tomó de TACO no se repiten: su nombre pasa a ser un nombre popular del
+    alimento de TACO, que además hereda sus medidas caseras.
+  - Las preparaciones de un mismo alimento con valores idénticos se muestran como una sola entrada.
+  - "-" significa cero (convención del IBGE, página "Convenções").
+  - El sodio mostrado es el del alimento más el "sódio de adição" (sal de preparación estimada por
+    el IBGE); la app indica aparte cuánto corresponde a esa sal.
+  - Tres filas no tienen fuente en la tabla 5 del propio PDF; se conservan con la fuente vacía.
+  - Las medidas caseras con varios pesos distintos para la misma unidad se descartan (no se elige una).
+
 ### USDA FoodData Central — SR Legacy (2018)
 
 - **Autor**: Departamento de Agricultura de EE. UU. (USDA).

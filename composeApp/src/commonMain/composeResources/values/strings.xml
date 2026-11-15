@@ -104,7 +104,7 @@
     <string name="food_lookup_help">Escreva o nome do alimento para ver quanto ele tem de carboidratos e de sal.</string>
     <string name="food_search_hint">Exemplo: pão, banana, queijo</string>
     <string name="food_lookup_none">Não encontramos esse alimento. Tente outra palavra.</string>
-    <string name="food_lookup_scope">%1$d alimentos da Tabela TACO (NEPA/Unicamp). Produtos de marca não aparecem: olhe o rótulo da embalagem.</string>
+    <string name="food_lookup_scope">%1$d alimentos das tabelas TACO (NEPA/Unicamp) e do IBGE. Produtos de marca não aparecem: olhe o rótulo da embalagem.</string>
     <string name="food_amount_question">Quanto você vai comer?</string>
     <string name="food_portion">%1$s %2$s (%3$s g)</string>
     <string name="food_in_this_amount">Nesta quantidade</string>
@@ -167,6 +167,8 @@
     <string name="glucose_view_period">De %1$s a %2$s</string>
     <string name="glucose_view_unit">Valores em %1$s, do dia mais recente para o mais antigo.</string>
     <string name="glucose_table_legend">Jejum: antes de comer. Café, Almoço e Jantar: 2 horas após a refeição.</string>
+    <string name="food_source_approximate">Valores aproximados, da tabela do IBGE (POF 2008-2009). A receita de cada casa muda o resultado.</string>
+    <string name="food_added_sodium">O sódio inclui %1$s mg do sal usado no preparo (estimativa do IBGE).</string>
     <plurals name="recipes_available">
         <item quantity="one">%1$d receita disponível</item>
         <item quantity="other">%1$d receitas disponíveis</item>

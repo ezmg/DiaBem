@@ -42,7 +42,10 @@ import com.velkyss.diabem.app.resources.Res
 import com.velkyss.diabem.app.resources.carbs
 import com.velkyss.diabem.app.resources.energy
 import com.velkyss.diabem.app.resources.fiber
+import com.velkyss.diabem.app.resources.added_sugar
+import com.velkyss.diabem.app.resources.food_added_sodium
 import com.velkyss.diabem.app.resources.food_amount_question
+import com.velkyss.diabem.app.resources.food_source_approximate
 import com.velkyss.diabem.app.resources.food_in_this_amount
 import com.velkyss.diabem.app.resources.food_lookup_help
 import com.velkyss.diabem.app.resources.food_lookup_none
@@ -127,7 +130,9 @@ private data class Amount(val label: String, val grams: Double)
 private fun amountsFor(controller: AppController, food: CatalogFood): List<Amount> {
     val household = food.portions.flatMap { portion ->
         val unit = controller.pack.units.firstOrNull { it.id == portion.unit } ?: return@flatMap emptyList()
-        listOf(0.5 to unit.singular, 1.0 to unit.singular, 2.0 to unit.plural).map { (count, name) ->
+        // One measure: offer half, one and two. Several measures: one of each, to keep the list short.
+        val counts = if (food.portions.size == 1) listOf(0.5 to unit.singular, 1.0 to unit.singular, 2.0 to unit.plural) else listOf(1.0 to unit.singular)
+        counts.map { (count, name) ->
             val grams = portion.grams * count
             Amount(stringResource(Res.string.food_portion, QuantityFormatter.format(count), name, formatNumber(grams)), grams)
         }
@@ -142,7 +147,11 @@ fun FoodDetailScreen(controller: AppController, foodId: String, onBack: () -> Un
     val food = controller.foodLookup.food(foodId) ?: return
     val amounts = amountsFor(controller, food)
     // Default: one household unit when known, otherwise 100 g.
-    val defaultIndex = if (household(food)) 1 else amounts.indexOfFirst { it.grams == 100.0 }.coerceAtLeast(0)
+    val defaultIndex = when {
+        food.portions.size == 1 -> 1
+        household(food) -> 0
+        else -> amounts.indexOfFirst { it.grams == 100.0 }.coerceAtLeast(0)
+    }
     var selected by rememberSaveable(foodId) { mutableIntStateOf(defaultIndex) }
     val amount = amounts[selected.coerceIn(amounts.indices)]
     val assessment = remember(foodId, amount.grams, controller.profile) { controller.foodLookup.assess(food, amount.grams, controller.profile) }
@@ -185,7 +194,21 @@ fun FoodDetailScreen(controller: AppController, foodId: String, onBack: () -> Un
             FoodNutrientRow(stringResource(Res.string.carbs), v(Nutrient.CARBOHYDRATE_G, "g"))
             FoodNutrientRow(stringResource(Res.string.fiber), v(Nutrient.FIBER_G, "g"))
             FoodNutrientRow(stringResource(Res.string.sodium_value), v(Nutrient.SODIUM_MG, "mg"))
-            Text(stringResource(Res.string.nutrition_source), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            food.addedSodiumMgPer100g?.let { per100 ->
+                Text(
+                    stringResource(Res.string.food_added_sodium, formatNumber(per100 * amount.grams / 100.0)),
+                    style = MaterialTheme.typography.bodyMedium,
+                )
+            }
+            food.addedSugarGPer100g?.let { per100 ->
+                FoodNutrientRow(stringResource(Res.string.added_sugar), "${formatNumber(per100 * amount.grams / 100.0)} g")
+            }
+            val approximate = food.source != null && food.source == controller.pack.approximateCatalogSource
+            Text(
+                stringResource(if (approximate) Res.string.food_source_approximate else Res.string.nutrition_source),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
             NoticeBox(stringResource(Res.string.food_notice))
         }
     }

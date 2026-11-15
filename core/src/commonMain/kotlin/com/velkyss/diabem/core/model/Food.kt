@@ -45,6 +45,15 @@ data class CatalogFood(
     val portions: List<CatalogPortion> = emptyList(),
     /** Everyday names people use for this food ("Goiabada"), so the search finds it. */
     val aliases: List<String> = emptyList(),
+    /** Source id of the table this food comes from. Null means the pack's main table. */
+    val source: String? = null,
+    /**
+     * Part of the sodium in [per100g] that is salt usually added when preparing the food
+     * (an estimate published by the source table). Null when the table gives none.
+     */
+    val addedSodiumMgPer100g: Double? = null,
+    /** Added sugar per 100 g, when the source table publishes it. */
+    val addedSugarGPer100g: Double? = null,
 ) {
     /** The everyday name when there is one, otherwise the table name. */
     val displayName: String get() = aliases.firstOrNull() ?: name
